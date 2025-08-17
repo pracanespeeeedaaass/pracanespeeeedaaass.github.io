@@ -1076,23 +1076,7 @@ body {
     }
        }
        );
-
-            if (!/SmartTV|Tizen|Web0S|SmartHub|Chromecast/i.test(navigator.userAgent)) {
-                // Esperar a que el reproductor esté listo
-                jwplayer("player").on("ready", function () {
-                    var videoElement = document.querySelector("#player video");
-                    if (videoElement) {
-                        var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-              
-                    }
-                });
-            }
-
-            var lang = 1; // Por defecto en español
-            jwplayer().on('play', function (e) {
-                jwplayer().setCurrentAudioTrack(lang);
-            });
-        }
-
-    </script>
+jwplayer("player").on("play", function(e){jwplayer("player").setCurrentAudioTrack(1)});
+	</script>
 </body>
+</html>
