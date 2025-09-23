@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+<style type="text/css">
+body {
+   margin: 0;
+   padding: 0;
+   background-color:#05081c
+}
+
+@keyframes scaling {
+    from {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+}
+
+@-webkit-keyframes scaling {
+    from {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+}
+
+.jw-svg-icon-cc-off path,
+.jw-svg-icon-cc-on path {
+    display: none;
+}
+
+.jw-svg-icon-cc-off,
+.jw-svg-icon-cc-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%2300FFFF' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-cc:hover .jw-svg-icon-cc-off,
+.jw-icon-cc:hover .jw-svg-icon-cc-on,
+.jw-settings-captions:hover .jw-svg-icon-cc-off,
+.jw-settings-captions:hover .jw-svg-icon-cc-on,
+.jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-off,
+.jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%2300FFFF' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-pause path {
+    display: none;
+}
+
+.jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%2300FFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-display:hover .jw-svg-icon-pause,
+.jw-icon-playback:hover .jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%2300FFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-icon-display:hover .jw-svg-icon-pause,
+.jw-icon-playback:hover .jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M6.867 1.013c1.177 0 2.13.932 2.13 2.082v17.81c0 1.15-.953 2.082-2.13 2.082H5.36c-1.177 0-2.131-.932-2.131-2.082V3.095c0-1.15.954-2.082 2.13-2.082h1.507zm12.772 0c1.177 0 2.131.932 2.131 2.082v17.81c0 1.15-.954 2.082-2.13 2.082h-1.507c-1.177 0-2.131-.932-2.131-2.082V3.095c0-1.15.954-2.082 2.131-2.082h1.506z'/%3E%3C/svg%3E");
+}
+
+.jw-svg-icon-volume-100 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0zm2.606-2.7a9.977 9.977 0 012.668 6.779 9.928 9.928 0 01-2.973 7.096.905.905 0 01-1.329-.073v-.001a.883.883 0 01.067-1.194 8.16 8.16 0 002.44-5.828 8.2 8.2 0 00-2.195-5.574.878.878 0 01-.007-1.187l.002-.002a.903.903 0 011.327-.017z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0zm2.606-2.7a9.977 9.977 0 012.668 6.779 9.928 9.928 0 01-2.973 7.096.905.905 0 01-1.329-.073v-.001a.883.883 0 01.067-1.194 8.16 8.16 0 002.44-5.828 8.2 8.2 0 00-2.195-5.574.878.878 0 01-.007-1.187l.002-.002a.903.903 0 011.327-.017z'/%3E%3C/svg%3E");
+}
+
+.jw-svg-icon-volume-50 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-50 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-50 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0z'/%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-volume-0 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-0 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.379 21.017c-.942-.68-4.01-2.993-4.765-3.544-.756-.553-1.539-1.266-3.255-1.279-1.717-.013-2.34-1.043-2.436-1.98a33.707 33.707 0 01-.137-2.325c0-.128-.001-.78.045-1.487.023-.359.45-.548.743-.328l10.585 7.925c.744.556 1.017 1.095.985 1.941-.012 1.367-.823 1.755-1.765 1.077zm-.057-18.008c1.402-1.014 1.805.366 1.887 1.535.127 1.802.162 3.536.2 6.18.013.904-.997.28-1.349 0L8.148 6.82a.467.467 0 01.014-.75c.996-.727 2.568-1.91 4.16-3.06zm4.32 15.308L2.116 7.365c-.464-.35-.443-1.109-.082-1.558.362-.448 1.096-.538 1.562-.189L18.122 16.48c.465.35.48 1.111.117 1.56-.36.448-1.132.626-1.597.277'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-0 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.379 21.017c-.942-.68-4.01-2.993-4.765-3.544-.756-.553-1.539-1.266-3.255-1.279-1.717-.013-2.34-1.043-2.436-1.98a33.707 33.707 0 01-.137-2.325c0-.128-.001-.78.045-1.487.023-.359.45-.548.743-.328l10.585 7.925c.744.556 1.017 1.095.985 1.941-.012 1.367-.823 1.755-1.765 1.077zm-.057-18.008c1.402-1.014 1.805.366 1.887 1.535.127 1.802.162 3.536.2 6.18.013.904-.997.28-1.349 0L8.148 6.82a.467.467 0 01.014-.75c.996-.727 2.568-1.91 4.16-3.06zm4.32 15.308L2.116 7.365c-.464-.35-.443-1.109-.082-1.558.362-.448 1.096-.538 1.562-.189L18.122 16.48c.465.35.48 1.111.117 1.56-.36.448-1.132.626-1.597.277'/%3E%3C/svg%3E");
+}
+.jw-svg-icon-fullscreen-on path {
+    display: none;
+}
+
+.jw-svg-icon-fullscreen-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%2300FFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%2300FFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-fullscreen-off path {
+    display: none;
+}
+
+.jw-svg-icon-fullscreen-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%2300FFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%2300FFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-state-idle .jw-display-controls .jw-display-icon-container {
+    background: 0 0;
+    margin-bottom: 0;
+    border-radius: 50%;
+    animation-name: scaling;
+    -webkit-animation-name: scaling;
+    animation-duration: 0.6s;
+    -webkit-animation-duration: 0.6s;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: solid 0.125rem #f7f7f7;
+    height: 75px;
+    width: 75px;
+}
+.jw-svg-icon-settings path {
+    display: none;
+}
+
+.jw-svg-icon-settings {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12 16.68a4.68 4.68 0 110-9.36 4.68 4.68 0 110 9.36m10.158-6.588l-.001-.001a1.461 1.461 0 01-1.248-1 9.208 9.208 0 00-.552-1.327 1.466 1.466 0 01.173-1.594c.459-.559.455-1.378-.03-1.913a11.354 11.354 0 00-.758-.758c-.534-.486-1.353-.488-1.91-.03h-.002a1.466 1.466 0 01-1.594.174 9.293 9.293 0 00-1.327-.553 1.46 1.46 0 01-1-1.246c-.071-.718-.648-1.295-1.369-1.33-.355-.017-.713-.02-1.072-.002-.722.031-1.306.61-1.377 1.33v.002a1.462 1.462 0 01-1 1.246c-.458.15-.902.336-1.327.553a1.465 1.465 0 01-1.594-.174c-.56-.458-1.377-.455-1.913.031-.265.242-.518.495-.758.758-.486.534-.488 1.352-.03 1.911v.001c.37.45.438 1.074.173 1.594a9.205 9.205 0 00-.551 1.328c-.18.55-.67.942-1.248.999-.717.07-1.294.65-1.33 1.369-.017.356-.017.713-.002 1.072.033.723.61 1.306 1.33 1.377h.002a1.463 1.463 0 011.248 1c.15.459.335.902.551 1.327a1.463 1.463 0 01-.172 1.594v.001a1.468 1.468 0 00.03 1.912c.242.265.495.519.758.758.534.487 1.352.488 1.911.03a1.464 1.464 0 011.595-.173c.425.217.868.401 1.327.552.552.18.943.67 1 1.247.07.718.649 1.294 1.368 1.33.357.017.714.018 1.073.002.723-.033 1.306-.61 1.377-1.33v-.002a1.46 1.46 0 011-1.247c.458-.15.903-.335 1.327-.552a1.464 1.464 0 011.594.172v.001c.558.458 1.378.455 1.912-.032.265-.24.519-.493.76-.757.485-.534.487-1.353.028-1.911a1.466 1.466 0 01-.173-1.595c.217-.425.403-.868.552-1.328a1.46 1.46 0 011.248-1c.717-.069 1.294-.648 1.33-1.368.017-.356.018-.713.001-1.071a1.466 1.466 0 00-1.33-1.377'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-settings:hover .jw-svg-icon-settings,
+.jw-settings-open .jw-svg-icon-settings {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12 16.68a4.68 4.68 0 110-9.36 4.68 4.68 0 110 9.36m10.158-6.588l-.001-.001a1.461 1.461 0 01-1.248-1 9.208 9.208 0 00-.552-1.327 1.466 1.466 0 01.173-1.594c.459-.559.455-1.378-.03-1.913a11.354 11.354 0 00-.758-.758c-.534-.486-1.353-.488-1.91-.03h-.002a1.466 1.466 0 01-1.594.174 9.293 9.293 0 00-1.327-.553 1.46 1.46 0 01-1-1.246c-.071-.718-.648-1.295-1.369-1.33-.355-.017-.713-.02-1.072-.002-.722.031-1.306.61-1.377 1.33v.002a1.462 1.462 0 01-1 1.246c-.458.15-.902.336-1.327.553a1.465 1.465 0 01-1.594-.174c-.56-.458-1.377-.455-1.913.031-.265.242-.518.495-.758.758-.486.534-.488 1.352-.03 1.911v.001c.37.45.438 1.074.173 1.594a9.205 9.205 0 00-.551 1.328c-.18.55-.67.942-1.248.999-.717.07-1.294.65-1.33 1.369-.017.356-.017.713-.002 1.072.033.723.61 1.306 1.33 1.377h.002a1.463 1.463 0 011.248 1c.15.459.335.902.551 1.327a1.463 1.463 0 01-.172 1.594v.001a1.468 1.468 0 00.03 1.912c.242.265.495.519.758.758.534.487 1.352.488 1.911.03a1.464 1.464 0 011.595-.173c.425.217.868.401 1.327.552.552.18.943.67 1 1.247.07.718.649 1.294 1.368 1.33.357.017.714.018 1.073.002.723-.033 1.306-.61 1.377-1.33v-.002a1.46 1.46 0 011-1.247c.458-.15.903-.335 1.327-.552a1.464 1.464 0 011.594.172v.001c.558.458 1.378.455 1.912-.032.265-.24.519-.493.76-.757.485-.534.487-1.353.028-1.911a1.466 1.466 0 01-.173-1.595c.217-.425.403-.868.552-1.328a1.46 1.46 0 011.248-1c.717-.069 1.294-.648 1.33-1.368.017-.356.018-.713.001-1.071a1.466 1.466 0 00-1.33-1.377'/%3E%3C/svg%3E");
+}
+
+.jw-state-idle .jw-display-controls .jw-display-icon-container .jw-icon {
+    color: #00FFFF !important;
+    height: 50px;
+    width: 50px;
+    padding: 12px;
+}
+
+.jw-progress,
+.lds-ellipsis div {
+    background: #00FFFF !important;
+}
+
+.jw-settings-menu {
+    border-radius: 0.3em;
+}
+
+.jw-sharing-link:active,
+.jw-sharing-copy:active.jw-sharing-link:hover,
+.jw-button-color.jw-toggle.jw-off:active:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:focus:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:hover:not(.jw-icon-cast),
+.jw-button-color.jw-toggle:not(.jw-icon-cast),
+.jw-button-color:active:not(.jw-icon-cast),
+.jw-button-color:focus:not(.jw-icon-cast),
+.jw-button-color:hover:not(.jw-icon-cast),
+.jw-button-color[aria-expanded=true]:not(.jw-icon-cast),
+.jw-settings-content-item.jw-settings-item-active,
+.jw-settings-menu .jw-icon.jw-button-color[aria-checked="true"] .jw-svg-icon {
+    fill: #00FFFF !important;
+    color: #00FFFF !important;
+    background-color: transparent !important;
+}
+
+.jw-button-color {
+    -webkit-transition: opacity 0.25s,
+        -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    -o-transition: opacity 0.25s,
+        -o-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    -moz-transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
+        -moz-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
+        -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
+        -moz-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
+        -o-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    -webkit-transform: translateZ(0) scale(1);
+    -moz-transform: translateZ(0) scale(1);
+    transform: translateZ(0) scale(1);
+}
+
+.jw-button-color:hover {
+    -webkit-transform: translateZ(0) scale(1.2);
+    -moz-transform: translateZ(0) scale(1.2);
+    transform: translateZ(0) scale(1.2);
+}
+
+.jw-buffer {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.jw-slider-horizontal .jw-slider-container {
+    height: 0.5em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.jw-slider-vertical .jw-slider-container {
+    width: 0.4em !important;
+}
+
+.jw-volume-tip {
+    padding: 1em 0 !important;
+    background: #262626 !important;
+    border-radius: 0.3em;
+    max-width: 2.2em;
+    margin: 0 auto !important;
+}
+
+.jw-text-elapsed {
+    margin-right: 12px !important;
+}
+
+.jw-text-duration {
+    margin-left: 12px !important;
+}
+
+:not(.jw-breakpoint--1) .jw-text-duration:before,
+:not(.jw-breakpoint-0) .jw-text-duration:before {
+    display: none !important;
+}
+
+.jw-breakpoint-7 .jw-text-duration,
+.jw-breakpoint-7 .jw-text-elapsed {
+    font-size: 0.95em !important;
+}
+
+.jw-breakpoint-7 .jw-slider-time {
+    padding: 0 66px !important;
+}
+
+.jw-icon-volume .jw-svg-icon-volume-0,
+.jw-icon-volume .jw-svg-icon-volume-50,
+.jw-icon-volume .jw-svg-icon-volume-100 {
+    height: 28px;
+    width: 28px;
+}
+
+.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-0,
+.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-50,
+.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-100 {
+    height: 32px !important;
+    width: 32px !important;
+}
+
+.jw-breakpoint-1:not(.jw-flag-audio-player) .jw-slider-time {
+    padding: 0 12px !important;
+}
+
+.jw-breakpoint--1:not(.jw-flag-audio-player) .jw-slider-time {
+    height: auto !important;
+    padding: 0 !important;
+}
+
+.jw-breakpoint--1:not(.jw-flag-audio-player) .jw-slider-time .jw-slider-container {
+    margin: 0 !important;
+}
+
+.jwplayer.jw-breakpoint-1:not(.jw-flag-ads):not(.jw-flag-audio-player) .jw-button-container,
+.jwplayer.jw-breakpoint--1:not(.jw-flag-ads):not(.jw-flag-audio-player) .jw-button-container {
+    padding: 0 !important;
+}
+
+.jw-flag-small-player:not(.jw-flag-audio-player):not(.jw-flag-ads) .jw-controlbar .jw-button-container>.jw-icon-playback {
+    display: flex !important;
+}
+
+.jwplayer.jw-breakpoint--1:not(.jw-flag-audio-player):not(.jw-flag-ads) .jw-controlbar .jw-button-container>.jw-icon-playback {
+    bottom: 6px !important;
+}
+
+.jw-breakpoint-1 .jw-icon[button="rewind"],
+.jw-breakpoint-1 .jw-icon[button="forward"],
+.jw-breakpoint--1 .jw-icon[button="rewind"],
+.jw-breakpoint--1 .jw-icon[button="forward"] {
+    display: none !important;
+}
+
+.jw-button-color {
+    color:  #00FFFF!important;
+}
+.jw-knob {
+    background-color: #00FFFF !important;
+    }
+.jw-progress {
+    background-color: #00FFFF!important;
+}
+.jw-text-live::before {
+    background-color: red!important;
+    }
+.jw-reset-text{
+    color: white !important;
+}
+</style>
+   <meta charset="utf-8">
+ <meta content="noindex, nofollow, noarchive" name="robots" />
+    <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<script src="https://ssl.p.jwpcdn.com/player/v/8.26.6/jwplayer.js"></script>
+<script>jwplayer.key="/hw9bnYgXuFWXXH1X/Aem7Bpeyb9DJOyY/V8EUpGqww0gLLZ";</script>
+
+<body>
+    <div id="player" class="ViostreamIframe"></div>
+ <script>
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+
+        function cargarToken1() {
+            return fetch('https://api.codetabs.com/v1/proxy/?quest=https://telegratuita.com/json/token.json') // Ruta al archivo JSON que contiene el token
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al cargar el archivo JSON');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // console.log('Token cargado:', data.token); // Log para verificar el token
+                    return data.token; // Devuelve el token
+                })
+                .catch(error => {
+                    console.error('Error al cargar el token:', error);
+                    return null; // En caso de error, devuelve null o un valor predeterminado
+                });
+        }
+
+        function cargarToken2() {
+            // return fetch("https://api.codetabs.com/v1/proxy/?quest=https://canalesenvivodeargentina.blogspot.com/p/backup-telefe-rosario-sensa.html")
+            return fetch("https://api.codetabs.com/v1/proxy/?quest=https://canalesenvivodeargentina.blogspot.com/2024/05/area-plus-tv-en-vivo.html")
+                .then(res => res.text())
+                .then(html => {
+                    const sourceMatch = html.match(/source:\s*"([^"]+)"/);
+                    if (sourceMatch) {
+                        const fullURL = sourceMatch[1];
+
+                        // Extraer base (hasta .../live/c1eds/)
+                        const baseMatch = fullURL.match(/^(https:\/\/[^?]+\/live\/c1eds\/)/);
+                        // Extraer token (&token=...)
+                        const tokenMatch = fullURL.match(/(&token=[a-zA-Z0-9]+)/);
+
+                        if (baseMatch && tokenMatch) {
+                            const baseURL = baseMatch[1];
+                            const token = tokenMatch[1];
+                            return { baseURL, token };
+                        } else {
+                            console.warn("No se pudo extraer la baseURL o el token.");
+                            return null;
+                        }
+                    } else {
+                        console.warn("No se encontró el source en el HTML");
+                        return null;
+                    }
+                })
+                .catch(err => {
+                    console.error("Error al obtener el HTML:", err);
+                    return null;
+                });
+        }
+
+
+        // const url = "https://corsproxy.io/?https://canalesenvivodeargentina.blogspot.com/p/backup-telefe-rosario-sensa.html";
+        // const url = "https://corsproxy.io/?https://canalesenvivodeargentina.blogspot.com/2024/05/area-plus-tv-en-vivo.html";
+
+        function cargarToken3() {
+            const url = "https://corsproxy.io/?https://canalesenvivodeargentina.blogspot.com/2024/05/area-plus-tv-en-vivo.html";
+
+            return fetch(url)
+                .then(res => res.text())
+                .then(html => {
+                    console.log(html);
+
+                    // Buscar el valor del mpdUrl (más flexible)
+                    const sourceMatch = html.match(/mpdUrl\s*[:=]\s*["']([^"']+)["']/);
+                    if (!sourceMatch) {
+                        console.warn("No se encontró ninguna línea con mpdUrl");
+                        return null;
+                    }
+
+                    const fullURL = sourceMatch[1];
+                    console.log("URL completa encontrada:", fullURL);
+
+                    const splitKey = "/live/c1eds/";
+                    const indexEnd = fullURL.indexOf(splitKey);
+                    if (indexEnd === -1) {
+                        console.warn("No se encontró la sección '/live/c1eds/' en la URL");
+                        return { fullURL, baseURL: null, token: null };
+                    }
+
+                    const baseURL = fullURL.substring(0, indexEnd + splitKey.length);
+
+                    // Buscar token
+                    let token = null;
+                    const queryTokenMatch = fullURL.match(/[?&]token=([a-zA-Z0-9_-]+)/);
+                    if (queryTokenMatch) {
+                        token = queryTokenMatch[1];
+                    } else {
+                        const pathTokenMatch = fullURL.match(/\/tok_([a-zA-Z0-9._-]+)\//);
+                        if (pathTokenMatch) {
+                            token = pathTokenMatch[1];
+                        }
+                    }
+
+                    console.log("baseURL:", baseURL);
+                    console.log("token:", token);
+
+                    return { fullURL, baseURL, token };
+                })
+                .catch(err => {
+                    console.error("Error al obtener datos:", err);
+                    return null;
+                });
+        }
+
+        async function iniciarReproductor() {
+            // const token_anbalancer = await cargarToken1(); // Esperar a que se cargue el token desde el JSON
+            // const data = await cargarToken2(); // Esperar a que se cargue el token desde el JSON
+            const data = await cargarToken3(); // Esperar a que se cargue el token desde el JSON
+
+
+            // console.log(data.token);
+
+            if (data.token) {
+                //data.baseURL+ TEC_TV/SA_DASH_cipix/TEC_TV.mpd?dvr_window_length=30&token=WPKtsRxaVIVVwQg9qdj51FCs81CEtcDG
+                var ConfiguracionCanales = {
+                    "TELEFE": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Telefe/SA_DASH_cipix/Telefe.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Telefe/SA_DASH_cipix/Telefe.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "b2011cbe516d44139652945f72781552",
+                        k2: "971bd2bf2c3ebc1c296624c9edcb6488"
+                    },
+                    "TELEFE_ROSARIO": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/CANAL_5_HD/SA_DASH_cipix/CANAL_5_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "CANAL_5_HD/SA_DASH_cipix/CANAL_5_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "b2011cbe516d44139652945f72781552",
+                        k2: "971bd2bf2c3ebc1c296624c9edcb6488"
+                    },
+                    "Canal_13_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Canal_13_HD/SA_DASH_cipix/Canal_13_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Canal_13_HD/SA_DASH_cipix/Canal_13_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "3c9fed9b01234c6292ceecfbaa077a38",
+                        k2: "79e0fd04199f53dba14ecd5df4bf1f3b"
+                    },
+                    "AMERICA_TV": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/AMERICA_TV/SA_DASH_cipix/AMERICA_TV.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "AMERICA_TV/SA_DASH_cipix/AMERICA_TV.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "26bbe14a22e84f658be33f1c60e5d8e9",
+                        k2: "944f1d10165c2baa527e969c1c36d55e"
+                    },
+                    "A24": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/America_24/SA_DASH_cipix/America_24.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "America_24/SA_DASH_cipix/America_24.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "a6662cc3062242aca5f0820ba39a32e9",
+                        k2: "8c7906e9aa1232d0f32de565025aae07"
+                    },
+                    "Canal_26": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Canal_26/SA_DASH_cipix/Canal_26.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Canal_26/SA_DASH_cipix/Canal_26.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "3adc2ba44fa6455e82fdabff0756f05c",
+                        k2: "6f3bbcb8d926114b6f5ab16aa68a8823"
+                    },
+                    "TV_PUBLICA_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TV_PUBLICA_HD/SA_DASH_cipix/TV_PUBLICA_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TV_PUBLICA_HD/SA_DASH_cipix/TV_PUBLICA_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "a0558c7d279c4ab6a31702b9452da4c3",
+                        k2: "3235982dafa1658faf2a9fee5fdb916e"
+                    },
+                    "Cronica_TV": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Cronica_TV/SA_DASH_cipix/Cronica_TV.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Cronica_TV/SA_DASH_cipix/Cronica_TV.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "bbdc7914d1314d39a1ebd403a53b1f24",
+                        k2: "6634e7b43d1252437a613b2412e7d37e"
+                    },
+                    "TN_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TN_HD/SA_DASH_cipix/TN_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TN_HD/SA_DASH_cipix/TN_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "73477e592667468aadc028053b6f0609",
+                        k2: "64d6a0a6868f52a3ac58839587fe5b83"
+                    },
+                    "C5N": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/C5N/SA_DASH_cipix/C5N.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "C5N/SA_DASH_cipix/C5N.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "57d76e3c33df4a6482ee421a14cb3a3f",
+                        k2: "50f26f4ae88d11a2c6390484b14feaac"
+                    },
+                    "LN_Plus": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/LN_Plus/SA_DASH_cipix/LN_Plus.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "LN_Plus/SA_DASH_cipix/LN_Plus.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "55cba36b5e7940f999d0d445e45a70dd",
+                        k2: "7874b03b0d2d1a003f51c5b31dd462a4"
+                    },
+                    "CANAL_9_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/CANAL_9_HD/SA_DASH_cipix/CANAL_9_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "CANAL_9_HD/SA_DASH_cipix/CANAL_9_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "7b0f9c086c52443abafa54ec8793a37c",
+                        k2: "27a8d57cbbdbede3848ee0f9fd37ee82"
+                    },
+                    "CNN_Espanol": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/CNN_Espanol/SA_DASH_cipix/CNN_Espanol.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "CNN_Espanol/SA_DASH_cipix/CNN_Espanol.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "5b7eaf8eb3134cf180628aa4e8eae0f9",
+                        k2: "729613cd93f4f91614672844ad0459f6"
+                    },
+
+
+                    "LOVE_NATURE": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Love_Nature_HD/SA_DASH_cipix/Love_Nature_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Love_Nature_HD/SA_DASH_cipix/Love_Nature_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "fe4a6036a17244e098fce3207ceb8b53",
+                        k2: "eb8407fe44d2a440f1ce5cccc7a0fbdd"
+                    },
+                    "Discovery_Kids_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Discovery_Kids_HD/SA_DASH_cipix/Discovery_Kids_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Discovery_Kids_HD/SA_DASH_cipix/Discovery_Kids_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "7483f014f0da44e5aacf2f7907e0edaf",
+                        k2: "e19b86e2005602a6984fa55fd7fa417e"
+                    },
+                    "Discovery_Channel_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Discovery_Channel_HD/SA_DASH_cipix/Discovery_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Discovery_Channel_HD/SA_DASH_cipix/Discovery_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "cb27418d13a74c0083f2bfe207e9e770",
+                        k2: "30262f260af3e98807c35f3e61657db2"
+                    },
+                    "DIscovery_H_H_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/DIscovery_H_H_HD/SA_DASH_cipix/DIscovery_H_H_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "DIscovery_H_H_HD/SA_DASH_cipix/DIscovery_H_H_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "8fedc91df3d1459aad4033a96ac66ba2",
+                        k2: "a113c3a8fb8f5b6b686cd298f3193294"
+                    },
+                    "Discovery_Science": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/DIscovery_Science/SA_DASH_cipix/DIscovery_Science.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "DIscovery_Science/SA_DASH_cipix/DIscovery_Science.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "e372bcdb3f514eaa92746c0c0a047a7b",
+                        k2: "d4eb05f260bc5dce65ff0f87540fb029"
+                    },
+                    "Discovery_ID_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/ID_HD/SA_DASH_cipix/ID_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "ID_HD/SA_DASH_cipix/ID_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "6e32d25d71a245f5944446492e3df938",
+                        k2: "2c710c054102a2873b1041f284ad79a5"
+                    },
+                    "Discovery_TLC": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TLC/SA_DASH_cipix/TLC.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TLC/SA_DASH_cipix/TLC.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "c6eba92167fd428385894c6f1e805389",
+                        k2: "084b48cd93cad3d0e89e3dc18f5cbcd4"
+                    },
+                    "Discovery_Theater_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Discovery_Theater_HD/SA_DASH_cipix/Discovery_Theater_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Discovery_Theater_HD/SA_DASH_cipix/Discovery_Theater_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "0b48ad06af444432bd4ba945d497d6a4",
+                        k2: "6f688c4814eca87602c6725a82173240"
+                    },
+                    "Discovery_World_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/World_HD/SA_DASH_cipix/World_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "World_HD/SA_DASH_cipix/World_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "f65bc28d3c0d42f183d11e56cba285e8",
+                        k2: "8fbc1502bed284ff019c17ff9ef8f78d"
+                    },
+                    "Disney_Junior": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Disney_Junior/SA_DASH_cipix/Disney_Junior.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Disney_Junior/SA_DASH_cipix/Disney_Junior.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "a61f0cb4cc6d48b6a1fbc2d5d28074ba",
+                        k2: "7a8e6ed7bedf37844e5af55cd1124a5a"
+                    },
+                    "HBO": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/HBO_HD/SA_DASH_cipix/HBO_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "HBO_HD/SA_DASH_cipix/HBO_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "8d751cb5074c4947b21eb25f77cb1eeb",
+                        k2: "bfa397f056c14992ea10c4d048a154ac"
+                    },
+                    "HBO2": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/HBO_2_HD/SA_DASH_cipix/HBO_2_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "HBO_2_HD/SA_DASH_cipix/HBO_2_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "94b2d2f3b3c94d5fa2364246307b3bf3",
+                        k2: "3c89901e9aa28fd489e762599e56fdd7"
+                    },
+                    "HBO_PLUS_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/HBO_PLUS_HD/SA_DASH_cipix/HBO_PLUS_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "HBO_PLUS_HD/SA_DASH_cipix/HBO_PLUS_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "af9cd256b23d4058b60bafaa1229c4bc",
+                        k2: "600cbd7379e9966eb3b08c257535c6f9"
+                    },
+                    "HBO_Family": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/HBO_Family/SA_DASH_cipix/HBO_Family.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "HBO_Family/SA_DASH_cipix/HBO_Family.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "7c7c44919701452c97a694fbe4a489d3",
+                        k2: "d8ccd8234382982c4a87f5066b6734a8"
+                    },
+                    "HBO_MUNDI": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/MAX/SA_DASH_cipix/MAX.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "MAX/SA_DASH_cipix/MAX.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "77c7c7cee8684cbda01a9ce80b708ff1",
+                        k2: "907817861eddbe98434d276693028c1c"
+                    },
+                    "HBO_POP": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/MAX_UP_HD/SA_DASH_cipix/MAX_UP_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "MAX_UP_HD/SA_DASH_cipix/MAX_UP_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "e6f6e3ff55834f39b479935034696162",
+                        k2: "121fccf43f8d60ab21d853d14bdfd1f8"
+                    },
+                    "HBO_Xtreme": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/MAX_Prime_Panamerican/SA_DASH_cipix/MAX_Prime_Panamerican.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "MAX_Prime_Panamerican/SA_DASH_cipix/MAX_Prime_Panamerican.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "7bcaf7371c6945d48014ba9a102d596f",
+                        k2: "64eec3417f2d56a253f824a6c239c673"
+                    },
+                    "HBO_Signature": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/HBO_Signature/SA_DASH_cipix/HBO_Signature.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "HBO_Signature/SA_DASH_cipix/HBO_Signature.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "a36493e0e2c14647ab66bc79bac92a1d",
+                        k2: "88ad0caaca21941e8c5550e84613af64"
+                    },
+                    "cieeemaa": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Cinemax/SA_DASH_cipix/Cinemax.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Cinemax/SA_DASH_cipix/Cinemax.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "b55bef6a392d4db69271a4b2fa103de9",
+                        k2: "ffb8ebce43e561b066294cf733251484"
+                    },
+                    "Studio_Universal_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Studio_Universal_HD/SA_DASH_cipix/Studio_Universal_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Studio_Universal_HD/SA_DASH_cipix/Studio_Universal_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "f1a73f0cdea54d709c74db32d2a06229",
+                        k2: "9a8ad1ddcfe2d20c57851fa122e01e39"
+                    },
+                    "Universal_Channel_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Universal_Channel_HD/SA_DASH_cipix/Universal_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Universal_Channel_HD/SA_DASH_cipix/Universal_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "d8c05118f0634fa6b7a8c69902110bbc",
+                        k2: "7a07f3e34d6fa7699390c687b81e5536"
+                    },
+                    "Universal_Cinema_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Universal_Cinema_HD/SA_DASH_cipix/Universal_Cinema_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Universal_Cinema_HD/SA_DASH_cipix/Universal_Cinema_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "18f5e8d73b7a4866ad381d24153cc0ed",
+                        k2: "3a49f3d6976d4b48250c114e9b55002d"
+                    },
+                    "Universal_Comedy_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Universal_Comedy_HD/SA_DASH_cipix/Universal_Comedy_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Universal_Comedy_HD/SA_DASH_cipix/Universal_Comedy_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "21b672c4b7e0421c9eaa137c81bc9485",
+                        k2: "6e10e047bec6c83014fbc752d1670c87"
+                    },
+                    "Universal_Crime_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Universal_Crime_HD/SA_DASH_cipix/Universal_Crime_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Universal_Crime_HD/SA_DASH_cipix/Universal_Crime_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "80227d0925d44a3e8e05cbd6a7c96375",
+                        k2: "785e5d82643a688ed935547864629ee6"
+                    },
+                    "Universal_Premiere_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Universal_Premiere_HD/SA_DASH_cipix/Universal_Premiere_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Universal_Premiere_HD/SA_DASH_cipix/Universal_Premiere_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "e313f6d989ef4667895e8ad9d8673b48",
+                        k2: "9088443e1be2b9dab39b0aa3ba3e8fa1"
+                    },
+                    "Universal_Reality_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Universal_Reality_HD/SA_DASH_cipix/Universal_Reality_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Universal_Reality_HD/SA_DASH_cipix/Universal_Reality_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "bb955e35e784496996c2426e21993ad1",
+                        k2: "78635735c6c2b58801708f89713e194f"
+                    },
+                    "TyC_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TyC_HD/SA_DASH_cipix/TyC_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TyC_HD/SA_DASH_cipix/TyC_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "63e6b0db66434556a23c855bd5b6e7d2",
+                        k2: "4c4f0286647963aec05c15df1ba51224"
+                    },
+                    "TyC_Sports_2": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TyC_Sports_2/SA_DASH_cipix/TyC_Sports_2.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TyC_Sports_2/SA_DASH_cipix/TyC_Sports_2.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "e2606caffba8441b8768b08ab01d3ea1",
+                        k2: "2079b1e9adb06fa132444eb1cdc6ebd4"
+                    },
+                    "ESPEE_1_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/ESPN_HD/SA_DASH_cipix/ESPN_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "ESPN_HD/SA_DASH_cipix/ESPN_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "56f12bf8ad1b47f99bb92deae2165d54",
+                        k2: "5c4d0306c4c45054169531dcc75cb8b7"
+                    },
+                    "ESPN_2_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/ESPN_2_HD/SA_DASH_cipix/ESPN_2_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "ESPN_2_HD/SA_DASH_cipix/ESPN_2_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "836865c61eb14b69b9e5f44f1c3c6946",
+                        k2: "44e907ce0aee95c62ecb141314ed4ad5"
+                    },
+                    "ESPN_3_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/ESPN_3_HD/SA_DASH_cipix/ESPN_3_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "ESPN_3_HD/SA_DASH_cipix/ESPN_3_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "c47c7b457ba046738f112567fedec661",
+                        k2: "fb8d1ae0ee237d441449b27bdbebeaa9"
+                    },
+                    // "ESPNp_HD": {
+                    "ESPN_4_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/ESPNp_HD/SA_DASH_cipix/ESPNp_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "ESPNp_HD/SA_DASH_cipix/ESPNp_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "a8082fc466f246da80212d793fd95eaf",
+                        k2: "383b9f12f6bb5aa4c5086a2b76a2e8c8"
+                    },
+                    "ESPNPREE": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Fox_Sports_Premium_HD/SA_DASH_cipix/Fox_Sports_Premium_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Fox_Sports_Premium_HD/SA_DASH_cipix/Fox_Sports_Premium_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "4d649bb55c4c46028b85bbb41550cb59",
+                        k2: "ed6da9b1ff8da94a4fdc1a1461048622"
+                    },
+                    "HGTV": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Discovery_Civilization/SA_DASH_cipix/Discovery_Civilization.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Discovery_Civilization/SA_DASH_cipix/Discovery_Civilization.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "1253390d2d684c12bb008b1f04d651e3",
+                        k2: "8d1a1273f0152a9aa103de27d587a604"
+                    },
+                    "ADULT_SWIM": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TruTV_HD/SA_DASH_cipix/TruTV_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TruTV_HD/SA_DASH_cipix/TruTV_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "e7a878d3929141aca1d208f0e67ace63",
+                        k2: "802d97a6d7aef40e2e10f51bca4669b2"
+                    },
+                    "History_Channel_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/History_Channel_HD/SA_DASH_cipix/History_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "History_Channel_HD/SA_DASH_cipix/History_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "9def25e306fc4c2d9be851f20a332ed9",
+                        k2: "6907654a1489a506ac2846a512b83e52"
+                    },
+                    "History_Channel2_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/H2/SA_DASH_cipix/H2.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "H2/SA_DASH_cipix/H2.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "874a3f1f5b9e44caaf92bef2f1e46eb6",
+                        k2: "94e1078dcccd8a3d7cc2b9f6bb377b7a"
+                    },
+                    "staaachaa": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/FOX_HD/SA_DASH_cipix/FOX_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "FOX_HD/SA_DASH_cipix/FOX_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "f0059800bdab4353bb8652006676d50c",
+                        k2: "38a0e80304651b0094761b22941022bd"
+                    },
+                    "TNT_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TNT_HD/SA_DASH_cipix/TNT_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TNT_HD/SA_DASH_cipix/TNT_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "7bc3b0d6a36a4dc9aa8b5ee154c1884e",
+                        k2: "194d4a5999e216227c3642ecc8043842"
+                    },
+                    "TNT_NOVELAS": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TBS/SA_DASH_cipix/TBS.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TBS/SA_DASH_cipix/TBS.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "0892ebfac9f04e8695f30b0c81cb70d1",
+                        k2: "b9a9be22be67ba7f94760eaa91ac7e70"
+                    },
+                    "TNT_SERIES_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TNT_SERIES_HD/SA_DASH_cipix/TNT_SERIES_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TNT_SERIES_HD/SA_DASH_cipix/TNT_SERIES_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "4519e51cdf6b47c980c1c676deb0a5c4",
+                        k2: "505a5abe37757857327d907db3e01829"
+                    },
+                    "TEENEESPOOARGE_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TNT_Sports_HD/SA_DASH_cipix/TNT_Sports_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TNT_Sports_HD/SA_DASH_cipix/TNT_Sports_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "9428de2d7075436f82b044db91d928ae",
+                        k2: "c1c18eecb906179318e97ee3eaca6bfb"
+                    },
+                    "Animal_Planet_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Animal_Planet_HD/SA_DASH_cipix/Animal_Planet_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Animal_Planet_HD/SA_DASH_cipix/Animal_Planet_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "1d90710491254111b51870d162e816f0",
+                        k2: "d3ab856e131735965c33155087ea9648"
+                    },
+                    "NatGeo": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/NatGeo/SA_DASH_cipix/NatGeo.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "NatGeo/SA_DASH_cipix/NatGeo.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "55099d56305f4579b4cf3182a917a330",
+                        k2: "44c4adb0a6c716188782b885effbd097"
+                    },
+                    "Nickelodeon": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Nickelodeon/SA_DASH_cipix/Nickelodeon.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Nickelodeon/SA_DASH_cipix/Nickelodeon.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "e2b2b6d1adb1437eba2df3c04e9c1734",
+                        k2: "47d350bc577d69cd81071913255fb1db"
+                    },
+                    "Nick_Junior": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Nick_Junior/SA_DASH_cipix/Nick_Junior.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Nick_Junior/SA_DASH_cipix/Nick_Junior.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "daee8bbd99014ba9935eb37230cab6b2",
+                        k2: "11c091df456e14fb28f1c6136d1c9713"
+                    },
+                    "fooo1": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/FOX_SPORTS_HD/SA_DASH_cipix/FOX_SPORTS_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "FOX_SPORTS_HD/SA_DASH_cipix/FOX_SPORTS_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "90fd0225253a42c89e36d4bc5a007498",
+                        k2: "caebfd1e078f1315f9e66ff98544c125"
+                    },
+                    "fooo2": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Fox_Sports_2_HD/SA_DASH_cipix/Fox_Sports_2_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Fox_Sports_2_HD/SA_DASH_cipix/Fox_Sports_2_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "0865e3d0219743a6903087a61e68912e",
+                        k2: "8c319b41729d0637840b987e107de46e"
+                    },
+                    "fooo3": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Fox_Sports_3_HD/SA_DASH_cipix/Fox_Sports_3_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Fox_Sports_3_HD/SA_DASH_cipix/Fox_Sports_3_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "878df41085e2495ab17dff538a4610c5",
+                        k2: "1cf280b4fa53ba1c9aa195222778a21c"
+                    },
+                    "AMC": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/AMC/SA_DASH_cipix/AMC.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "AMC/SA_DASH_cipix/AMC.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "572bb05e9c234085bf0c0ef0440dc714",
+                        k2: "ec54118261f384dcadb80e41ef4e3e13"
+                    },
+                    "Canal_4_Santiago": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Canal_4_Santiago/SA_DASH_cipix/Canal_4_Santiago.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Canal_4_Santiago/SA_DASH_cipix/Canal_4_Santiago.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "6169470424b647c39c15c065687a4c41",
+                        k2: "403cbb091dbea061a0d16988b4448d15"
+                    },
+                    "5RTV_Santa_Fe": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/5RTV_Santa_Fe/SA_DASH_cipix/5RTV_Santa_Fe.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "5RTV_Santa_Fe/SA_DASH_cipix/5RTV_Santa_Fe.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "70a8d2c4a1cc48cb84332175d4fa1ddb",
+                        k2: "1bf2362c9c10efa2a88ce83775770863"
+                    },
+                    "CANAL_3_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/CANAL_3_HD/SA_DASH_cipix/CANAL_3_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "CANAL_3_HD/SA_DASH_cipix/CANAL_3_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "97c4364eb3714b2ca90edd85f76e7c05",
+                        k2: "8c191f8799f0613dda5031da7798d710"
+                    },
+                    "Canal_4": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Canal_4/SA_DASH_cipix/Canal_4.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Canal_4/SA_DASH_cipix/Canal_4.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "6169470424b647c39c15c065687a4c41",
+                        k2: "403cbb091dbea061a0d16988b4448d15"
+                    },
+                    "Canal_11_Salta": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Canal_11_Salta/SA_DASH_cipix/Canal_11_Salta.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Canal_11_Salta/SA_DASH_cipix/Canal_11_Salta.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "6a47917ca83343ea8dcca63189e36d78",
+                        k2: "84b0fe420ed5de7ef83c608d78d74f15"
+                    },
+                    "Tele10": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Tele10/SA_DASH_cipix/Tele10.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Tele10/SA_DASH_cipix/Tele10.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "d2a1cd2aefb34937913848e00e146da9",
+                        k2: "13nV6Vf6Eeu32v3NqZeD8KnwcCj4ZmsRJT"
+                    },
+                    "TEC_TV": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/TEC_TV/SA_DASH_cipix/TEC_TV.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "TEC_TV/SA_DASH_cipix/TEC_TV.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "20bc4e3bac404413913688f94ac5d5a2",
+                        k2: "f28a00ab09d4134f741121205c183bc4"
+                    },
+                    "cieeeecaaaa": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/CINECANAL_HD/SA_DASH_cipix/CINECANAL_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "CINECANAL_HD/SA_DASH_cipix/CINECANAL_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "f1845c8d9f5f4c98a7a846dbbc9693ad",
+                        k2: "6df31f0df566126cccac117988e1061e"
+                    },
+                    "paaamooo": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Paramount_HD/SA_DASH_cipix/Paramount_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Paramount_HD/SA_DASH_cipix/Paramount_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "120e512c66f740d087929553076c5148",
+                        k2: "415a1a4fca416bf6aa6d7a36bb756943"
+                    },
+                    "Sony_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Sony_HD/SA_DASH_cipix/Sony_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Sony_HD/SA_DASH_cipix/Sony_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "d5218656752b46c194da540d3a1cca13",
+                        k2: "7943bac0d1664fdb72140a8ee4cea817"
+                    },
+                    "Tooncast": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Tooncast/SA_DASH_cipix/Tooncast.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Tooncast/SA_DASH_cipix/Tooncast.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "b92a349667634f6b8f80a5a68d188d56",
+                        k2: "50c03f10fbc8faf15f51120200c463f2"
+                    },
+                    "Boomerang": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Boomerang/SA_DASH_cipix/Boomerang.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Boomerang/SA_DASH_cipix/Boomerang.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "41ab459e8f3a4f96ab6002b3e684e637",
+                        k2: "6b05845d6f3b660b1a4d3976fa8a37e4"
+                    },
+                    "Cartoon_Networks_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Cartoon_Networks_HD/SA_DASH_cipix/Cartoon_Networks_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Cartoon_Networks_HD/SA_DASH_cipix/Cartoon_Networks_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "8505bcc7686d491785bf330fad0be055",
+                        k2: "af867eb33b90ec0f39c472ff4e7b253e"
+                    },
+                    "spaaaaeee": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Space_HD/SA_DASH_cipix/Space_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Space_HD/SA_DASH_cipix/Space_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "af77ef73baa349fbb04166620418ab21",
+                        k2: "ed4347f495f9b2d83ad536b5b5e6c885"
+                    },
+                    "AE_Mundo_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/AE_Mundo_HD/SA_DASH_cipix/AE_Mundo_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "AE_Mundo_HD/SA_DASH_cipix/AE_Mundo_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "430e25f361b8414eb639882f9d267348",
+                        k2: "134f8512c76050e0d58ad587897e9787"
+                    },
+                    "Telemundo_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Telemundo_HD/SA_DASH_cipix/Telemundo_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Telemundo_HD/SA_DASH_cipix/Telemundo_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "cb0b3941cdc64580aff58beb43301795",
+                        k2: "66cc7070f4bd4eadbc439bd7ee2f903e"
+                    },
+                    "Eurochannel": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Eurochannel/SA_DASH_cipix/Eurochannel.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Eurochannel/SA_DASH_cipix/Eurochannel.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "85f2094c4b664c0caccb8b0b81b37b27",
+                        k2: "eb295e275f7464bd23aa036900308706"
+                    },
+                    "Europa_Europa": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Europa_Europa/SA_DASH_cipix/Europa_Europa.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Europa_Europa/SA_DASH_cipix/Europa_Europa.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "21eab79467814f82957dcaee5b8a9418",
+                        k2: "b55f6b20310f5c576ea60ebc9a76dd30"
+                    },
+                    "DHE_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/DHE_HD/SA_DASH_cipix/DHE_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "DHE_HD/SA_DASH_cipix/DHE_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "477296e28a7f49268abc45685b8b69a3",
+                        k2: "45b4508bbf0c02bf523104157e2ced81"
+                    },
+                    "AXN_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/AXN_HD/SA_DASH_cipix/AXN_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "AXN_HD/SA_DASH_cipix/AXN_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "c7dc272e8b7742b198c88fe8b56dfdfc",
+                        k2: "65f44c959121b26c3c9f79eaba0a783f"
+                    },
+                    "waaaaachaaa": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Warner_Channel_HD/SA_DASH_cipix/Warner_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Warner_Channel_HD/SA_DASH_cipix/Warner_Channel_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "738f56b0f3894f02a389738a8c7fb30d",
+                        k2: "7fbb83f3b16c5a98ddd73c92e6833712"
+                    },
+                    "Lifetime_HD": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Lifetime_HD/SA_DASH_cipix/Lifetime_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Lifetime_HD/SA_DASH_cipix/Lifetime_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "66262c01b32a4e2da571b93761f5689a",
+                        k2: "3ee6596b16fd299931d12c7d6cb60e26"
+                    },
+                    "MTV": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/MTV/SA_DASH_cipix/MTV.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "MTV/SA_DASH_cipix/MTV.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "65cd1b3fe0824ac2899ed72544c825de",
+                        k2: "72537c0a73920c55ec5b7664d35d5bab"
+                    },
+                  "garaaateeevee": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/El_Garage/SA_DASH_cipix/El_Garage.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "El_Garage/SA_DASH_cipix/El_Garage.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "85be16a960374006ad509051b8dde65e",
+                        k2: "dfa2e3b58fc440b47e3d698ac642329f"
+                    },
+               "dreeeeaaaawoo": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/DreamWorks_HD/SA_DASH_cipix/DreamWorks_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "DreamWorks_HD/SA_DASH_cipix/DreamWorks_HD.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "483591c056304621aefb8fac82fe3b0e",
+                        k2: "03e5891b4d38e0d44bb5e1fbfe38e7d8"
+                    },
+                    "Area_Plus": {
+                        // url: "https://anbalancer.express.com.ar/live/c1eds/Area_Plus/SA_DASH_cipix/Area_Plus.mpd?dvr_window_length=30&token=" + data.token,
+                        url: data.baseURL + "Area_Plus/SA_DASH_cipix/Area_Plus.mpd?dvr_window_length=30&token=" + data.token,
+                        k1: "1bc99c64b9c24d9eb8c474240ce0bf7d",
+                        k2: "58d74cab71765ce870d5a105a514d843"
+                    },
+                };
+
+                var id = getParameterByName('id');
+                var config = ConfiguracionCanales[id];
+
+                if (config) {
+                    var sources = [];
+
+                    if (config.url.includes('.m3u8')) {
+                        sources.push({
+                            file: config.url
+                        });
+                    }
+
+                    if (config.url.includes('.mpd') && config.k1 && config.k2) {
+                        sources.push({
+                            file: config.url,
+                            drm: { "clearkey": { "keyId": config.k1, "key": config.k2 }, audiolang: "es" }
+                        });
+                    }
+
+                    //JWWWWWW
+               
+                      jwplayer("player").setup({
+                        playlist: [{
+                            title: "",
+                            description: "",
+                            type: "dash",
+                            sources: sources
+                        }],
+                        
+                        mute: false,
+                        width: "100%",
+                        height: "100%",
+                    aspectratio: "16:9",
+                        volume:100,
+               stretching: "exactfit",
+                liveSyncDuration: 3 ,
+              androidhls: true,
+              autostart: false,
+                        cast: {}
+                    });
+
+      
+
+                    var lang = 1; // Por defecto en español
+                    jwplayer().on('play', function (e) {
+                        jwplayer().setCurrentAudioTrack(lang);
+                    });
+                }
+            } else {
+                console.error('No se pudo obtener el token');
+            }
+        }
+
+        // Llamar a la función para iniciar el reproductor
+        window.onload = function () {
+            iniciarReproductor();
+        };
+
+        // https://telegratuita.com/json/token.json
+
+    </script>
+</body>
+</html>
