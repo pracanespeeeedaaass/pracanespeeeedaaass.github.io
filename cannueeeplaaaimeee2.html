@@ -1,6 +1,66 @@
 <!DOCTYPE html>
- <html lang="es">
-<style type="text/css">
+<html lang="es">
+   <style>
+
+
+    .jw-controlbar { background-color:#05081c !important;}
+  
+    .jw-icon { filter: brightness(1.4); }
+    .jw-text-track-display { background-color:#05081c; color: #1f80e0; font-size:16px; font-family:'helvetica',sans-serif; }
+    .jw-title { color: #05081c !important; }
+    .jw-display-icon-container { background-color: ; }
+
+    .ios-landscape {
+      transform: rotate(90deg);
+      transform-origin: center center;
+      width: 100vh !important;
+      height: 100vw !important;
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      background: #05081c;
+      z-index: 9999;
+    }
+  </style>
+  <style>
+    .jw-settings-menu {
+    border-radius: 6px;
+}
+
+.jw-sharing-link:active,
+.jw-sharing-copy:active.jw-sharing-link:hover,
+.jw-button-color.jw-toggle.jw-off:active:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:focus:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:hover:not(.jw-icon-cast),
+.jw-button-color.jw-toggle:not(.jw-icon-cast),
+.jw-button-color:active:not(.jw-icon-cast),
+.jw-button-color:focus:not(.jw-icon-cast),
+.jw-button-color:hover:not(.jw-icon-cast),
+.jw-button-color[aria-expanded=true]:not(.jw-icon-cast),
+.jw-settings-content-item.jw-settings-item-active,
+.jw-settings-menu .jw-icon.jw-button-color[aria-checked="true"] .jw-svg-icon {
+    fill: #1f80e0 !important;
+    color: #1f80e0 !important;
+    background-color: transparent !important;
+}
+
+
+
+.jw-svg-icon-play path {
+    display: none;
+}
+
+.jw-svg-icon-play {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%231f80e0' fill-rule='evenodd' d='M6.313 22.05c-1.22.722-2.75-.148-2.811-1.586-.238-5.65-.21-11.216.02-16.928.057-1.408 1.53-2.282 2.751-1.62 5.481 2.97 10.822 6.162 13.825 7.992 1.174.715 1.223 2.426.091 3.21-2.89 2.002-8.095 5.507-13.876 8.932z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-display:hover .jw-svg-icon-play,
+.jw-icon-playback:hover .jw-svg-icon-play {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%231f80e0' fill-rule='evenodd' d='M6.313 22.05c-1.22.722-2.75-.148-2.811-1.586-.238-5.65-.21-11.216.02-16.928.057-1.408 1.53-2.282 2.751-1.62 5.481 2.97 10.822 6.162 13.825 7.992 1.174.715 1.223 2.426.091 3.21-2.89 2.002-8.095 5.507-13.876 8.932z'/%3E%3C/svg%3E%0A");
+}
+
 body {
    margin: 0;
    padding: 0;
@@ -38,7 +98,7 @@ body {
 
 .jw-svg-icon-cc-off,
 .jw-svg-icon-cc-on {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%2300FFFF' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%231f80e0' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -49,7 +109,7 @@ body {
 .jw-settings-captions:hover .jw-svg-icon-cc-on,
 .jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-off,
 .jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-on {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%2300FFFF' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%231f80e0' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 .jw-svg-icon-pause path {
@@ -57,19 +117,14 @@ body {
 }
 
 .jw-svg-icon-pause {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%2300FFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%231f80e0' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .jw-icon-display:hover .jw-svg-icon-pause,
 .jw-icon-playback:hover .jw-svg-icon-pause {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%2300FFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
-}
-
-.jw-icon-display:hover .jw-svg-icon-pause,
-.jw-icon-playback:hover .jw-svg-icon-pause {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M6.867 1.013c1.177 0 2.13.932 2.13 2.082v17.81c0 1.15-.953 2.082-2.13 2.082H5.36c-1.177 0-2.131-.932-2.131-2.082V3.095c0-1.15.954-2.082 2.13-2.082h1.507zm12.772 0c1.177 0 2.131.932 2.131 2.082v17.81c0 1.15-.954 2.082-2.13 2.082h-1.507c-1.177 0-2.131-.932-2.131-2.082V3.095c0-1.15.954-2.082 2.131-2.082h1.506z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%23FFFFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 .jw-svg-icon-volume-100 path {
@@ -77,13 +132,13 @@ body {
 }
 
 .jw-svg-icon-volume-100 {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0zm2.606-2.7a9.977 9.977 0 012.668 6.779 9.928 9.928 0 01-2.973 7.096.905.905 0 01-1.329-.073v-.001a.883.883 0 01.067-1.194 8.16 8.16 0 002.44-5.828 8.2 8.2 0 00-2.195-5.574.878.878 0 01-.007-1.187l.002-.002a.903.903 0 011.327-.017z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-high'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M13.7437869,16.3889482 L12.3295734,14.9747347 C13.9546583,13.3496497 13.9546583,10.7148664 12.3295734,9.08978146 L13.7437869,7.6755679 C16.1499205,10.0817014 16.1499205,13.9828147 13.7437869,16.3889482 Z M16.2137399,18.2137399 L14.7995264,16.7995264 C17.4324159,14.1666368 17.4324159,9.89787935 14.7995264,7.26498977 L16.2137399,5.8507762 C19.6276781,9.26471437 19.6276781,14.7998018 16.2137399,18.2137399 Z M18.6836929,20.0385316 L17.2694793,18.6243181 C20.9101736,14.9836239 20.9101736,9.08089228 17.2694793,5.44019807 L18.6836929,4.02598451 C23.1054357,8.4477273 23.1054357,15.6167888 18.6836929,20.0385316 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .jw-icon-volume:hover .jw-svg-icon-volume-100 {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0zm2.606-2.7a9.977 9.977 0 012.668 6.779 9.928 9.928 0 01-2.973 7.096.905.905 0 01-1.329-.073v-.001a.883.883 0 01.067-1.194 8.16 8.16 0 002.44-5.828 8.2 8.2 0 00-2.195-5.574.878.878 0 01-.007-1.187l.002-.002a.903.903 0 011.327-.017z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-high'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M13.7437869,16.3889482 L12.3295734,14.9747347 C13.9546583,13.3496497 13.9546583,10.7148664 12.3295734,9.08978146 L13.7437869,7.6755679 C16.1499205,10.0817014 16.1499205,13.9828147 13.7437869,16.3889482 Z M16.2137399,18.2137399 L14.7995264,16.7995264 C17.4324159,14.1666368 17.4324159,9.89787935 14.7995264,7.26498977 L16.2137399,5.8507762 C19.6276781,9.26471437 19.6276781,14.7998018 16.2137399,18.2137399 Z M18.6836929,20.0385316 L17.2694793,18.6243181 C20.9101736,14.9836239 20.9101736,9.08089228 17.2694793,5.44019807 L18.6836929,4.02598451 C23.1054357,8.4477273 23.1054357,15.6167888 18.6836929,20.0385316 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 .jw-svg-icon-volume-50 path {
@@ -91,13 +146,13 @@ body {
 }
 
 .jw-svg-icon-volume-50 {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0z'/%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-medium'%3E%3Cpath fill='%23FFFFFF' d='M11,7.82842712 L8.82842712,10 L6,10 L6,14 L8.82842712,14 L11,16.1715729 L11,7.82842712 Z M13,21 L8,16 L4,16 L4,8 L8,8 L13,3 L13,21 Z M15.7437869,16.3889482 L14.3295734,14.9747347 C15.9546583,13.3496497 15.9546583,10.7148664 14.3295734,9.08978146 L15.7437869,7.6755679 C18.1499205,10.0817014 18.1499205,13.9828147 15.7437869,16.3889482 Z M18.2137399,18.2137399 L16.7995264,16.7995264 C19.4324159,14.1666368 19.4324159,9.89787935 16.7995264,7.26498977 L18.2137399,5.8507762 C21.6276781,9.26471437 21.6276781,14.7998018 18.2137399,18.2137399 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .jw-icon-volume:hover .jw-svg-icon-volume-50 {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0z'/%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-medium'%3E%3Cpath fill='%23FFFFFF' d='M11,7.82842712 L8.82842712,10 L6,10 L6,14 L8.82842712,14 L11,16.1715729 L11,7.82842712 Z M13,21 L8,16 L4,16 L4,8 L8,8 L13,3 L13,21 Z M15.7437869,16.3889482 L14.3295734,14.9747347 C15.9546583,13.3496497 15.9546583,10.7148664 14.3295734,9.08978146 L15.7437869,7.6755679 C18.1499205,10.0817014 18.1499205,13.9828147 15.7437869,16.3889482 Z M18.2137399,18.2137399 L16.7995264,16.7995264 C19.4324159,14.1666368 19.4324159,9.89787935 16.7995264,7.26498977 L18.2137399,5.8507762 C21.6276781,9.26471437 21.6276781,14.7998018 18.2137399,18.2137399 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 .jw-svg-icon-volume-0 path {
@@ -105,26 +160,27 @@ body {
 }
 
 .jw-svg-icon-volume-0 {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.379 21.017c-.942-.68-4.01-2.993-4.765-3.544-.756-.553-1.539-1.266-3.255-1.279-1.717-.013-2.34-1.043-2.436-1.98a33.707 33.707 0 01-.137-2.325c0-.128-.001-.78.045-1.487.023-.359.45-.548.743-.328l10.585 7.925c.744.556 1.017 1.095.985 1.941-.012 1.367-.823 1.755-1.765 1.077zm-.057-18.008c1.402-1.014 1.805.366 1.887 1.535.127 1.802.162 3.536.2 6.18.013.904-.997.28-1.349 0L8.148 6.82a.467.467 0 01.014-.75c.996-.727 2.568-1.91 4.16-3.06zm4.32 15.308L2.116 7.365c-.464-.35-.443-1.109-.082-1.558.362-.448 1.096-.538 1.562-.189L18.122 16.48c.465.35.48 1.111.117 1.56-.36.448-1.132.626-1.597.277'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-off'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M17,10.5857864 L20.2928932,7.29289322 L21.7071068,8.70710678 L18.4142136,12 L21.7071068,15.2928932 L20.2928932,16.7071068 L17,13.4142136 L13.7071068,16.7071068 L12.2928932,15.2928932 L15.5857864,12 L12.2928932,8.70710678 L13.7071068,7.29289322 L17,10.5857864 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .jw-icon-volume:hover .jw-svg-icon-volume-0 {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12.379 21.017c-.942-.68-4.01-2.993-4.765-3.544-.756-.553-1.539-1.266-3.255-1.279-1.717-.013-2.34-1.043-2.436-1.98a33.707 33.707 0 01-.137-2.325c0-.128-.001-.78.045-1.487.023-.359.45-.548.743-.328l10.585 7.925c.744.556 1.017 1.095.985 1.941-.012 1.367-.823 1.755-1.765 1.077zm-.057-18.008c1.402-1.014 1.805.366 1.887 1.535.127 1.802.162 3.536.2 6.18.013.904-.997.28-1.349 0L8.148 6.82a.467.467 0 01.014-.75c.996-.727 2.568-1.91 4.16-3.06zm4.32 15.308L2.116 7.365c-.464-.35-.443-1.109-.082-1.558.362-.448 1.096-.538 1.562-.189L18.122 16.48c.465.35.48 1.111.117 1.56-.36.448-1.132.626-1.597.277'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-off'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M17,10.5857864 L20.2928932,7.29289322 L21.7071068,8.70710678 L18.4142136,12 L21.7071068,15.2928932 L20.2928932,16.7071068 L17,13.4142136 L13.7071068,16.7071068 L12.2928932,15.2928932 L15.5857864,12 L12.2928932,8.70710678 L13.7071068,7.29289322 L17,10.5857864 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
+
 .jw-svg-icon-fullscreen-on path {
     display: none;
 }
 
 .jw-svg-icon-fullscreen-on {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%2300FFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%23FFFFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-on {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%2300FFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%23FFFFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 .jw-svg-icon-fullscreen-off path {
@@ -132,19 +188,17 @@ body {
 }
 
 .jw-svg-icon-fullscreen-off {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%2300FFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%23FFFFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-off {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%2300FFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%23FFFFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
 }
 
 .jw-state-idle .jw-display-controls .jw-display-icon-container {
-    background: 0 0;
-    margin-bottom: 0;
-    border-radius: 50%;
+  
     animation-name: scaling;
     -webkit-animation-name: scaling;
     animation-duration: 0.6s;
@@ -155,197 +209,23 @@ body {
     -webkit-animation-iteration-count: infinite;
     animation-direction: alternate;
     -webkit-animation-direction: alternate;
-    background-color: rgba(0, 0, 0, 0.4);
-    border: solid 0.125rem #f7f7f7;
-    height: 75px;
-    width: 75px;
-}
-.jw-svg-icon-settings path {
-    display: none;
+
 }
 
-.jw-svg-icon-settings {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12 16.68a4.68 4.68 0 110-9.36 4.68 4.68 0 110 9.36m10.158-6.588l-.001-.001a1.461 1.461 0 01-1.248-1 9.208 9.208 0 00-.552-1.327 1.466 1.466 0 01.173-1.594c.459-.559.455-1.378-.03-1.913a11.354 11.354 0 00-.758-.758c-.534-.486-1.353-.488-1.91-.03h-.002a1.466 1.466 0 01-1.594.174 9.293 9.293 0 00-1.327-.553 1.46 1.46 0 01-1-1.246c-.071-.718-.648-1.295-1.369-1.33-.355-.017-.713-.02-1.072-.002-.722.031-1.306.61-1.377 1.33v.002a1.462 1.462 0 01-1 1.246c-.458.15-.902.336-1.327.553a1.465 1.465 0 01-1.594-.174c-.56-.458-1.377-.455-1.913.031-.265.242-.518.495-.758.758-.486.534-.488 1.352-.03 1.911v.001c.37.45.438 1.074.173 1.594a9.205 9.205 0 00-.551 1.328c-.18.55-.67.942-1.248.999-.717.07-1.294.65-1.33 1.369-.017.356-.017.713-.002 1.072.033.723.61 1.306 1.33 1.377h.002a1.463 1.463 0 011.248 1c.15.459.335.902.551 1.327a1.463 1.463 0 01-.172 1.594v.001a1.468 1.468 0 00.03 1.912c.242.265.495.519.758.758.534.487 1.352.488 1.911.03a1.464 1.464 0 011.595-.173c.425.217.868.401 1.327.552.552.18.943.67 1 1.247.07.718.649 1.294 1.368 1.33.357.017.714.018 1.073.002.723-.033 1.306-.61 1.377-1.33v-.002a1.46 1.46 0 011-1.247c.458-.15.903-.335 1.327-.552a1.464 1.464 0 011.594.172v.001c.558.458 1.378.455 1.912-.032.265-.24.519-.493.76-.757.485-.534.487-1.353.028-1.911a1.466 1.466 0 01-.173-1.595c.217-.425.403-.868.552-1.328a1.46 1.46 0 011.248-1c.717-.069 1.294-.648 1.33-1.368.017-.356.018-.713.001-1.071a1.466 1.466 0 00-1.33-1.377'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.jw-icon-settings:hover .jw-svg-icon-settings,
-.jw-settings-open .jw-svg-icon-settings {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%2300FFFF' fill-rule='evenodd' d='M12 16.68a4.68 4.68 0 110-9.36 4.68 4.68 0 110 9.36m10.158-6.588l-.001-.001a1.461 1.461 0 01-1.248-1 9.208 9.208 0 00-.552-1.327 1.466 1.466 0 01.173-1.594c.459-.559.455-1.378-.03-1.913a11.354 11.354 0 00-.758-.758c-.534-.486-1.353-.488-1.91-.03h-.002a1.466 1.466 0 01-1.594.174 9.293 9.293 0 00-1.327-.553 1.46 1.46 0 01-1-1.246c-.071-.718-.648-1.295-1.369-1.33-.355-.017-.713-.02-1.072-.002-.722.031-1.306.61-1.377 1.33v.002a1.462 1.462 0 01-1 1.246c-.458.15-.902.336-1.327.553a1.465 1.465 0 01-1.594-.174c-.56-.458-1.377-.455-1.913.031-.265.242-.518.495-.758.758-.486.534-.488 1.352-.03 1.911v.001c.37.45.438 1.074.173 1.594a9.205 9.205 0 00-.551 1.328c-.18.55-.67.942-1.248.999-.717.07-1.294.65-1.33 1.369-.017.356-.017.713-.002 1.072.033.723.61 1.306 1.33 1.377h.002a1.463 1.463 0 011.248 1c.15.459.335.902.551 1.327a1.463 1.463 0 01-.172 1.594v.001a1.468 1.468 0 00.03 1.912c.242.265.495.519.758.758.534.487 1.352.488 1.911.03a1.464 1.464 0 011.595-.173c.425.217.868.401 1.327.552.552.18.943.67 1 1.247.07.718.649 1.294 1.368 1.33.357.017.714.018 1.073.002.723-.033 1.306-.61 1.377-1.33v-.002a1.46 1.46 0 011-1.247c.458-.15.903-.335 1.327-.552a1.464 1.464 0 011.594.172v.001c.558.458 1.378.455 1.912-.032.265-.24.519-.493.76-.757.485-.534.487-1.353.028-1.911a1.466 1.466 0 01-.173-1.595c.217-.425.403-.868.552-1.328a1.46 1.46 0 011.248-1c.717-.069 1.294-.648 1.33-1.368.017-.356.018-.713.001-1.071a1.466 1.466 0 00-1.33-1.377'/%3E%3C/svg%3E");
-}
-
-.jw-state-idle .jw-display-controls .jw-display-icon-container .jw-icon {
-    color: #00FFFF !important;
-    height: 50px;
-    width: 50px;
-    padding: 12px;
-}
-
-.jw-progress,
-.lds-ellipsis div {
-    background: #00FFFF !important;
-}
-
-.jw-settings-menu {
-    border-radius: 0.3em;
-}
-
-.jw-sharing-link:active,
-.jw-sharing-copy:active.jw-sharing-link:hover,
-.jw-button-color.jw-toggle.jw-off:active:not(.jw-icon-cast),
-.jw-button-color.jw-toggle.jw-off:focus:not(.jw-icon-cast),
-.jw-button-color.jw-toggle.jw-off:hover:not(.jw-icon-cast),
-.jw-button-color.jw-toggle:not(.jw-icon-cast),
-.jw-button-color:active:not(.jw-icon-cast),
-.jw-button-color:focus:not(.jw-icon-cast),
-.jw-button-color:hover:not(.jw-icon-cast),
-.jw-button-color[aria-expanded=true]:not(.jw-icon-cast),
-.jw-settings-content-item.jw-settings-item-active,
-.jw-settings-menu .jw-icon.jw-button-color[aria-checked="true"] .jw-svg-icon {
-    fill: #00FFFF !important;
-    color: #00FFFF !important;
-    background-color: transparent !important;
-}
-
-.jw-button-color {
-    -webkit-transition: opacity 0.25s,
-        -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-    -o-transition: opacity 0.25s,
-        -o-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-    -moz-transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
-        -moz-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-    transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
-        -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
-        -moz-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
-        -o-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
-    -webkit-transform: translateZ(0) scale(1);
-    -moz-transform: translateZ(0) scale(1);
-    transform: translateZ(0) scale(1);
-}
-
-.jw-button-color:hover {
-    -webkit-transform: translateZ(0) scale(1.2);
-    -moz-transform: translateZ(0) scale(1.2);
-    transform: translateZ(0) scale(1.2);
-}
-
-.jw-buffer {
-    background-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.jw-slider-horizontal .jw-slider-container {
-    height: 0.5em !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.jw-slider-vertical .jw-slider-container {
-    width: 0.4em !important;
-}
-
-.jw-volume-tip {
-    padding: 1em 0 !important;
-    background: #262626 !important;
-    border-radius: 0.3em;
-    max-width: 2.2em;
-    margin: 0 auto !important;
-}
-
-.jw-text-elapsed {
-    margin-right: 12px !important;
-}
-
-.jw-text-duration {
-    margin-left: 12px !important;
-}
-
-:not(.jw-breakpoint--1) .jw-text-duration:before,
-:not(.jw-breakpoint-0) .jw-text-duration:before {
-    display: none !important;
-}
-
-.jw-breakpoint-7 .jw-text-duration,
-.jw-breakpoint-7 .jw-text-elapsed {
-    font-size: 0.95em !important;
-}
-
-.jw-breakpoint-7 .jw-slider-time {
-    padding: 0 66px !important;
-}
-
-.jw-icon-volume .jw-svg-icon-volume-0,
-.jw-icon-volume .jw-svg-icon-volume-50,
-.jw-icon-volume .jw-svg-icon-volume-100 {
-    height: 28px;
-    width: 28px;
-}
-
-.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-0,
-.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-50,
-.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-100 {
-    height: 32px !important;
-    width: 32px !important;
-}
-
-.jw-breakpoint-1:not(.jw-flag-audio-player) .jw-slider-time {
-    padding: 0 12px !important;
-}
-
-.jw-breakpoint--1:not(.jw-flag-audio-player) .jw-slider-time {
-    height: auto !important;
-    padding: 0 !important;
-}
-
-.jw-breakpoint--1:not(.jw-flag-audio-player) .jw-slider-time .jw-slider-container {
-    margin: 0 !important;
-}
-
-.jwplayer.jw-breakpoint-1:not(.jw-flag-ads):not(.jw-flag-audio-player) .jw-button-container,
-.jwplayer.jw-breakpoint--1:not(.jw-flag-ads):not(.jw-flag-audio-player) .jw-button-container {
-    padding: 0 !important;
-}
-
-.jw-flag-small-player:not(.jw-flag-audio-player):not(.jw-flag-ads) .jw-controlbar .jw-button-container>.jw-icon-playback {
-    display: flex !important;
-}
-
-.jwplayer.jw-breakpoint--1:not(.jw-flag-audio-player):not(.jw-flag-ads) .jw-controlbar .jw-button-container>.jw-icon-playback {
-    bottom: 6px !important;
-}
-
-.jw-breakpoint-1 .jw-icon[button="rewind"],
-.jw-breakpoint-1 .jw-icon[button="forward"],
-.jw-breakpoint--1 .jw-icon[button="rewind"],
-.jw-breakpoint--1 .jw-icon[button="forward"] {
-    display: none !important;
-}
-
-.jw-button-color {
-    color:  #00FFFF!important;
-}
-.jw-knob {
-    background-color: #00FFFF !important;
-    }
 .jw-progress {
-    background-color: #00FFFF!important;
+    background-color: #56ff00 !important;
 }
 .jw-text-live::before {
-    background-color: red!important;
+    background-color: red !important;
     }
 .jw-reset-text{
     color: white !important;
 }
 </style>
-<meta charset="UTF-8">	
-<script src="//ssl.p.jwpcdn.com/player/v/8.26.5/jwplayer.js"></script>
-<script>jwplayer.key="/hw9bnYgXuFWXXH1X/Aem7Bpeyb9DJOyY/V8EUpGqww0gLLZ";</script>
-    <style>
-        body { margin: 0px; }
-        .ViostreamIframe { overflow: hidden; padding-top: 56.25%; position: relative; }
-        .ViostreamIframe iframe { border: 0; height: 100%; left: 0; position: absolute; top: 0; width: 100%; }
-    </style>
-</head>
+<head>
+<script src="//ssl.p.jwpcdn.com/player/v/8.26.0/jwplayer.js"></script>
+    <script>jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script>
+
 <body>
     <div id="player" class="ViostreamIframe"></div>
 
@@ -359,157 +239,397 @@ body {
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
 
-        var ConfiguracionCanales = {
-    //DEPORTSS
-            "cieecaa": {
-                url: "https://apps.playme.com.ar/dash/CH_CINECANAL/playlist.mpd",
-                k1: "0b07785e749f48e18289e2b383e7bb1b",
-                k2: "cfc4ee051f98bb0fcd29e3cdd9474212"
-            },
-            "spaaaeee": {
-                url: "https://apps.playme.com.ar/dash/CH_SPACE/playlist.mpd",
-                k1: "3e9e00f933fd4a6fa7d1d2e78db97969",
-                k2: "3f7d18d0cf2e236386a9dff43d92264b"
-            },
-		"estaachaa": {
-                "url": "https://apps.playme.com.ar/dash/CH_STARCHANNEL/playlist.mpd",
-                "k1": "2b70eecd6d2448c2b9624e5617001128",
-                "k2": "b22329ea940a0638d5f1c734848f39df"
-            },
-			"waaachaa": {
-                url: "https://apps.playme.com.ar/dash/CH_WARNER/playlist.mpd",
-                k1: "6aea61725fc540108138005b398c55a1",
-                k2: "96f6e78601ab085871d11d6d54a2f78d"
-            },
-		  "aaaaduuuu": {
-                url: "https://apps.playme.com.ar/dash/CH_ADULTSWIM/playlist.mpd",
-                k1: "a1c821316a324cd6867550ea3f87d7e4",
-                k2: "8c8132cf7851c138bc38379117b27ec1"
-            },
-			"aaaeqquii": {
-                url: "https://apps.playme.com.ar/dash/CH_AXN/playlist.mpd",
-                k1: "23cb414000424f949741c247dc663032",
-                k2: "a76f3c7ff34103a24ee4f168ac61075a"
-            },
-		"teeeteeepeeel": {
-                url: "https://apps.playme.com.ar/dash/CH_TNT/playlist.mpd",
-                k1: "81330ca6d350457ea74d00f42a2c6a14",
-                k2: "82640762d981b573f8ce7d9ea112818a"
-            },
-		"aaaeeemeeesee": {
-                url: "https://apps.playme.com.ar/dash/CH_AMC/playlist.mpd",
-                k1: "8b2f26ba6d7441019aeb09949ecaf232",
-                k2: "9858f285c3f20a73ccf632c9033dd8f2"
-            },
-			"eeefeeqquii": {
-                url: "https://apps.playme.com.ar/dash/CH_FX/playlist.mpd",
-                k1: "4199e804f9c5414893a539a067330d1e",
-                k2: "b8b494e467aae6954b5a20bc50b07f4d"
-            },
-		 "aayyyeeeee": {
-                "url": "https://apps.playme.com.ar/dash/CH_A_E/playlist.mpd",
-                "k1": "a87970b6b0994a6b9409476676d6f89d",
-                "k2": "066b61571378fe95578a6cce77a95710"
-            },
-		"uusssneee": {
-                url: "https://apps.playme.com.ar/dash/CH_USA_NETWORK/playlist.mpd",
-                k1: "7c3aeeac0ace488a8bd9fe8b1781caec",
-                k2: "b0aa9f88360256e956066eccd473006d"
-            },
-		 "uuuniivee1": {
-                url: "https://apps.playme.com.ar/dash/CH_UNIVERSAL/playlist.mpd",
-                k1: "408116f69dfa4f468f6c4cdbc97f324a",
-                k2: "b9df40e75b8fc3baacd8f21171b3a6e0"
-            },
-		 "stuuuuiooounii": {
-                url: "https://apps.playme.com.ar/dash/CH_STUDIOUNIVERSAL/playlist.mpd",
-                k1: "08ce5fec851e435aa349c3c73ccaf25b",
-                k2: "b608e0fe47e1775cdca602fa1206ab67"
-            },	
-			"soonchaa": {
-                url: "https://apps.playme.com.ar/dash/CH_SONY/playlist.mpd",
-                k1: "ca29cf64546f4c23b722d057f78af310",
-                k2: "196b795f1bc7df15e924fb4cc2fc8082"
-            },
-		"soonmooieee": {
-                url: "https://apps.playme.com.ar/dash/CH_SONYMOVIES/playlist.mpd",
-                k1: "2e7d7e29ebbd49e9ac5691c0bd541854",
-                k2: "a5fd1d3404577764129f0398ed75a5c6"
-            },	
-		"volveee": {
-                url: "https://apps.playme.com.ar/dash/CH_VOLVER/playlist.mpd",
-                k1: "a29696041e6f468f85d4dad0f93bd51c",
-                k2: "79935c724bfa4a4116e49d845c4804f6"
-            },	
-			"eeeuuchaaan": {
-                url: "https://apps.playme.com.ar/dash/CH_EUROCHANNEL/playlist.mpd",
-                k1: "ece4b8f9a49042fdb5264675bdfe665b",
-                k2: "32978ff0fec2a06b8a7449394fbc225b"
-            },	
-			"eeeuupaaaeeupaa": {
-                url: "https://apps.playme.com.ar/dash/CH_EUROPAEUROPA/playlist.mpd",
-                k1: "5420478e093e4480b32e585465caa94d",
-                k2: "93539a93934917cbe20e695d396a9625"
-            },	
-		"cieeearge": {
-                url: "https://apps.playme.com.ar/dash/CH_CINE.AR/playlist.mpd",
-                k1: "e34f8dd1bb42400b8d44c0d82a33d591",
-                k2: "136181a3e7c3d6136e7d037c5783947c"
-            },	
-            "TYC_SPORTS_PLAY": {
-                url: "https://dpyzprfzko681.cloudfront.net/out/v1/366fc52554ae42c58465ea4b278eac0c/index.m3u8",
-            },
+        var mt_red = ["cdn02","cdn03","cdnlb"];
+        let mt_gigared = mt_red[Math.floor(Math.random() * mt_red.length)];
 
+        var ConfiguracionCanales = {
+   
+            "Telefe": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Telefe/sa_live_dash/Telefe.mpd",
+                k1: "865b35fdb4c119f3ccfd4ee392928aef",
+                k2: "b43adf6d88b3befbf7f69a71dc273e46"
+            },
+            "TV_Publica": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/TV_Publica/sa_live_dash/TV_Publica.mpd",
+                k1: "f50f7ac8cca2bcb40bf4a895b6378cea",
+                k2: "0ca9392a44d0c0ff79abc01c15df8888"
+            },
+            "Canal_13": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Canal_13/sa_live_dash/Canal_13.mpd",
+                k1: "949b84fa1101cbbde24d616e3e36fc04",
+                k2: "ea87aa98660f4f965e6b9584369c5fa3"
+            },
+            "CanalA": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/CanalA/sa_live_dash/CanalA.mpd",
+                k1: "097578fb861438a8deecc5643082997b",
+                k2: "3ac02ae9a503e76a58f1e94eebd5f43d"
+            },
+            "TN": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/TN/sa_live_dash/TN.mpd",
+                k1: "c5bb6f9ef3b632b7ba2797048b4941a0",
+                k2: "53f33a7ab0729daee5dbe8ecc8ee2c08"
+            },
+            "C5N": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/C5N/sa_live_dash/C5N.mpd",
+                k1: "a4b47d87494bd17dd7acf86ebb6c3a32",
+                k2: "5df76e3d86d8d88799c52eae263d08b0"
+            },
+            "Canal_9": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Canal_9/sa_live_dash/Canal_9.mpd",
+                k1: "eaecaad505a66fab4161959099767384",
+                k2: "ca66afd7ba0f3ce767b698b5e94c84e3"
+            },
+            "AmericaTV": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/AmericaTV/sa_live_dash/AmericaTV.mpd",
+                k1: "32392e5868873c91ca77a0406b3d32d8",
+                k2: "0f74f66dbeda0bb43b32445ea74d2087"
+            },
+            "LNmas": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/LNmas/sa_live_dash/LNmas.mpd",
+                k1: "ffbe99278cd1aea87b3506d1c06defd6",
+                k2: "fa8d96b8c2d97390ab329241a4e651ae"
+            },
+            "A24": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/A24/sa_live_dash/A24.mpd",
+                k1: "c43779fa115f80c118c29665cc78e4ba",
+                k2: "4303ea7157eb2e6f6ce980bb87183825"
+            },
+            "Unife": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Unife/sa_live_dash/Unife.mpd",
+                k1: "7213abb07b0ce71bedc6ba337e168fa4",
+                k2: "317bc08ed843883a9397c61b22e1b60e"
+            },
+            "Canal26": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Canal26/sa_live_dash/Canal26.mpd",
+                k1: "e9a29d60110b731c5f3a141084379a40",
+                k2: "8dcb1a09a6007fe72d621a09017276ba"
+            },
+            "Canal_Local_Gigared_Posadas": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Canal_Local_Gigared_Posadas/sa_live_dash/Canal_Local_Gigared_Posadas.mpd",
+                k1: "ced47361cf2f266e0842894d1c925464",
+                k2: "3c12297f2cb08d14f30382bcb9e247bf"
+            },
+            "TVE": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/TVE/sa_live_dash/TVE.mpd",
+                k1: "40d5b3d7302d0d707e88ea1cb4b194b5",
+                k2: "b0f99846a1680e9425e8c76aae57fb53"
+            },
+            "eeemteeve-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/MTV/sa_live_dash/MTV.mpd",
+                k1: "92a2837411c8be67f7ec1f79a7996750",
+                k2: "1ec313bd01d3f6d306fff11e4b032a1b"
+            },
+            "Animal_Planet": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Animal_Planet/sa_live_dash/Animal_Planet.mpd",
+                k1: "5eded9e86a760b6e23d1ce1d80b85484",
+                k2: "74e74a9ea3933219454c81f28ade93a8"
+            },
+            "Discovery_Turbo": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Discovery_Turbo/sa_live_dash/Discovery_Turbo.mpd",
+                k1: "55b1aff18cff06f311d2f53145c0a748",
+                k2: "7556d7b06fa5f94c7501c8956a764931"
+            },
+            "Discovery_Science": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Discovery_Science/sa_live_dash/Discovery_Science.mpd",
+                k1: "26c0b72d115923133a5a9e4d4011819f",
+                k2: "cf04154c74f09b1fd98115a9e04fcec6"
+            },
+            "Discovery_World": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Discovery_World/sa_live_dash/Discovery_World.mpd",
+                k1: "cea94fefef1ff96d4ab0e27fb846b0c3",
+                k2: "634b2496b64bffc426bd4093c5945ec3"
+            },
+            "Investigation_discovery": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Investigation_discovery/sa_live_dash/Investigation_discovery.mpd",
+                k1: "54c693fe580f7a376d3a4ffcbaff2377",
+                k2: "64f7f672af645bd14c26f598e65ca686"
+            },
+            "Nat_Geo": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Nat_Geo/sa_live_dash/Nat_Geo.mpd",
+                k1: "aa5e6dae90f144937f1cf638460efe13",
+                k2: "284534e78bb04505bae9b484b2dc1537"
+            },
+            "TLC": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/TLC/sa_live_dash/TLC.mpd",
+                k1: "28f91c97b02842d14c2196467d9f22ec",
+                k2: "07167c215250ae056a8f5dfb9b80d3a4"
+            },
+            "HGTV": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/HGTV/sa_live_dash/HGTV.mpd",
+                k1: "75dab5c02f8c98acc2a461a99da99b7e",
+                k2: "01fbb96e5283f6706b102c8d8ad54c5c"
+            },
+            "El_Gourmet": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/El_Gourmet/sa_live_dash/El_Gourmet.mpd",
+                k1: "a9034121a55c5254270a7fc87e6b933c",
+                k2: "630f14e9ca88c92a25af19834bbf01d6"
+            },
+            "Plim_Plim": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Plim_Plim/sa_live_dash/Plim_Plim.mpd",
+                k1: "44292917d1f5519af4598ccfc66b53dd",
+                k2: "f90cee2e43e02176113cff8ccf09465e"
+            },
+            "Nickelodeon": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Nickelodeon/sa_live_dash/Nickelodeon.mpd",
+                k1: "611595b6387cdcfb67ce564768fd61aa",
+                k2: "dd5fba9ab529822129c09c029b28651c"
+            },
+            "Cine_Premium": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Cine_Premium/sa_live_dash/Cine_Premium.mpd",
+                k1: "670ffd29bd6ada72170188ed785f7e2f",
+                k2: "7fa7edadd763531e133bf4a1aef51ce3"
+            },
+            "Cine_Familiar": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Cine_Familiar/sa_live_dash/Cine_Familiar.mpd",
+                k1: "721b4557143c8a37ec427423785875e5",
+                k2: "3b76efe869910f4d86012915422a5b89"
+            },
+            "fiiiarrt-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Film_and_Arts/sa_live_dash/Film_and_Arts.mpd",
+                k1: "940d79fb1961288803c64e60da991c5a",
+                k2: "f55e18690327be6db3a1cf24b5be438b"
+            },
+           "gooodee3-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Golden_Plus/sa_live_dash/Golden_Plus.mpd",
+                k1: "2127eb2cb9152cb1a21815cf423b7114",
+                k2: "3a1715592b6916bb3c2e7e477c5441bd"
+            },
+            "gooodee2-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Golden_Edge/sa_live_dash/Golden_Edge.mpd",
+                k1: "db61dc785664ffa25a061f2dcbaa5932",
+                k2: "94f6b0deb7436265c839d6faf0112f21"
+            },
+            "gooodee1-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Golden/sa_live_dash/Golden.mpd",
+                k1: "384a49756e9d5247537404c487edf312",
+                k2: "72e31a1d402eb30584c541736267f478"
+            },
+            "sooncha-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Sony_Channel/sa_live_dash/Sony_Channel.mpd",
+                k1: "a2e6c6842391fd4d9dfe3c047e286eb4",
+                k2: "7d563478e5669d44cec9a6215052fec3"
+            },
+           "soonmoovee-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Sony_Movies/sa_live_dash/Sony_Movies.mpd",
+                k1: "4201cacd22f7a4f3bb6db354c9ac9d75",
+                k2: "f43bbaf105697ac3f8ff4c69ee30967f"
+            },
+            "aaameesee-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/AMC/sa_live_dash/AMC.mpd",
+                k1: "d60a3128c3cbe6c2728ccca61f55a87f",
+                k2: "1cc37b6959b6f9e7f70532604d1e8ed1"
+            },
+          "aaameeseerrr-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Mas_Chic/sa_live_dash/Mas_Chic.mpd",
+                k1: "f4eafc89afd50886c0fc2cc733dc62d8",
+                k2: "dd9be06d69c495b23952652b0f765892"
+            },
+            "aaaeeqiii-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/AXN/sa_live_dash/AXN.mpd",
+                k1: "bac0cdbf2e5a82fb27818e30bc8b75e5",
+                k2: "478bda16b7bbb4d01928270159771bd9"
+            },
+            "coomeeceen-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Comedy_Central/sa_live_dash/Comedy_Central.mpd",
+                k1: "e2ef982ad8e10b04abb16ecfe4deab17",
+                k2: "c9ec0f4087a3cd993de0a0dcb0a8a86b"
+            },
+            "aaainneee-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/AyE/sa_live_dash/AyE.mpd",
+                k1: "0e45fe47af35c23962a3cc0ada9119f0",
+                k2: "84f178941bbcedca8d43926b69cca9b1"
+            },
+            "cieeearge-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Cine_ar/sa_live_dash/Cine_ar.mpd",
+                k1: "ff87d23b45efc58ff6a7ad0f5fdef566",
+                k2: "0e84fa871d67fede2c5385b54b60b5dc"
+            },
+            "uunivee1-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Universal/sa_live_dash/Universal.mpd",
+                k1: "281ed03234dce7e50391f9c4c7c90b48",
+                k2: "148c12b5c4526f3f7ab70f385cb36fac"
+            },
+            "gaaarateev-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/El_Garage/sa_live_dash/El_Garage.mpd",
+                k1: "c44389e1e90fb4d80e0a0d8090f8da1f",
+                k2: "7bdf6460869276e70bd3eae576be2286"
+            },
+            "Canal_12_Misiones": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Canal_12_Misiones/sa_live_dash/Canal_12_Misiones.mpd",
+                k1: "ed6e9faec04aa78f261171d1ace48957",
+                k2: "2995fa69fa1158e82547d5d5a22b4e98"
+            },
+            "24H": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/24H/sa_live_dash/24H.mpd",
+                k1: "91978d09e4feadcdcb15c1d670e149d3",
+                k2: "83f5a6f07b63a02157fffb9fc83e1c68"
+            },
+            "RAI": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/RAI/sa_live_dash/RAI.mpd",
+                k1: "a2e6c6842391fd4d9dfe3c047e286eb4",
+                k2: "7d563478e5669d44cec9a6215052fec3"
+            },
+            "tteehii-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Telehit_Musica/sa_live_dash/Telehit_Musica.mpd",
+                k1: "f8837e4d7fdfaba5940310e719e12b99",
+                k2: "057a34cc85e38471e2a023b78ec79175"
+            },
+            "tteepluu-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Telehit_Plus/sa_live_dash/Telehit_Plus.mpd",
+                k1: "6dcafee5775552f97891dfdada84df85",
+                k2: "089ae50f8036135e7e458292e44676b5"
+            },
+            "caanmuu-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/CM/sa_live_dash/CM.mpd",
+                k1: "1713f5c8e140bc32fab3893341bd6bf6",
+                k2: "85dbe90fab4bca195924b7cb17bfc211"
+            },
+            "Love_Nature": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Love_Nature/sa_live_dash/Love_Nature.mpd",
+                k1: "30c35033226fea72c04b3fbdd3fe67d5",
+                k2: "fbf7d2dffa946cbf38ef329a5f31f795"
+            },
+            "quieermuu-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Quiero_Musica/sa_live_dash/Quiero_Musica.mpd",
+                k1: "8be45f648b2f5a27f6c16a8dce2c92e1",
+                k2: "defd91f23137624fec9fe157d6adc1dd"
+            },
+            "History_Channel": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/History_Channel/sa_live_dash/History_Channel.mpd",
+                k1: "0c14f56c92a97db5abb4b83da823f81f",
+                k2: "143a64606506c57b452bd9c8327bd6ff"
+            },
+            "Discovery_Channel": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Discovery_Channel/sa_live_dash/Discovery_Channel.mpd",
+                k1: "142c0c050c551486e07bc210a1357da6",
+                k2: "0dbbc07185e4650e1a05dbbcb888909f"
+            },
+            "E_Entertainment": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/E_Entertainment/sa_live_dash/E_Entertainment.mpd",
+                k1: "a67b85023aec0c096831b2b0373715fd",
+                k2: "be97d3955e711dfa12237416a1b9ad52"
+            },
+            "Discovery_HyH": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Discovery_HyH/sa_live_dash/Discovery_HyH.mpd",
+                k1: "270233c3621c173ad74f16aa6ba367ac",
+                k2: "b39c8748f7f7530b1591c3a2ee0a3703"
+            },
+            "Telenovelas": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Telenovelas/sa_live_dash/Telenovelas.mpd",
+                k1: "214c0efa71c1ac68be8143b18e4a5a52",
+                k2: "dbd58022cf2f0f6c69e979a54346cc8b"
+            },
+            "PakaPaka": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/PakaPaka/sa_live_dash/PakaPaka.mpd",
+                k1: "0aa7687e39e7e7e2e3d64d87a2fa1920",
+                k2: "523cc84985fadae95289dd88838133c9"
+            },
+            "Disney_Junior": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Disney_Junior/sa_live_dash/Disney_Junior.mpd",
+                k1: "0eabe9f5aee4020c50f52a2bf476ac57",
+                k2: "490fc8a1a900893d20631da45412879d"
+            },
+            "Disney_Channel": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Disney_Channel/sa_live_dash/Disney_Channel.mpd",
+                k1: "629f78368829802ade506b8f03e2d18b",
+                k2: "6824ea53d6fd70d146b9e31a57cf3a20"
+            },
+            "Discovery_Kids": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Discovery_Kids/sa_live_dash/Discovery_Kids.mpd",
+                k1: "1f92dc6055aefecb8a2abdba9ecf65cb",
+                k2: "23a68bb309729298ceb3b5fcd3ff174d"
+            },
+            "Zoo_Moo": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Zoo_Moo/sa_live_dash/Zoo_Moo.mpd",
+                k1: "8fe8869466801cac2f84dcc6c3584d76",
+                k2: "d6c878a3c04face66707d817ec62d628"
+            },
+            "eeeuuchaan-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Eurochannel/sa_live_dash/Eurochannel.mpd",
+                k1: "ee22649f9cf24a09c8e2d7f527b61ab6",
+                k2: "5f4f4cf346468adb895a5b5d5edd9a72"
+            },
+            "stuuni-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Studio_Universal/sa_live_dash/Studio_Universal.mpd",
+                k1: "68987b791521decfbe5dd633a3c15dc5",
+                k2: "cff99d15661b3e8393d9ac9dd9a89869"
+            },
+            "usssneeewo-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/USA_Network/sa_live_dash/USA_Network.mpd",
+                k1: "072f31c5b5238da0d3b54b2a79e7a7d9",
+                k2: "984532822dc6ff3be1ffc56b0686d290"
+            },
+            "ssstaacha-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Star_Channel/sa_live_dash/Star_Channel.mpd",
+                k1: "ba8e3594a2280a1f0b749d66dccfab99",
+                k2: "efa66c01f0e96775398994f1754be46b"
+            },
+            "eeefequii-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/FX/sa_live_dash/FX.mpd",
+                k1: "b060d6864d9b870b3a5f43c10370977c",
+                k2: "7a9104e80a2bd14429ad4c877a9926b5"
+            },
+            "cieeecan-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/Cinecanal/sa_live_dash/Cinecanal.mpd",
+                k1: "ed9cb36b2c7ab639bb5b8627b2e980e8",
+                k2: "a0d844faf1c31330165393e43e0d3bd8"
+            },
+            "teeeteepel-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/TNT/sa_live_dash/TNT.mpd",
+                k1: "9d9e8eb8d97c4ff0dbfb02c3c417ae48",
+                k2: "a426cb9e3ff4cac8b2e153ef54e69072"
+            },
+            "depooteearge-giaaa": {
+                url: "https://"+mt_gigared+".gigared.com.ar/live/eds/DeporTV/sa_live_dash/DeporTV.mpd",
+                k1: "5f8bcea8ec9fdd5e6927e46ce856824b",
+                k2: "3cf09d0c9ebeab2edfe600887e61b368"
+            },
+        
         };
 
-var id = getParameterByName('id');
-var config = ConfiguracionCanales[id];
+        var id = getParameterByName('id');
+        var config = ConfiguracionCanales[id];
 
-if (config) {
-    var sources = [];
+        if (config) {
+            var sources = [];
 
-    if (config.url.includes('.m3u8')) {
-        sources.push({
-            file: config.url
-        });
+            if (config.url.includes('.m3u8')) {
+                sources.push({
+                    file: config.url
+                });
+            }
+
+            if (config.url.includes('.mpd') && config.k1 && config.k2) {
+                sources.push({
+                    file: config.url,
+                    drm: { "clearkey": { "keyId": config.k1, "key": config.k2 } }
+                });
+            }
+
+            // JWWWWWW
+            jwplayer("player").setup({
+                playlist: [{
+                    title : "REPRODUCTOR",
+                    description: "EN VIVO",
+                    sources: sources
+                }],
+           autostart: false,
+           width: "100%", 
+           height: "100%", 
+           mute: "false",
+	       stretching: "exactfit",
+           volume:100, 
+           aspectratio: "16:9",
+           preload: "auto",
+           displaytitle: true,
+           liveSyncDuration: 3, 
+    dash: {
+      bufferLength: 0,     
+      maxBufferLength: 0   
     }
-    
-    if (config.url.includes('.mpd') && config.k1 && config.k2) {
-        sources.push({
-            file: config.url,
-            drm: {"clearkey": {"keyId": config.k1, "key": config.k2}}
-        });
-    }
-
- //JWWWWWW
-    jwplayer("player").setup({
-        playlist: [{
-           title : "REPRODUCTOR",
-description: "EN VIVO",
-            sources: sources
-        }],
-        autostart: false,
-        width: "100%", 
-        height: "100%", 
-         mute: "false",
-	     stretching: "exactfit",
-        volume:100,
-        aspectratio: "16:9",
-       skin: {
-     name: "white",
-       active: "white",
-       inactive: "white",
-       background: "#00051F"
-    }
-       }
-       );
-
-            var lang = 0; // Por defecto en español
-            jwplayer().on('play', function (e) {
-                jwplayer().setCurrentAudioTrack(lang);
-            });
-        }
-
-</script>
+  });
+		jwplayer("player").on("play", function(e){jwplayer("player").setCurrentAudioTrack(1)});
+  }
+    </script>
 </body>
 </html>
