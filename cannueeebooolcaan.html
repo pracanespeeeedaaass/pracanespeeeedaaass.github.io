@@ -1,10 +1,42 @@
 <!DOCTYPE html>
- <html lang="es">
+<html lang="es">
 <style type="text/css">
+:root {
+  --dark-color: #001202;
+  --mid-dark: #051F20;
+  --light-color: #051F20;
+  --mid-light: #051F20;
+  --shadow: #051F20;
+  --linear-rainbow: linear-gradient(
+    to right,
+    #163832,
+    #163832,
+    #163832,
+    #163832,
+    #163832
+  );
+  --circle-rainbow: radial-gradient(
+    circle at left top,
+    #051F20,
+    #051F20,
+   #051F20,
+    #051F20,
+   #051F20
+  );
+  --noise-texture: url(https://i.imgur.com/i0T9edr.png);
+  --gif-texture: url();
+  --mulish: "Mulish", sans-serif;
+  --playfair: "Playfair Display", serif;
+  --dm: "DM Serif Display", serif;
+  --main-transition: all 0.2s ease-in-out;
+}
 body {
+
+  background-color: #01261F	;
+  background-image: var(--noise-texture);
+  background-blend-mode: overlay;
    margin: 0;
    padding: 0;
-   background-color:#05081c;
 }
 
 @keyframes scaling {
@@ -318,13 +350,9 @@ body {
     color: white !important;
 }
 </style>
-<head>
+<meta charset="UTF-8">	
 <script src="//ssl.p.jwpcdn.com/player/v/8.26.5/jwplayer.js"></script>
-    <script>jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script>
-
-
-</head>
-
+<script>jwplayer.key="/hw9bnYgXuFWXXH1X/Aem7Bpeyb9DJOyY/V8EUpGqww0gLLZ";</script>
 <body>
     <div id="player" class="ViostreamIframe"></div>
     <script>
@@ -660,31 +688,113 @@ body {
             //     });
             // }
 
-            //JWWWWWW
-            jwplayer("player").setup({
-                playlist: [{
-                    title: "REPRODUCTOR",
-                    description: "EN VIVO",
-                    sources: sources
-                }],
-                autostart: false,
-                mute: false,
-		        volume:100,
-                width: "100%",
-                height: "100%",
-         stretching: "exactfit",
-       aspectratio: "16:9",
+ //JWWWWWW
+    jwplayer("player").setup({
+        playlist: [{
+           title : "REPRODUCTOR",
+description: "EN VIVO",
+            sources: sources
+        }],
+        autostart: false,
+      
+        width: "100%", 
+        height: "100%", 
+         volume:100,
+         mute: "false",
+	     stretching: "exactfit",
+        aspectratio: "16:9",
+      liveSyncDuration: 3,
        skin: {
        name: "white",
        active: "white",
        inactive: "white",
-       background: "#000"
-    }
-       }
-       );
+       background: "#01261F"
+    },
        
-		jwplayer("player").on("play", function(e){jwplayer("player").setCurrentAudioTrack(1)});
+       live: {
+      dvrSeekLimit: 3600,
+      edgeMargin: 5
+    },
+
+    displaytitle: true,
+    displaydescription: false
+  });
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isSmartTV = /SmartTV|Tizen|Web0S|SmartHub|Chromecast/i.test(navigator.userAgent);
+  
+  var lang = 1; // Por defecto en español
+            jwplayer().on('play', function (e) {
+                jwplayer().setCurrentAudioTrack(lang);
+            });
+
+  // Audio Boost
+  if (!isSmartTV) {
+    player.on("play", function () {
+      const video = document.querySelector("#player video");
+      if (video && !video.audioBoostApplied) {
+        try {
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const source = audioCtx.createMediaElementSource(video);
+          const gain = audioCtx.createGain();
+          gain.gain.value = 2;
+          source.connect(gain);
+          gain.connect(audioCtx.destination);
+          video.muted = false;
+          video.volume = 1.0;
+          video.audioBoostApplied = true;
+        } catch(e) { console.warn("Audio boost no disponible:", e); }
+      }
+    });
   }
-    </script>
+
+  // SmartTV fallback
+  if (isSmartTV) {
+    player.on("ready", function () {
+      const video = document.querySelector("#player video");
+      if (video) { video.muted = false; try { video.volume = 1.0; } catch(e){} }
+    });
+  }
+
+  // Auto selección de audio
+
+
+  // ROTACIÓN AUTOMÁTICA
+  player.on("fullscreen", function(e) {
+    const contenedor = document.getElementById("player");
+
+    if (!isIOS && screen.orientation) {
+      if (e.fullscreen) {
+        const tryLock = async () => {
+          try { await screen.orientation.lock("landscape"); }
+          catch(err) { setTimeout(tryLock, 200); }
+        };
+        tryLock();
+      } else {
+        try { screen.orientation.unlock(); } catch(err) {}
+      }
+    }
+
+    if (isIOS) {
+      if (e.fullscreen) contenedor.classList.add("ios-landscape");
+      else contenedor.classList.remove("ios-landscape");
+    }
+  });
+
+  // Baja de calidad si hay buffering
+  player.on("buffer", function() {
+    try { player.setCurrentQuality(0); } catch(e){}
+  });
+
+  // Log DVR
+  player.on("ready", () => {
+    const latency = player.getLiveLatency?.();
+    console.log("Latencia / DVR:", latency, "segundos");
+  });
+}
+
+window.onload = iniciarReproductor;
+      
+</script>
 </body>
 </html>
