@@ -355,7 +355,7 @@ body {
             return decodeURIComponent(results[2].replace(/\+/g, " "));
          }
 
-      let mt = "smt-usr-edge02.sensa.com.ar";
+      let mt = "lilac01.pontiscloud.com";
         //let mt = "csc-axs-edge02.sensa.com.ar";
         var ConfiguracionCanales = {
 
@@ -1104,17 +1104,95 @@ body {
                 height: "100%",
          stretching: "exactfit",
        aspectratio: "16:9",
-       skin: {
-       name: "white",
-       active: "white",
-       inactive: "white",
-       background: "#00051F"
-    }
-       }
-       );
-       
-		jwplayer("player").on("play", function(e){jwplayer("player").setCurrentAudioTrack(1)});
+              preload: "auto",
+
+    // DVR habilitado explícitamente
+    live: {
+      dvrSeekLimit: 3600,   // hasta 1 hora de retroceso
+      edgeMargin: 5
+    },
+
+    dash: {
+      bufferLength: 1,
+      maxBufferLength: 1
+    },
+
+    displaytitle: true,
+    displaydescription: true
+  });
+  var lang = 1; // Por defecto en español
+                    jwplayer().on('play', function (e) {
+                        jwplayer().setCurrentAudioTrack(lang);
+                    });
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isSmartTV = /SmartTV|Tizen|Web0S|SmartHub|Chromecast/i.test(navigator.userAgent);
+
+  // --- Audio boost
+  if (!isSmartTV) {
+    player.on("play", function () {
+      const video = document.querySelector("#player video");
+      if (video && !video.audioBoostApplied) {
+        try {
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const source = audioCtx.createMediaElementSource(video);
+          const gain = audioCtx.createGain();
+          gain.gain.value = 2;
+          source.connect(gain);
+          gain.connect(audioCtx.destination);
+          video.muted = false;
+          video.volume = 1.0;
+          video.audioBoostApplied = true;
+        } catch(e) { console.warn("Audio boost no disponible:", e); }
+      }
+    });
   }
-    </script>
+
+  // SmartTV fallback
+  if (isSmartTV) {
+    player.on("ready", function () {
+      const video = document.querySelector("#player video");
+      if (video) { video.muted = false; try { video.volume = 1.0; } catch(e){} }
+    });
+  }
+
+
+  // --- ROTACIÓN AUTOMÁTICA AL FULLSCREEN
+  player.on("fullscreen", function(e) {
+    const contenedor = document.getElementById("player");
+
+    if (!isIOS && screen.orientation) {
+      if (e.fullscreen) {
+        const tryLock = async () => {
+          try { await screen.orientation.lock("landscape"); }
+          catch(err) { setTimeout(tryLock, 200); }
+        };
+        tryLock();
+      } else {
+        try { screen.orientation.unlock(); } catch(err) {}
+      }
+    }
+
+    if (isIOS) {
+      if (e.fullscreen) contenedor.classList.add("ios-landscape");
+      else contenedor.classList.remove("ios-landscape");
+    }
+  });
+
+  // --- Baja de calidad si hay buffering
+  player.on("buffer", function() {
+    try { player.setCurrentQuality(0); } catch(e){}
+  });
+
+  // --- Log de DVR
+  player.on("ready", () => {
+    const latency = player.getLiveLatency?.();
+    console.log("Latencia / DVR:", latency, "segundos");
+  });
+}
+
+window.onload = iniciarReproductor;
+</script>
+
 </body>
 </html>
+   
