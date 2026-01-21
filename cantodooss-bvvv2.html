@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/shaka-player@4.15.3/dist/shaka-player.compiled.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/shaka-player@4.15.3/dist/controls.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.12.6/controls.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.12.6/shaka-player.ui.min.js"></script>
+  
+  <script src="
+https://cdn.jsdelivr.net/npm/shaka-player-hv@0.0.7/dist/shaka-player.compiled.debug.min.js
+"></script>
+  
+    <style>
+        body {
+            margin: 0;
+            background-color: #05081c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrollbars */
+        }
+ 
+        .shaka-video-container {
+            position: relative; /* Fill the entire screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+ 
+        video {
+            width: 100%;
+            height: 100%; /* Fullscreen video */
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+      
+    </style>
+</head>
+<body>
+ 
+    <div data-shaka-player-container="" class="shaka-video-container" shaka-controls="true">
+        <video autoplay="false" preload='none' data-shaka-player="" id="video" class="shaka-video"></video>
+    </div>
+ 
+    <script>
+        const videoConfigs = {
+           "espee1-bv": {
+                url: "https://bvclive1.boldmss.com/ESPN/ESPN_BVC.isml/ESPN.mpd",
+                k1: "31bd1c2d7ec744919f9438b166f575d3",
+                k2: "08a8df7583e02f9eba7b0cf77207340b"
+            },
+           "espee2-bv": {
+                url: "https://bvclive1.boldmss.com/ESPN_2/ESPN_2_BVC.isml/ESPN_2.mpd",
+                k1: "de55d232455b445aaddb4ef73d82145f",
+                k2: "e570e15beb1a447a5e3f91fedfd01c73"
+            },
+          "espee3-bv": {
+                url: "https://bvclive1.boldmss.com/ESPN_3/ESPN_3_BVC.isml/ESPN_3.mpd",
+                k1: "c3646c79dcff4a0e93c519541bac9830",
+                k2: "0fdbf788cb1a393a5f1f3bc43254eae9"
+            },
+          "foo1-bv": {
+                url: "https://bvclive1.boldmss.com/FOX_SPORTS/FOX_SPORTS_BVC.isml/FOX_SPORTS.mpd",
+                k1: "a5f7d1ed0c244ecfb2d7d85a1d78c7c8",
+                k2: "1ab45030c16086ccd5e942c478836926"
+            },
+          "foo2-bv": {
+                url: "https://bvclive1.boldmss.com/FOX_SPORTS_2/FOX_SPORTS_2_BVC.isml/FOX_SPORTS_2.mpd",
+                k1: "6ae10ae5ce614113bab224f38f24e81f",
+                k2: "0ac6ad6ca5dd20f204e79f7fc6d744c3"
+            },
+          "foo3-bv": {
+                url: "https://bvclive1.boldmss.com/FOX_SPORTS_3/FOX_SPORTS_3_BVC.isml/FOX_SPORTS_3.mpd",
+                k1: "690723060cb04c34932a5a3d8ef23d86",
+                k2: "745b11ae7e764ad46b058548e4dfe234"
+            },
+          "teeeinnsee1-bv": {
+                url: "https://bvclive1.boldmss.com/TYC_SPORTS/TYC_SPORTS_BVC.isml/TYC_SPORTS.mpd",
+                k1: "590d41f273cd4a2a87634e2248570974",
+                k2: "071b942bfdb44a396f40d7a6ab9c6b75"
+            },
+           "teeeinnsee2-bv": {
+                url: "https://bvclive1.boldmss.com/TYC_SPORTS_2/TYC_SPORTS_2_BVC.isml/TYC_SPORTS_2.mpd",
+                k1: "090604e982684762a8f8bf752c110b61",
+                k2: "bd39fbeeb70aae5322fc163831cc2f8a"
+            },
+           "gaaraateearge-bv": {
+                url: "https://bvclive1.boldmss.com/EL_GARAGE/EL_GARAGE_BVC.isml/EL_GARAGE.mpd",
+                k1: "edad37f156dd4c1a8fe93a1442eba870",
+                k2: "0d8bbc1bfddeb5a60bdd2f89def518ad"
+            },
+           "aameeeespooarge-bv": {
+                url: "https://bvclive1.boldmss.com/AMERICA_SPORTS/AMERICA_SPORTS_BVC.isml/AMERICA_SPORTS.mpd",
+                k1: "c88a6496dbb44f7ea1a125d60fda9640",
+                k2: "03f8047de759deb035dc3875b280bbb6"
+            },
+          "deeepoargee-bv": {
+                url: "https://bvclive1.boldmss.com/DEPORTV/DEPORTV_BVC.isml/DEPORTV.mpd",
+                k1: "71caa2583d2e40c7ac58ea4ce753c920",
+                k2: "a4ece08fcdcbc107fed35a56052c6b03"
+            },
+            "dissscotuu-bv": {
+                url: "https://bvclive1.boldmss.com/DISCOVERY_TURBO/DISCOVERY_TURBO_BVC.isml/DISCOVERY_TURBO.mpd",
+                k1: "2e77e804c5024a90a7ae7198b1767ef9",
+                k2:"176259f80447b54da8864df799fef561"
+            },
+            
+        }
+ 
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+
+/**
+ * Stops and destroys
+ */
+function stopVideo() {
+  if(videoPlayer !== null) {
+    video.play();
+    video.style.display = "none";
+    video.currentTime = 0;
+    window.video = null;
+    player.unload();
+    player.destroy();
+    videoPlayer = null;
+    root.style.display = "block";
+
+  }
+}
+        async function init() {
+            const video = document.getElementById('video');
+            const ui = video['ui'];
+            const controls = ui.getControls();
+            const player = controls.getPlayer();
+            const id = getQueryParameter('id');
+            const config = videoConfigs[id];
+          
+          
+ 
+            if (!config) {
+                console.error('No valid configuration found for the provided id.');
+                return;
+            }
+ 
+            const playerConfig = {
+              addSeekBar: false,
+      addBigPlayButton: true,
+                seekBarColors: {
+        base: "rgba(255, 255, 255, 0.3)",
+        buffered: "rgba(255, 255, 255, 0.54)",
+        played: "rgb(255, 255, 255)",
+        },
+                controlPanelElements: [
+        'play_pause',
+        'time_and_duration',
+        'spacer',
+        'mute',
+        'volume',
+             'quality',              
+                  
+        'fullscreen',
+        
+      ],
+ 
+      statisticsList: [
+        'width',
+        'height',
+        'corruptedFrames',
+        'decodedFrames',
+        'droppedFrames',
+        'drmTimeSeconds',
+        'licenseTime',
+        'liveLatency',
+        'loadLatency',
+        'bufferingTime',
+        'manifestTimeSeconds',
+        'estimatedBandwidth',
+        'streamBandwidth',
+        'maxSegmentDuration',
+        'pauseTime',
+        'playTime',
+        'completionPercent',
+      ],
+      contextMenuElements: [
+        'loop',
+        'picture_in_picture',
+        'statistics',
+      ],
+              
+              
+              
+              
+                playbackRates: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
+            };
+          config['castReceiverAppId'] = '7B25EC44';
+
+            ui.configure(playerConfig);
+ 
+     
+            player.configure({
+               
+              
+              textDisplayer: {
+      fontScaleFactor: 1.5,
+   },
+                drm: {
+                    clearKeys: {
+                        [config.k1]: config.k2
+                    }
+                }
+            });
+ 
+            window.player = player;
+            window.ui = ui;
+ 
+            player.addEventListener('error', onPlayerErrorEvent);
+            controls.addEventListener('error', onUIErrorEvent);
+ 
+            try {
+                await player.load(config.url);
+                console.log('The video has now been loaded!');
+            } catch (error) {
+                onPlayerError(error);
+            }
+        }
+ 
+        function onPlayerErrorEvent(errorEvent) {
+            onPlayerError(errorEvent.detail);
+        }
+ 
+        function onPlayerError(error) {
+            console.error('Error code', error.code, 'object', error);
+        }
+ 
+        function onUIErrorEvent(errorEvent) {
+            onPlayerError(errorEvent.detail);
+        }
+ 
+        function initFailed(errorEvent) {
+            console.error('Unable to load the UI library!');
+        }
+ 
+        document.addEventListener('shaka-ui-loaded', init);
+        document.addEventListener('shaka-ui-load-failed', initFailed);
+    </script>
+ 
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
