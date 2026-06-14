@@ -16,7 +16,7 @@
     <script>
         // --- 1. REGISTRO DEL SERVICE WORKER (EL PROXY) ---
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
+            navigator.serviceWorker.register('/sw.js')
                 .then(() => console.log('Proxy SW registrado correctamente'))
                 .catch(err => console.error('Error en SW:', err));
         }
