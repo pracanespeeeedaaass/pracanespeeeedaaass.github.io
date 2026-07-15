@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <style>
+        .jw-settings-menu {
+    border-radius: 6px;
+}
+
+.jw-sharing-link:active,
+.jw-sharing-copy:active.jw-sharing-link:hover,
+.jw-button-color.jw-toggle.jw-off:active:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:focus:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:hover:not(.jw-icon-cast),
+.jw-button-color.jw-toggle:not(.jw-icon-cast),
+.jw-button-color:active:not(.jw-icon-cast),
+.jw-button-color:focus:not(.jw-icon-cast),
+.jw-button-color:hover:not(.jw-icon-cast),
+.jw-button-color[aria-expanded=true]:not(.jw-icon-cast),
+.jw-settings-content-item.jw-settings-item-active,
+.jw-settings-menu .jw-icon.jw-button-color[aria-checked="true"] .jw-svg-icon {
+    fill: #FFFFFF !important;
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+}
+
+
+
+.jw-svg-icon-play path {
+    display: none;
+}
+
+.jw-svg-icon-play {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%231f80e0' fill-rule='evenodd' d='M6.313 22.05c-1.22.722-2.75-.148-2.811-1.586-.238-5.65-.21-11.216.02-16.928.057-1.408 1.53-2.282 2.751-1.62 5.481 2.97 10.822 6.162 13.825 7.992 1.174.715 1.223 2.426.091 3.21-2.89 2.002-8.095 5.507-13.876 8.932z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-display:hover .jw-svg-icon-play,
+.jw-icon-playback:hover .jw-svg-icon-play {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%231f80e0' fill-rule='evenodd' d='M6.313 22.05c-1.22.722-2.75-.148-2.811-1.586-.238-5.65-.21-11.216.02-16.928.057-1.408 1.53-2.282 2.751-1.62 5.481 2.97 10.822 6.162 13.825 7.992 1.174.715 1.223 2.426.091 3.21-2.89 2.002-8.095 5.507-13.876 8.932z'/%3E%3C/svg%3E%0A");
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   background-color:#05081c
+}
+
+@keyframes scaling {
+    from {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+}
+
+@-webkit-keyframes scaling {
+    from {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+}
+
+.jw-svg-icon-cc-off path,
+.jw-svg-icon-cc-on path {
+    display: none;
+}
+
+.jw-svg-icon-cc-off,
+.jw-svg-icon-cc-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%23FFFFFF' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-cc:hover .jw-svg-icon-cc-off,
+.jw-icon-cc:hover .jw-svg-icon-cc-on,
+.jw-settings-captions:hover .jw-svg-icon-cc-off,
+.jw-settings-captions:hover .jw-svg-icon-cc-on,
+.jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-off,
+.jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%23FFFFFF' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-pause path {
+    display: none;
+}
+
+.jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%23FFFFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-display:hover .jw-svg-icon-pause,
+.jw-icon-playback:hover .jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%23FFFFFF' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-volume-100 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-high'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M13.7437869,16.3889482 L12.3295734,14.9747347 C13.9546583,13.3496497 13.9546583,10.7148664 12.3295734,9.08978146 L13.7437869,7.6755679 C16.1499205,10.0817014 16.1499205,13.9828147 13.7437869,16.3889482 Z M16.2137399,18.2137399 L14.7995264,16.7995264 C17.4324159,14.1666368 17.4324159,9.89787935 14.7995264,7.26498977 L16.2137399,5.8507762 C19.6276781,9.26471437 19.6276781,14.7998018 16.2137399,18.2137399 Z M18.6836929,20.0385316 L17.2694793,18.6243181 C20.9101736,14.9836239 20.9101736,9.08089228 17.2694793,5.44019807 L18.6836929,4.02598451 C23.1054357,8.4477273 23.1054357,15.6167888 18.6836929,20.0385316 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-high'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M13.7437869,16.3889482 L12.3295734,14.9747347 C13.9546583,13.3496497 13.9546583,10.7148664 12.3295734,9.08978146 L13.7437869,7.6755679 C16.1499205,10.0817014 16.1499205,13.9828147 13.7437869,16.3889482 Z M16.2137399,18.2137399 L14.7995264,16.7995264 C17.4324159,14.1666368 17.4324159,9.89787935 14.7995264,7.26498977 L16.2137399,5.8507762 C19.6276781,9.26471437 19.6276781,14.7998018 16.2137399,18.2137399 Z M18.6836929,20.0385316 L17.2694793,18.6243181 C20.9101736,14.9836239 20.9101736,9.08089228 17.2694793,5.44019807 L18.6836929,4.02598451 C23.1054357,8.4477273 23.1054357,15.6167888 18.6836929,20.0385316 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-volume-50 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-50 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-medium'%3E%3Cpath fill='%23FFFFFF' d='M11,7.82842712 L8.82842712,10 L6,10 L6,14 L8.82842712,14 L11,16.1715729 L11,7.82842712 Z M13,21 L8,16 L4,16 L4,8 L8,8 L13,3 L13,21 Z M15.7437869,16.3889482 L14.3295734,14.9747347 C15.9546583,13.3496497 15.9546583,10.7148664 14.3295734,9.08978146 L15.7437869,7.6755679 C18.1499205,10.0817014 18.1499205,13.9828147 15.7437869,16.3889482 Z M18.2137399,18.2137399 L16.7995264,16.7995264 C19.4324159,14.1666368 19.4324159,9.89787935 16.7995264,7.26498977 L18.2137399,5.8507762 C21.6276781,9.26471437 21.6276781,14.7998018 18.2137399,18.2137399 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-50 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-medium'%3E%3Cpath fill='%23FFFFFF' d='M11,7.82842712 L8.82842712,10 L6,10 L6,14 L8.82842712,14 L11,16.1715729 L11,7.82842712 Z M13,21 L8,16 L4,16 L4,8 L8,8 L13,3 L13,21 Z M15.7437869,16.3889482 L14.3295734,14.9747347 C15.9546583,13.3496497 15.9546583,10.7148664 14.3295734,9.08978146 L15.7437869,7.6755679 C18.1499205,10.0817014 18.1499205,13.9828147 15.7437869,16.3889482 Z M18.2137399,18.2137399 L16.7995264,16.7995264 C19.4324159,14.1666368 19.4324159,9.89787935 16.7995264,7.26498977 L18.2137399,5.8507762 C21.6276781,9.26471437 21.6276781,14.7998018 18.2137399,18.2137399 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-volume-0 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-0 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-off'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M17,10.5857864 L20.2928932,7.29289322 L21.7071068,8.70710678 L18.4142136,12 L21.7071068,15.2928932 L20.2928932,16.7071068 L17,13.4142136 L13.7071068,16.7071068 L12.2928932,15.2928932 L15.5857864,12 L12.2928932,8.70710678 L13.7071068,7.29289322 L17,10.5857864 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-0 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='volume-off'%3E%3Cpath fill='%23FFFFFF' d='M9,7.82842712 L6.82842712,10 L4,10 L4,14 L6.82842712,14 L9,16.1715729 L9,7.82842712 Z M11,21 L6,16 L2,16 L2,8 L6,8 L11,3 L11,21 Z M17,10.5857864 L20.2928932,7.29289322 L21.7071068,8.70710678 L18.4142136,12 L21.7071068,15.2928932 L20.2928932,16.7071068 L17,13.4142136 L13.7071068,16.7071068 L12.2928932,15.2928932 L15.5857864,12 L12.2928932,8.70710678 L13.7071068,7.29289322 L17,10.5857864 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-fullscreen-on path {
+    display: none;
+}
+
+.jw-svg-icon-fullscreen-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%23FFFFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%23FFFFFF' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-fullscreen-off path {
+    display: none;
+}
+
+.jw-svg-icon-fullscreen-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%23FFFFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%23FFFFFF' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-state-idle .jw-display-controls .jw-display-icon-container {
+  
+    animation-name: scaling;
+    -webkit-animation-name: scaling;
+    animation-duration: 0.6s;
+    -webkit-animation-duration: 0.6s;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+
+}
+
+.jw-progress {
+    background-color: #56ff00 !important;
+}
+.jw-text-live::before {
+    background-color: red !important;
+    }
+.jw-reset-text{
+    color: white !important;
+}
+    #player {
+      margin: auto;
+      background-color: #05081c;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .jwplayer {
+      color: #fff !important;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .jw-controlbar {
+      background-color: #05081c !important;
+      border-top: 1px solid #333;
+    }
+
+    .jw-controlbar .jw-button-container {
+      position: absolute !important;
+      top: -46px;
+      left: 0;
+      right: 0;
+      height: 46px;
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 31, 32),
+        rgba(0,0,0,0.35)
+      );
+      border-bottom: 1px solid #333;
+      padding: 4px 8px;
+      z-index: 10;
+    }
+
+    .jwplayer video {
+      margin-top: 46px;
+    }
+
+    .jw-button-color {
+      color: #ccc !important;
+    }
+
+    .jw-button-color:hover {
+      color: #FFFFFF !important;
+    }
+
+    .jw-icon {
+      filter: brightness(1.4);
+    }
+
+    .jw-time {
+      color: #eee !important;
+      font-size: 12px;
+    }
+
+    .jw-text-track-display {
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size:16px;
+      font-family:'Segoe UI',sans-serif;
+    }
+
+    .jw-title {
+      color: #ddd !important;
+    }
+
+    .jw-display-icon-container {
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .ios-landscape {
+      transform: rotate(90deg);
+      transform-origin: center center;
+      width: 100vh !important;
+      height: 100vw !important;
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      background: #000;
+      z-index: 9999;
+    }
+  </style>
+
+    <!-- JW Player -->
+    <script src="//ssl.p.jwpcdn.com/player/v/8.26.0/jwplayer.js"></script>
+    <script>jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script>
+</head>
+
+<body>
+    <div id="player" allow="fullscreen; screen-orientation-lock"></div>
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var ConfiguracionCanales = {
+            "telefe": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(telefe_arg)/variant.mpd",
+                k1: "675cb5adcd788bdee4af50518b041626",
+                k2: "b28bf4d4eec81cb96e6ca9a0c022dcd5"
+            },
+            "tvpublica-arg": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(tvpublica_arg)/variant.mpd",
+                k1: "0259a1760a8b123dedc1b9f008463e61",
+                k2: "86c61c4dd0abd13f5c115cbf2176673e"
+            },
+          "tntspoarg": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(tntsports_arg)/variant.mpd",
+                k1: "f7d41f94c41a5943cd836a52a59b7ebc",
+                k2: "de0cb81e4146240f61281db5bf0d0ade"
+            },
+          "espeprearg": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(espnpr_arg)/variant.mpd",
+                k1: "c29b4e05389dc0493aa29d0debbe5a76",
+                k2: "bbccac68c01477eed726fb1c11d54560"
+            },
+           "cinecanal": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(cinecanal_arg)/variant.mpd",
+                k1: "be58a09e881df744508b1ff0b10f9624",
+                k2: "02a94b3bbd46a5381fe4a63d2b848491"
+            },
+            "cinemax": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(cinemax_arg)/variant.mpd",
+                k1: "2266e5d05d1e502c1eb9b3b225043574",
+                k2: "61457529fd1f1dbf3a63718f229d6006"
+            },
+            "space": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(space_arg)/variant.mpd",
+                k1: "6bdabeb47bae9cc2eb5d4c964b5681b1",
+                k2: "c0b2699f9904562b2ae88ba849cafb34"
+            },
+            "start_channel": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(starchannel_arg)/variant.mpd",
+                k1: "ad4a7a7f3840844fa7188581387bb22a",
+                k2: "a4a387411c220b879db932bb95f7e1ac"
+            },
+            "tnt": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(tnt_arg)/variant.mpd",
+                k1: "d20d587dfb19ca3e1cccfabb52c03086",
+                k2: "0634a6083a88ea08eea626d773d72956"
+            },
+            "tntseries": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(tntseries_arg)/variant.mpd",
+                k1: "aed3f75ea54eb09d19666c2cf8a0f92f",
+                k2: "7dcb7673430b36adaaab673ed10e09dc"
+            },
+            "tntnovelashd": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(tntnovelas_arg)/variant.mpd",
+                k1: "142526907f770ad0536021a1215fc4b1",
+                k2: "28a8d798d3e9b5e39732e50cd730f38d"
+            },
+            "amc": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(amc_arg)/variant.mpd",
+                k1: "66dd5969eb399a76692be23d7d2f12da",
+                k2: "4ea973d4c989d268e2c24dd1d2a9f9dd"
+            },
+           "amc-ser": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(amcseries_arg)/variant.mpd",
+                k1: "bcb549098df7d195d922f0554474c060",
+                k2: "9cff4b5cf59478a6bb8060c1b7fcc9b7"
+            },
+            "axnhd": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(axn_arg)/variant.mpd",
+                k1: "7ebf85f5ea4386ff87d0f439b122d224",
+                k2: "767d707dbee407b7cd260198505c016d"
+            },
+            "aehd": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(ae_arg)/variant.mpd",
+                k1: "6d763a93d9db04895bbdc59750ff6801",
+                k2: "a8b918b7bfe3d184b0650fe723434059"
+            },
+          "lifetime": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(lifetime_arg)/variant.mpd",
+                k1: "0dbf9aed897fe5d8796b455ae68694ac",
+                k2: "7b8c4bd6fd82d8773d9490276783f51b"
+            },
+           "comeedycen": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(comedycentral)/variant.mpd",
+                k1: "ee3ad5fb53e7b4f65d732ce7f03d53a4",
+                k2: "e4a1ef4d19cbac85da7f6a29da2c5135"
+            },
+            "tycsports": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(tycsports_arg)/variant.mpd",
+                k1: "197ca823ac5f4e48573f9f87113c7d7a",
+                k2: "c30eefbf2e79a97b0340e0877f4cdbf5"
+            },
+            "discoveryworld": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(discoveryworld)/variant.mpd",
+                k1: "741059a27c32fa19c425e427b5e47850",
+                k2: "bb76a0393556deba90fa068bc7e1feec"
+            },
+            "discoverytheater": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(discoverytheater)/variant.mpd",
+                k1: "9bcc29a1959da552b2c4fa6c458d16b6",
+                k2: "5ffc4bd5b909d996a0a699a51010bc15"
+            },
+            "national_geographic": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(national_geographic)/variant.mpd",
+                k1: "14747c7e082ba58e7391e3712578ee0a",
+                k2: "4bcbff3d553e8a8b755a19bb4e93208a"
+            },
+            "history2hd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(history2hd)/manifest.mpd",
+                k1: "35ac7c20bf38822bd1c9fb001c07ed23",
+                k2: "10d14cdc8a18dfbc131bfbd123fde210"
+            },
+            "film_and_arts": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(filmandarts_arg)/variant.mpd",
+                k1: "c81c90fd06bfcf146cd6b17159d5e3fd",
+                k2: "c050a19095c09a4830ae8b185844d200"
+            },
+            "foxsportsprhd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(foxsportsprhd)/variant.mpd",
+                k1: "6f550e21bc1518f6a9e63a3fab3edc7a",
+                k2: "821bbb8c41da972ab4e753e5029ffbdc"
+            },
+            "tvcdeportes": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(tvcdeportes)/variant.mpd",
+                k1: "ffdd8c79a09c11c5d42bc4f2d85bded7",
+                k2: "72adc5405cee0fc1288bc75b8ef11759"
+            },
+            "foxsportshd": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(foxsports_arg)/variant.mpd",
+                k1: "ce5f0570b7f89e2efe19c7bf3c77dae7",
+                k2: "d17fdbc7f72e68adf298b71d935864ba"
+            },
+            "foxsports2hd": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(foxsports2_arg)/variant.mpd",
+                k1: "922eaebf57397ebf2656cbf71ae4775f",
+                k2: "3014cf17de69d8f916a83cbf6b4aec94"
+            },
+            "foxsports3hd": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(foxsports3_arg)/variant.mpd",
+                k1: "ee0ff8714c8f96a448eae5c9b796c889",
+                k2: "d7c1e6b0d11ba5051096bb34779c6efb"
+            },
+            "espn": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(espn_arg)/variant.mpd",
+                k1: "8113ca483fed6872a8db8c1e32b48cb2",
+                k2: "895fe3b51a531a69afcef8eb1417aed5"
+            },
+            "espn_2": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(espn2_arg)/variant.mpd",
+                k1: "fd71a595f5b61225be82193536bd891b",
+                k2: "279d9fb593bf5b8a4b4350171f6139fa"
+            },
+            "espn_3": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(espn3_arg)/variant.mpd",
+                k1: "56cffe75198fa81600c625883f10ede1",
+                k2: "87e203fb99dded387fd481126e7c5178"
+            },
+            "espn_4": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(espn4_arg)/variant.mpd",
+                k1: "50d56945c41f3c8fc0154c414aa2f842",
+                k2: "572883af19d1589aec3d40af47dfd179"
+            },
+           "dspo_1": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(dsports_arg)/variant.mpd",
+                k1: "a5e4bb046f274791c52cd4b73956b82e",
+                k2: "ae51f5539228fcdf04fa13f4bdd8b7b3"
+            },
+           "dspo_2": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(dsports2_arg)/variant.mpd",
+                k1: "35eead5c196a017344cd7d3052e1fbb1",
+                k2: "746bddf74e86949660be83a83ffe9d20"
+            },  
+            "aztecadeporteshd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(aztecadeporteshd)/variant.mpd",
+                k1: "e459142c426c37a16322969a5ddcbcab",
+                k2: "62b00ab99444ae566b261de1a3472700"
+            },
+            "pxsports": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(pxsports)/manifest.mpd",
+                k1: "7a3331860220a10a7e8b16c137c61765",
+                k2: "e9ab4d4a676be421e88c6e0127c6e087"
+            },
+            "clarosports": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(clarosports)/variant.mpd",
+                k1: "21a7580dfcec81607492d5a2db40727e",
+                k2: "20e15c193a68a6631b5d0d1f6e5c6204"
+            },
+            "warner_channel": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(warner_arg)/variant.mpd",
+                k1: "7b95853b6afe7627118414c04c0827fb",
+                k2: "e1f7e63cc427933f9c9fa01985a25521"
+            },
+           "volver": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(volver_arg)/variant.mpd",
+                k1: "d4da9d532e89c8d7f6cba837ede7f3a1",
+                k2: "8d568a2838a7c03f3cf2e206e76a3012"
+            },
+            "adultswim": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(adultswim_arg)/variant.mpd",
+                k1: "632af0c2348ec15b6d727ce7e16e6629",
+                k2: "05eb4fd863d47055e923ed594b9cf4d3"
+            },
+            "fx": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(fx_arg)/variant.mpd",
+                k1: "4916bba87a54eede88a4c5c0b07e4bb1",
+                k2: "e09f391974b401bf25f927bf4c1f743e"
+            },
+            "dhee": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(dnehd)/variant.mpd",
+                k1: " 103cc11d061c3bb8aff8dbafbfc5a5a1",
+                k2: "e42eb93eb51e8ea78828ccfbb31f4d60"
+            },
+            "usamexico": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(usamexico)/variant.mpd",
+                k1: "39773b0d7b389430776142a2fa613ad9:",
+                k2: "bce74121a4884ec7d2ed9dd96442a775"
+            },
+            "50dd60bc": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(50dd60bc-94f1-a686-3a3f-a093154f9229)/manifest.mpd",
+                k1: "ee3ad5fb53e7b4f65d732ce7f03d53a4",
+                k2: "e4a1ef4d19cbac85da7f6a29da2c5135"
+            },
+            "universal_channel": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(universal_arg)/variant.mpd",
+                k1: "41cb9973a47158b13da621c0494611d3",
+                k2: "8c72d7121972c0edc3f7e0e029d1bbd6"
+            },
+            "studio_universal": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(studiouniversal_arg)/variant.mpd",
+                k1: "4281b7af0dce74528c2a42b723f3eb3e",
+                k2: "047a8395c5235d3ec852603e5d8705a6"
+            },
+            "sony": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(sony_arg)/variant.mpd",
+                k1: "61fd8cd30d33031522679dcd5c12025a",
+                k2: "6f911424ca5079c9416e2cee730b6f4d"
+            },
+          "sonymovi": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(sonymovies_arg)/variant.mpd",
+                k1: "0c2e21b1fb3475e3dcfa43f3aebf90c0",
+                k2: "3f90991c8bea986cb976baa8bc958c94"
+            },
+            "europa_europa": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(europaeuropa_arg)/variant.mpd",
+                k1: "aae86df4cc9c0abb9962da808208a342",
+                k2: "64b0968c917fe34be26bf6cdab171a86"
+            },
+            "a3cine": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(a3cine)/variant.mpd",
+                k1: "b7dd9f772a1b8bc9b2912912fc87eb91",
+                k2: "73accef68bf4022ad7c0da50415c6df6"
+            },
+            "a3series": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(a3series)/variant.mpd",
+                k1: "f41eb0f3367804d8fc48dec22c2c7d68",
+                k2: "42983f2821aba0d2d17afc373a3c3dab"
+            },
+            "clarocinemahd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(clarocinemahd)/variant.mpd",
+                k1: "74c3f74f661721c738278bb130e5ec6a",
+                k2: "e68744b0a606e3b5966af41ef18a0cb6"
+            },
+            "6f29f4bb": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(6f29f4bb-a84c-6924-9782-a5647d2146a0)/manifest.mpd",
+                k1: "077105b9c52693e7c1df39521ab65803",
+                k2: "7189d75c1469f0bd11efa54d58d3499b"
+            },
+            "azteca7hd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(azteca7hd)/variant.mpd",
+                k1: "a5717e2dda7fc0fead005059e5536b6c",
+                k2: "04243a2f2c5237efd969213e36f1ec77"
+            },
+            "526dd1aa": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(526dd1aa-3af4-bca0-f021-f48180f1974a)/manifest.mpd",
+                k1: "55122e37d92b6b4ab03c427cd4f471b9",
+                k2: "0c2d5950edcafe9a2ea09098a155bdda"
+            },
+            "b4540d49": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(b4540d49-0e51-9219-ced1-8624e83e6bf3)/manifest.mpd",
+                k1: "e28ec76b3e800ded41db58719ad8b8f4",
+                k2: "4e40f2c54234fc211f471ed049b22649"
+            },
+            "cartoonnetworks": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(cartoonnetworks)/manifest.mpd",
+                k1: "0a8e88e5b5b3eef72f2cb4aae4462f47",
+                k2: "8cf6200e54c309754ed4e99cab5874f6"
+            },
+            "cartoonitohd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(cartoonitohd)/manifest.mpd",
+                k1: "dd2c2f31defc5f22f031365d3333c880",
+                k2: "f0597b0c74656c330dd6ccd50dfc5464"
+            },
+            "Nickelodeon": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(Nickelodeon)/manifest.mpd",
+                k1: "7ec274831caa80e1ec173dbd5b0d5e83",
+                k2: "cc5fb77171900013b60e4ef49da9f1ac"
+            },
+            "nickjrhd": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(nickjrhd)/manifest.mpd",
+                k1: "6678b21d11148fc9604268ddbe008d72",
+                k2: "8ba320049c30a2df809a90679c49b63d"
+            },
+           "dreawo": {
+                url: "https://dish-arg.akamaized.net/Content/DASH/Live/channel(dreamworkshd)/variant.mpd",
+                k1: "e6c7a488a73c9c780eaea5765ad29a00",
+                k2: "08ffa90ee936cbacb10a59bb66aed57d"
+            },
+            "discoverykids": {
+                url: "//dish.akamaized.net/Content/DASH/Live/channel(discoverykids)/manifest.mpd",
+                k1: "a57ec54090c0b450f2e2ef90de4013f9",
+                k2: "a49da89c878182c99b9d2e9282d5aa3a"
+            },
+            "Telemundo1": {
+                url: "//live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s/Live/channel(wnju)/master.mpd",
+                k1: "c71fe7bc82f037c6af21fd299d6341b0",
+                k2: "13223c98886ff43d3c5f271eeb457cc6"
+            },
+            "Telemundo2": {
+                url: "//live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s/Live/channel(wscv)/master.mpd",
+                k1: "ed5aac3691b33a02ac86d84f886a8a06",
+                k2: "6b2cf6dd150416b758d228fc38980473"
+            },
+            "Telemundo3": {
+                url: "//live-oneapp-prd-news.akamaized.net/Content/CMAF_OL2-CTR-4s/Live/channel(kvea)/master.mpd",
+                k1: "ce7ab3022e753307997f58afe001bac4",
+                k2: "72d631a66e635c60829a0fe7705516c1"
+            },
+
+        }
+
+        var id = getParameterByName('id');
+        var config = ConfiguracionCanales[id];
+
+        if (config) {
+            var sources = [];
+
+            if (config.url.includes('.m3u8')) {
+                sources.push({
+                    file: config.url
+                });
+            }
+
+            if (config.url.includes('.mpd') && config.k1 && config.k2) {
+                sources.push({
+                    file: config.url,
+                    drm: { "clearkey": { "keyId": config.k1, "key": config.k2 } }
+                });
+            }
+
+            // JWWWWWW
+            jwplayer("player").setup({
+                playlist: [{
+                    title: "REPRODUCTOR",
+                    description: "EN VIVO",
+                    sources: sources
+                }],
+                width: "100%",
+                height: "100%",
+                autostart: false,
+                mute: false,
+                volume:100,
+                cast: {},
+                // androidhls: true,
+                displaytitle: true,
+                displaydescription: true,
+                stretching: "exactfit",
+                liveSyncDuration: 3,
+                preload: "auto",
+                live: { dvrSeekLimit: 3600, edgeMargin: 5 },
+                dash: { bufferLength: 3, maxBufferLength: 10 },
+                controls: true,
+              
+            });
+  
+          
+       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isSmartTV = /SmartTV|Tizen|Web0S|SmartHub|Chromecast/i.test(navigator.userAgent);
+
+      if (isSmartTV) {
+        player.on("ready", function () {
+          const video = document.querySelector("#player video");
+          if (video) {
+            video.muted = false;
+            try { video.volume = 1.0; } catch(e){}
+          }
+        });
+      }
+
+      // Preferir pista de audio si aplica
+    var lang = 0; // Por defecto en español
+                    jwplayer().on('play', function (e) {
+                        jwplayer().setCurrentAudioTrack(lang);
+                    });
+
+      // Manejo de fullscreen y orientación
+      player.on("fullscreen", function(e) {
+        const contenedor = document.getElementById("player");
+        if (!isIOS && screen.orientation) {
+          if (e.fullscreen) {
+            const tryLock = async () => {
+              try { await screen.orientation.lock("landscape"); }
+              catch(err) { setTimeout(tryLock, 200); }
+            };
+            tryLock();
+          } else {
+            try { screen.orientation.unlock(); } catch(err) {}
+          }
+        }
+        if (isIOS) {
+          if (e.fullscreen) contenedor.classList.add("ios-landscape");
+          else contenedor.classList.remove("ios-landscape");
+        }
+      });
+
+      // --- Lógica para que "Automático" prefiera la mayor calidad disponible ---
+      let highestIndex = null;
+      let lastForcedAt = 0;
+      const FORCE_COOLDOWN_MS = 8000;
+      const BACKOFF_MULTIPLIER = 2;
+      let currentBackoff = FORCE_COOLDOWN_MS;
+
+      function tryForceHighest(reason) {
+        const now = Date.now();
+        if (highestIndex === null) return;
+        if (now - lastForcedAt < currentBackoff) return;
+        try {
+          player.setCurrentQuality(highestIndex);
+          lastForcedAt = now;
+          currentBackoff = Math.min(currentBackoff * BACKOFF_MULTIPLIER, 60000);
+          console.log('Forzando calidad máxima (índice):', highestIndex, 'motivo:', reason);
+        } catch (e) {
+          console.warn('setCurrentQuality falló al forzar:', e);
+        }
+      }
+
+      player.on('levels', function(data) {
+        try {
+          const levels = data.levels || [];
+          console.log('Niveles recibidos:', levels);
+          if (!levels.length) {
+            highestIndex = null;
+            return;
+          }
+
+          let bestIdx = 0;
+          let bestMetric = -1;
+          levels.forEach((lvl, i) => {
+            const bandwidth = lvl.bandwidth || 0;
+            const height = lvl.height || 0;
+            const metric = (bandwidth * 1.0) + (height * 1000);
+            if (metric > bestMetric) { bestMetric = metric; bestIdx = i; }
+          });
+
+          highestIndex = bestIdx;
+          currentBackoff = FORCE_COOLDOWN_MS;
+          try {
+            player.setCurrentQuality(highestIndex);
+            lastForcedAt = Date.now();
+            console.log('Aplicada calidad inicial (mayor):', highestIndex, levels[highestIndex]);
+          } catch (err) {
+            console.warn('No se pudo aplicar calidad inicial:', err);
+          }
+        } catch (err) {
+          console.warn('Error procesando niveles:', err);
+        }
+      });
+
+      player.on('visualQuality', function(info) {
+        try {
+          if (!info) return;
+          if (info.mode === 'auto' && highestIndex !== null && typeof info.level === 'number') {
+            if (info.level < highestIndex) {
+              tryForceHighest('visualQuality detectó nivel inferior');
+            } else {
+              currentBackoff = FORCE_COOLDOWN_MS;
+            }
+          }
+        } catch (e) {
+          console.warn('Error en visualQuality handler:', e);
+        }
+      });
+
+      player.on('buffer', function() {
+        try {
+          currentBackoff = FORCE_COOLDOWN_MS * 2;
+          console.log('Buffering detectado: permitiendo bajar calidad');
+        } catch(e){}
+      });
+
+      player.on('error', function(err) {
+        console.error('Error JW Player:', err);
+      });
+
+      player.on('setupError', function(err) {
+        console.error('Setup error:', err);
+      });
+
+      player.on('ready', function() {
+        try {
+          const latency = player.getLiveLatency?.();
+          console.log('Latencia / DVR:', latency, 'segundos');
+        } catch(e){}
+      });
+
+      // Asegurar autoplay en cada cambio de playlist (por ejemplo, auto-switch)
+      player.on('playlistItem', function() {
+        setTimeout(() => {
+          try { player.play(); } catch (e) {}
+        }, 100);
+      });
+    }
+    window.onload = iniciarReproductor;
+    </script>
+</body>
+</html>
