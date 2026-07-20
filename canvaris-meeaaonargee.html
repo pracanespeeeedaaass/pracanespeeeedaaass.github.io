@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- AGREGADO: SDK NECESARIO PARA QUE EL LOGO DE CHROMECAST SEA DETECTADO -->
+    <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+
+    <style>
+        .jw-rightclick {
+            display: none !important;
+        }
+
+        /* CONFIGURACIÓN DE COLOR ORO (#FFD700) FORZADO EN TODOS LOS ELEMENTOS */
+        .media-control[data-media-control] .button-control[data-button],
+        .media-control[data-media-control] svg,
+        /* FORZADO ESPECÍFICO PARA EL BOTÓN DE CHROMECAST */
+        .media-control[data-media-control] .chromecast-button { 
+            color: #FFD700 !important; 
+            fill: #FFD700 !important;
+            display: block !important;
+        }
+        
+        /* Barra de progreso (Seek bar) y Volumen */
+        .media-control[data-media-control] .bar-fill[data-bar-fill],
+        .media-control[data-media-control] .bar-hover[data-bar-hover] { 
+            background-color: #FFD700 !important; 
+        }
+
+        .media-control[data-media-control] .media-control-background[data-media-control] { 
+            background-color: rgba(0,0,0,0.5) !important; 
+        }
+    </style>
+  <style type="text/css">.container[data-container] {
+  position: absolute;
+  background-color: ;
+  height: 100%;
+  width: 100%;
+  max-width: 100%; }
+  .container[data-container] .chromeless {
+    cursor: default; }
+
+[data-player]:not(.nocursor) .container[data-container]:not(.chromeless).pointer-enabled {
+  cursor: pointer; }
+</style>
+<style type="text/css">.level_selector[data-level-selector]{float:right;position:relative;height:100%}.level_selector[data-level-selector] button{background-color:transparent;color:#e3f509;font-family:Roboto,Open Sans,Arial,sans-serif;-webkit-font-smoothing:antialiased;border:none;font-size:12px;height:100%}.level_selector[data-level-selector] button:hover{color:#e3f509}.level_selector[data-level-selector] button.changing{-webkit-animation:pulse .5s infinite alternate}.level_selector[data-level-selector]>ul{overflow-x:hidden;overflow-y:auto;list-style-type:none;position:absolute;bottom:100%;display:none;background-color:rgba(28,28,28,.9);white-space:nowrap}.level_selector[data-level-selector] li{font-size:12px;color:#eee}.level_selector[data-level-selector] li a{color:#eee;padding:5px 18px;display:block;text-decoration:none}.level_selector[data-level-selector] li a:hover{background-color:hsla(0,0%,100，.1);color:#e3f509}.level_selector[data-level-selector] li a:hover a{color:#e3f509;text-decoration:none}.level_selector[data-level-selector] li.current a{color:#e3f509}</style>
+    <meta name="robots" content="noindex" />
+    <title>mpd_es</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../img/icono.webp" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.4.0/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/mux.js@5.6.7/dist/mux.min.js"></script>
+    <script src='//cdn.jsdelivr.net/npm/level-selector@latest/dist/level-selector.min.js'></script>
+    <script src='//cdn.jsdelivr.net/npm/clappr-pip@latest/dist/clappr-pip.min.js'></script>
+    <script src='//cdn.jsdelivr.net/npm/clappr-playback-rate-plugin@latest/dist/clappr-playback-rate-plugin.min.js'></script>
+    <script src="//cdn.jsdelivr.net/npm/shaka-player@2.5.10/dist/shaka-player.compiled.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/clappr/dash-shaka-playback@latest/dist/dash-shaka-playback.external.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/cdnbye-shaka@latest"></script>
+    
+    <!-- SCRIPT DE CHROMECAST AGREGADO -->
+    <script src="//cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Font Awesome para el icono -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .player-poster[data-poster] {
+            background-size: cover;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        /* FORZAR QUE OCUPE TODA LA PANTALLA Y OCULTE UI EN FULLSCREEN */
+        #player:-webkit-full-screen { width: 100vw !important; height: 100vh !important; z-index: 2147483647 !important; top: 0 !important; left: 0 !important; margin: 0 !important; padding: 0 !important; }
+        #player:-moz-full-screen { width: 100vw !important; height: 100vh !important; z-index: 2147483647 !important; top: 0 !important; left: 0 !important; margin: 0 !important; padding: 0 !important; }
+        #player:-ms-fullscreen { width: 100vw !important; height: 100vh !important; z-index: 2147483647 !important; top: 0 !important; left: 0 !important; margin: 0 !important; padding: 0 !important; }
+        #player:fullscreen { width: 100vw !important; height: 100vh !important; z-index: 2147483647 !important; top: 0 !important; left: 0 !important; margin: 0 !important; padding: 0 !important; }
+    </style>
+</head>
+
+<body>
+    <main id="player"></main>
+
+    <script>
+        function getUrlParameter(name) {
+            var result = null;
+            var regex = new RegExp('[?&]' + name + '=([^&#]*)', 'i');
+            var match = window.location.search.match(regex);
+            if (match) {
+                result = decodeURIComponent(match[1]);
+            }
+            return result;
+        }
+
+        var id = getUrlParameter('id');
+
+        var source = '';
+        var clearKeys = {};
+
+        let mt = "megatvcdn1-sl.megacable.com.ar";
+        let mt2 = "CN=3e170184-8ead-48e5-94a7-66c05ba4e1f6";
+        
+        if (id === 'teenceearg') {
+            source = 'https://' + mt + '/content/live/TyC_Sports_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                'db41d57853874a1b9865cdf8f62e741c':'c03ed92e0c15a7d807d71235143437f5',
+                '6ae2f06dc3fb4c22955d2b802443c440':'c03ed92e0c15a7d807d71235143437f5',
+                '676b315a7b84499da15fe50d25d3161c':'c03ed92e0c15a7d807d71235143437f5'
+            };
+        } else if (id === 'teetespoarg') {
+            source = 'https://' + mt + '/content/live/TNT_Sports_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '91fdb127559a4d73976ef07928f451b2':'e8a970a158d9afe205372dc6ada8a01a',
+                '4db14cce2cbc494abad468bedad7dee2':'e8a970a158d9afe205372dc6ada8a01a',
+                'e76e57afe72342a6a6c92aedd5ae5953':'e8a970a158d9afe205372dc6ada8a01a'
+            };
+        } else if (id === 'espreearge') {
+            source = 'https://' + mt + '/content/live/ESPN_Premium_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '8108cc522fe34774b2e33497373982b9':'b3bb5d578b56b4973b8711f68851a21a',
+                'f81c7c51fd984510a12a87853bbd6790':'b3bb5d578b56b4973b8711f68851a21a',
+                '2552ad584e5b46d3a422d4eadb0f609e':'b3bb5d578b56b4973b8711f68851a21a'
+            };
+        } else if (id === 'fooo1arge') {
+            source = 'https://' + mt + '/content/live/Fox_Sports_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                'e1b436794cf045e1a4f4d2111f89afc7':'db9446fefaf908e8ffa682e36da48e82',
+                '6841c639d7bc4290abbbe317d42b3fef':'db9446fefaf908e8ffa682e36da48e82',
+                'a03b61617d7748eb89a7d6cab042e913':'db9446fefaf908e8ffa682e36da48e82',
+            };
+        } else if (id === 'fooo2arge') {
+            source = 'https://' + mt + '/content/live/Fox_Sports_2_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '972ce878aaca4a7097c619ebf45901be':'68f402cc761bbef08b56cd9c201980bf',
+                '7420dce6d24544caa3a15376126c6945':'68f402cc761bbef08b56cd9c201980bf',
+                'f3fb8bed8d2b44fab903a44d03f440b1':'68f402cc761bbef08b56cd9c201980bf'
+            };
+        } else if (id === 'fooo3arge') {
+            source = 'https://' + mt + '/content/live/Fox_Sports_3_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '7fb73ee2155e488c80315c1370852474':'b981d81a0161a4d7d54be383af021fab',
+                'c86049c69fdd4640aadc6070f6b7f564':'b981d81a0161a4d7d54be383af021fab',
+                '174b44e443d540ca8ab4ba35f536aa29':'b981d81a0161a4d7d54be383af021fab'
+            };
+        } else if (id === 'espee1ar') {
+            source = 'https://' + mt + '/content/live/ESPN_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '40c3f66c7a5f45d9a9fae53a516f2cd8':'afda0f46fc465a79859b488f4be5ee9b',
+                '9f985112eb2f4623bbd58be212c88dc0':'afda0f46fc465a79859b488f4be5ee9b',
+                'c0c7816a415a4e50b945cc8cd8d98cc0':'afda0f46fc465a79859b488f4be5ee9b'
+            };
+        } else if (id === 'espee2ar') {
+            source = 'https://' + mt + '/content/live/ESPN_2_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '189c4b3e23d14535a59f6cdd489c0949':'7972c4353cefdfaafca39822e75d95ee',
+                'eace2bbc0fc0433d85170951f584f4a2':'7972c4353cefdfaafca39822e75d95ee',
+                'a2dc641e671e4ceda44b0817227bb72e':'7972c4353cefdfaafca39822e75d95ee'
+            };
+        } else if (id === 'espee3ar') {
+            source = 'https://' + mt + '/content/live/ESPN_3_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '809f333803a4441bb49d2f7810aa17e0':'744f43169e827a278b2f173a88cd75d7',
+                '1ad05dae4429479089a573c02cf1731c':'744f43169e827a278b2f173a88cd75d7',
+                'f0fffbf231044703ae29dbdeb845436a':'744f43169e827a278b2f173a88cd75d7'
+            };
+        } else if (id === 'espee4ar') {
+            source = 'https://' + mt + '/content/live/ESPN_EXTRA_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '72091f681054494da3b1e5d9a85a86f9':'f648674a85366f2d1213c8a37f8d5fc1',
+                'b23272e5d7be4cef8b170a20bc7f0ec1':'f648674a85366f2d1213c8a37f8d5fc1',
+                'a78c2fd53df44a23bb03969e86683a8f':'f648674a85366f2d1213c8a37f8d5fc1'
+            };
+        } else if (id === 'teeefeeinteearge') {
+            source = 'https://' + mt + '/content/live/Telefe_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '43914631b0e341a5b89a4057bc5969d3':'8b51ea9d538a76951a2f38aa1762632a',
+                '01b64a456b9e4214bb3f1555a8046354':'8b51ea9d538a76951a2f38aa1762632a',
+                '3ca1ea551743402fb2e27c6dfccabdec':'8b51ea9d538a76951a2f38aa1762632a'
+            };
+        } else if (id === 'hbb11') {
+            source = 'https://' + mt + '/content/live/HBO_HD/master_wv.m3u8?' + mt2 + '';
+            clearKeys = {
+                '225c28ca172a4ab090974417a7487976':'3cfcdf7fdd6f3c63966ba46e00a7dcd7',
+                '5434a3d879e24a3f9e454fb7abb96c7d':'3cfcdf7fdd6f3c63966ba46e00a7dcd7',
+                'e0262045164f44a98b64e2ee5d691799':'3cfcdf7fdd6f3c63966ba46e00a7dcd7'
+            };
+        } else if (id === 'espee7ar') {
+            source = 'https://' + mt + '/odisea/odisea.mpd?' + mt2 + '';
+            clearKeys = {
+                '44198d2ef41d56f08ab661f923c1d457': 'f3f7c33d774d0b050e0724f1afa8576a',
+                '2e255d04642653a69eed70b6a0e389cb': '2b545bab6bd6d58d4c38620c365d2743',
+                'e30f7b63ca36594784e896e5592ea07d': '82539a2fded8fd343364846eba15c1e3'
+            };
+        } else if (id === 'B_MAD') {
+            source = 'https://' + mt + '/bemad/bemad.mpd?' + mt2 + '';
+            clearKeys = {
+                '89444443774f5e4583d2a88150966839': '87881f7e2f17cc1f96347bbadc34866e',
+                '79f5a725945552ba817ecb9e62427370': '1f797fb910c4264d34e0b3045cd4366f',
+                '561f7439ca455c57af84705ea001042f': '265ac468fc6ccdef137a1bc92ee63ded'
+            };
+        } else if (id === 'MEGA') {
+            source = 'https://' + mt + '/mega6/mega6.mpd?' + mt2 + '';
+            clearKeys = {
+                '17c96fff5b3656e3973b2431d54740e3': '4ea5aa764f7806b1bc9d5d70dc30f953',
+                'd7929e94a9035f8eb174edcd585e33da': '843ae6087cb1c7897107ed477f12ad07',
+                'a5bcd9e88a9f56c198ffbdd1057a701d': 'bdffe57e1abd9ce12c400da3b2e5d3ae'
+            };
+        } else if (id === 'NOVA') {
+            source = 'https://' + mt + '/nova6/nova6.mpd?' + mt2 + '';
+            clearKeys = {
+                '47bcabb0e4025a44a431cdbc00844f96': 'b356d11fa6710b0684eaeac647a1a7fd',
+                '64df8ec288975380819eca889f10e016': '5cbafb507c657279b68c588eaaaf25c3',
+                '4e057f58d5a55c3f9a16123f43a7d6a9': '4e6b43312e25851a0aa4e269fad4b6da'
+            };
+        } else if (id === 'NEOX') {
+            source = 'https://' + mt + '/neox6/neox6.mpd?' + mt2 + '';
+            clearKeys = {
+                '798d3815a60a509d89495eef009b126e': '17b8ada6c772a46cc1f1616e6d0c7c4c',
+                '18294916daec56feb674a8334acd293b': '2fe6916666d48de1e0a02650004d3baf',
+                '197322327da85f35843d6401ac974cb9': '4ae12f869b559d94c3dd570ae5b49e30'
+            };
+        } else if (id === 'AXN') {
+            source = 'https://' + mt + '/axn-hd/axn-hd.mpd?' + mt2 + '';
+            clearKeys = {
+                "c0fc7ec7a47e504b852d5860eef575cc": "eb4c01e07dc846b5184cd84f328a3172",
+                "8cbc1c7354f559be8f57b6bf8ed063cc": "ce004e09fc58f73923dda5679d1ce75d",
+                "09d200ee496b5d438c0c1da9229139df": "b623c3c77fe6e8e54156a64d50fe26b6"
+            };
+        } else if (id === 'AXN_MOVIE') {
+            source = 'https://' + mt + '/axnwhite6/axnwhite6.mpd?' + mt2 + '';
+            clearKeys = {
+                '19abdbc1fb6d56d09d69e4ccbf20dc78': '9884f71800eca963c1d43e3a68da2139',
+                'e781d5d3848158e29e4f0398576c1dd8': 'c3bc96015999925fd6660eee3f18d7b0',
+                'cf8521901f3d51f9ab4509b180b5d65a': 'c554b3bd4c1ae26b1c250345c71642e3'
+            };
+        } else if (id === 'DMAX') { 
+            source = 'https://' + mt + '/dmax6/dmax6.mpd?' + mt2 + '';
+            clearKeys = {
+                '8f6274cbc36a52f7a9104f5fab9f1918': '27060c527a69d604b42cbf2982127238',
+                'a23af59626f25a87bb7a92632047de16': '53c3ca7308ad2b9ee0a33d4c0b266931',
+                '31202201d2055ddfb0e567d6fe222b09': 'fd5d557ea82bf155bc9b06c8cb000159'
+            };
+        } else if (id === 'BOING') {
+            source = 'https://' + mt + '/boing/boing.mpd?' + mt2 + '';
+            clearKeys = {
+                '9247e483162b5f70ba4ed226db7534b2': '573a7aef0f06f3342081f372136a2d91',
+                '657664aa81065e3c9a26cfd5d7c006ff': 'f8113868e2adc5796ebfa1d4763e4cf2',
+                '5b86b74a2c9c50d68ccc053c9897a342': 'ffda99720dc6edc1e334f7d2de0a7b51'
+            };
+        } else if (id === 'DIRECTV_SPORTSPAN') {
+            source = 'https://' + mt + '/directvsportpan/directvsportpan.mpd?' + mt2 + '';
+            clearKeys = {
+                '1563586185955731899c517fca4229a8': '5e987516e20522093d5ffee9a84d71b0',
+                'e6d067c9fc4e5b14b2d199307a4d4c6e': '488991a152e05377cb46e6704a28eafc',
+                '11aa98b988db5b1d9dd85142d1314cf9': '86d6fc031da6cca8fcf364b1655843e3'
+            }
+        } else if (id === 'RCN') {
+            source = 'https://cdn-live-rcn-tkdrm-edge1.tbxdrm.com/bcdn_token=8HEq28vafUNG1gdxO1bRgCocBqEmTh7syyiUdnfaD5o&token_path=%2Frcn%2F&expires=1750713869/rcn/manifest.mpd?' + mt2 + '';
+            clearKeys = {
+                "3c53e42016aa54c9b6aac6ac621f64cd": "d2542e27553e5873e46f0e4cd6b48abd",
+                "40e54c2baa145148b1c4507340f28b86": "a6f4bd8f0223cedbd03df603bf02d1a6",
+                "14c72e723aa0540294ad22b9125aa039": "55b7d700e5cc826bde4a19f362894abc"
+            };
+        } else if (id === 'XTRM') {
+            source = 'https://' + mt + '/xtrm6/xtrm6.mpd?' + mt2 + '';
+            clearKeys = {
+                '4e67f814514953bea4a642dd26b8b6ff': '8abaf8dc3d1f3a6010f10bf7612acd3a',
+                'b0042a6586a6580ab010a1f459564e4e': 'f195bef74679238ce878c21da4666a82',
+                'df517167de4d565495af2974530fd264': 'acb058faf6e66d8d672f9ff8e1eb400b'
+            };
+        } else {
+            alert('No se encontró un ID válido.');
+        }
+
+        var player = new Clappr.Player({
+            source: source,
+            mimeType: 'application/dash+xml',
+            height: '100%',
+            width: '100%',
+            mute: false,
+            volume: 100,
+            stretching: "exactfit",
+            poster: '',
+            autoPlay: true,
+            preload: "auto",
+            liveSyncDuration: 3,
+            mediacontrol: { seekbar: "#e3f509", buttons: "#e3f509" },
+            plugins: [
+                LevelSelector,
+                DashShakaPlayback,
+                ClapprPip.PipButton,
+                ClapprPip.PipPlugin,
+                Clappr.MediaControl,
+                Clappr.Poster,
+                ChromecastPlugin // PLUGIN DE CHROMECAST DECLARADO AQUÍ
+            ],
+            // CONFIGURACIÓN AVANZADA PARA CASTING
+            chromecast: {
+                appId: '9DFB77C0',
+                contentType: 'application/dash+xml',
+                autoJoinPolicy: 'origin_scoped', // OPTIMIZACIÓN: Mejora reconexión
+                media: {
+                    type: 'video',
+                    title: 'Live Stream',
+                    metadata: {
+                        metadataType: 0,
+                        title: 'Reproductor Moderno'
+                    }
+                }
+            },
+            shakaConfiguration: {
+                drm: {
+                    clearKeys: clearKeys
+                },
+                preferredAudioLanguage: 'es', 
+                streaming: {
+                    lowLatencyMode: true,          
+                    bufferingGoal: 60,             // OPTIMIZACIÓN: Buffer aumentado para estabilidad
+                    rebufferingGoal: 10,           // OPTIMIZACIÓN: Recuperación de red más robusta
+                    bufferBehind: 30,              // OPTIMIZACIÓN: Mejor gestión de memoria
+                    inaccurateManifestTolerance: 2, // OPTIMIZACIÓN: Evita cortes por desincronización
+                    ignoreTextStreamFailures: true,
+                    jumpLargeGaps: true 
+                },
+                manifest: {
+                    retryParameters: {
+                        maxAttempts: 5,
+                        baseDelay: 1000
+                    }
+                },
+                abr: {
+                    enabled: true,
+                    defaultBandwidthEstimate: 3000000,
+                    bandwidthDowngradeTarget: 0.85, // OPTIMIZACIÓN: Menos agresivo ante bajadas leves
+                    bandwidthUpgradeTarget: 0.95,
+                    minTotalBytes: 500000,
+                    restrictToElementSize: true,
+                    switchInterval: 10             // OPTIMIZACIÓN: Evita cambios de calidad constantes
+                },
+            },
+            parentId: '#player'
+        });
+
+        // SCRIPT: AUMENTADOR DE VOLUMEN
+        player.on(Clappr.Events.PLAYER_READY, function() {
+            var videoElement = document.querySelector('video');
+
+            if (videoElement && !window.audioContextStarted) {
+                try {
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const source = audioCtx.createMediaElementSource(videoElement);
+                    const gainNode = audioCtx.createGain();
+                    const compressor = audioCtx.createDynamicsCompressor();
+
+                    gainNode.gain.value = 1.5;
+
+                    compressor.threshold.setValueAtTime(-24, audioCtx.currentTime);
+                    compressor.knee.setValueAtTime(30, audioCtx.currentTime);
+                    compressor.ratio.setValueAtTime(12, audioCtx.currentTime);
+                    compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+                    compressor.release.setValueAtTime(0.25, audioCtx.currentTime);
+
+                    source.connect(gainNode);
+                    gainNode.connect(compressor);
+                    compressor.connect(audioCtx.destination);
+                    
+                    window.audioContextStarted = true;
+                } catch (e) {
+                    console.log("Error al iniciar AudioContext", e);
+                }
+            }
+        });
+
+        // SCRIPT: FORZAR AUDIO ESPAÑOL OBLIGATORIO (FIX AGRESIVO)
+        player.on(Clappr.Events.PLAYBACK_READY, function() {
+            var playback = player.core.getCurrentPlayback();
+            if (playback && playback._player) {
+                var shaka = playback._player;
+
+                var lockSpanish = function() {
+                    try {
+                        var audioTracks = shaka.getAudioTracks();
+                        var spanishTrack = audioTracks.find(function(t) {
+                            var lang = t.language ? t.language.toLowerCase() : '';
+                            return lang.includes('es') || lang.includes('spa');
+                        });
+                        if (spanishTrack) {
+                            shaka.selectAudioTrack(spanishTrack, false);
+                        }
+                    } catch (e) { console.log(e); }
+                };
+
+                // Forzado en cada evento de cambio de Shaka
+                shaka.addEventListener('variantchanged', lockSpanish);
+                shaka.addEventListener('trackschanged', lockSpanish);
+                shaka.addEventListener('adaptation', lockSpanish);
+                
+                // Watchdog: Ejecución constante para bloquear cambios indeseados
+                setInterval(lockSpanish, 1000);
+            }
+        });
+
+        // SCRIPT: FORZAR PANTALLA COMPLETA
+        function handleFullscreenRotation() {
+            var isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+            
+            if (isFullscreen) {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(function(error) {
+                        console.log('No se pudo bloquear la orientación:', error);
+                    });
+                }
+            } else {
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        }
+
+        document.addEventListener('fullscreenchange', handleFullscreenRotation);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenRotation);
+        document.addEventListener('mozfullscreenchange', handleFullscreenRotation);
+        document.addEventListener('MSFullscreenChange', handleFullscreenRotation);
+
+    </script>
+
+    <!-- INICIO: MODAL DE BIENVENIDA (Compacto y optimizado) -->
+    <style>
+        #welcome-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .popup-content {
+            background: #1c1c1c;
+            color: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            border: 1px solid #333;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        }
+        /* Responsividad para pantallas grandes */
+        @media (min-width: 768px) {
+            .popup-content {
+                padding: 40px;
+                max-width: 500px;
+            }
+        }
+        .popup-icon {
+            color: #28a745;
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        .popup-title {
+            color: #e3f509;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+        .popup-text {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        /* Botón estilo premium */
+        .btn-action {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-action:hover {
+            background: #218838;
+            transform: scale(1.02);
+        }
+    </style>
+
+    <div id="welcome-popup-overlay">
+        <div class="popup-content">
+            <i class="fas fa-check-circle popup-icon"></i>
+            <h4 class="popup-title">Aviso importante</h4>
+            <p class="popup-text">
+                ESTE REPRODUCTOR TIENE ALGUNOS CANALES CON CALIDADES REPETIDAS ES DECIR 2 VECES 480P CUANDO SELECCIONES 1 DE LOS 2 UNO ESTARA EN AUDIO INGLES Y OTRO EN AUDIO ESPAÑOL SELECCIONA UNO DE LOS 2 Y ESPERA UN RATO, A QUE CAMBIE DE AUDIO DE MANERA AUTOMATICA.
+            </p>
+            
+            <button class="btn-action" onclick="closePopup()">
+                ✓ Entiendo, no mostrar más
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Lógica del Pop-up
+        const popupOverlay = document.getElementById('welcome-popup-overlay');
+
+        // Verificar si el usuario ya pidió que no se muestre más
+        if (localStorage.getItem('hideWelcomePopup') === 'true') {
+            popupOverlay.style.display = 'none';
+        }
+
+        function closePopup() {
+            // Guardar en localStorage para que no se vuelva a mostrar
+            localStorage.setItem('hideWelcomePopup', 'true');
+            // Ocultar el popup
+            popupOverlay.style.display = 'none';
+        }
+    </script>
+    <!-- FIN: MODAL DE BIENVENIDA -->
+</body>
+
+</html>
