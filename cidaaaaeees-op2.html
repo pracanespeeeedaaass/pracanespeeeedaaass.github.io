@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+ <html lang="es">
+<title>cidaaaaaees op2 </title> 
+<head>
+<style type="text/css">
+html,
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+body {
+
+  background-color: #0F1D21;
+  
+}
+
+@keyframes scaling {
+    from {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+}
+
+@-webkit-keyframes scaling {
+    from {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+}
+
+.jw-svg-icon-cc-off path,
+.jw-svg-icon-cc-on path {
+    display: none;
+}
+
+.jw-svg-icon-cc-off,
+.jw-svg-icon-cc-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%23ff8000' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-cc:hover .jw-svg-icon-cc-off,
+.jw-icon-cc:hover .jw-svg-icon-cc-on,
+.jw-settings-captions:hover .jw-svg-icon-cc-off,
+.jw-settings-captions:hover .jw-svg-icon-cc-on,
+.jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-off,
+.jw-settings-captions[aria-expanded="true"] .jw-svg-icon-cc-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='audio-subtitles'%3E%3Cpath fill='%23ff8000' d='M5,15 L5,13 L12,13 L12,15 L5,15 Z M14,15 L14,13 L19,13 L19,15 L14,15 Z M10,9 L10,11 L5,11 L5,9 L10,9 Z M11.9998571,11 L12.0001429,9.00000001 L19.0001429,9.00100001 L18.9998571,11.001 L11.9998571,11 Z M17,17 L21,17 L21,5 L3,5 L3,17 L12.9968832,17 L17,19.4392488 L17,17 Z M1,3 L23,3 L23,19 L19,19 L19,22.9999671 L12.4355463,19 L1,19 L1,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-pause path {
+    display: none;
+}
+
+.jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%23ff8000' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-display:hover .jw-svg-icon-pause,
+.jw-icon-playback:hover .jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='pause'%3E%3Cpath fill='%23ff8000' d='M5,3 L10,3 L10,21 L5,21 L5,3 Z M14,3 L19,3 L19,21 L14,21 L14,3 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-icon-display:hover .jw-svg-icon-pause,
+.jw-icon-playback:hover .jw-svg-icon-pause {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M6.867 1.013c1.177 0 2.13.932 2.13 2.082v17.81c0 1.15-.953 2.082-2.13 2.082H5.36c-1.177 0-2.131-.932-2.131-2.082V3.095c0-1.15.954-2.082 2.13-2.082h1.507zm12.772 0c1.177 0 2.131.932 2.131 2.082v17.81c0 1.15-.954 2.082-2.13 2.082h-1.507c-1.177 0-2.131-.932-2.131-2.082V3.095c0-1.15.954-2.082 2.131-2.082h1.506z'/%3E%3C/svg%3E");
+}
+
+.jw-svg-icon-volume-100 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0zm2.606-2.7a9.977 9.977 0 012.668 6.779 9.928 9.928 0 01-2.973 7.096.905.905 0 01-1.329-.073v-.001a.883.883 0 01.067-1.194 8.16 8.16 0 002.44-5.828 8.2 8.2 0 00-2.195-5.574.878.878 0 01-.007-1.187l.002-.002a.903.903 0 011.327-.017z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0zm2.606-2.7a9.977 9.977 0 012.668 6.779 9.928 9.928 0 01-2.973 7.096.905.905 0 01-1.329-.073v-.001a.883.883 0 01.067-1.194 8.16 8.16 0 002.44-5.828 8.2 8.2 0 00-2.195-5.574.878.878 0 01-.007-1.187l.002-.002a.903.903 0 011.327-.017z'/%3E%3C/svg%3E");
+}
+
+.jw-svg-icon-volume-50 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-50 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0z'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-50 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12.566 3.142c1.335-1.008 1.984-.315 2.021.916.05 1.638.265 5.055.265 7.942 0 2.886-.216 6.304-.265 7.942-.037 1.23-.686 1.924-2.02.916a482.058 482.058 0 00-4.71-3.507c-.728-.539-1.44-1.131-3.086-1.131-1.645 0-2.311-1.01-2.41-1.933-.1-.922-.153-2.11-.153-2.287 0-.177.054-1.365.153-2.288.099-.923.765-1.931 2.41-1.931s2.358-.593 3.087-1.132c.728-.538 2.728-2.01 4.708-3.507zm5.838 4.634a6.248 6.248 0 011.52 4.086 6.28 6.28 0 01-1.867 4.45c-.38.377-1.02.3-1.334-.133l-.001-.002c-.25-.344-.234-.828.069-1.128a4.498 4.498 0 001.338-3.187 4.476 4.476 0 00-1.078-2.914c-.29-.34-.316-.83-.029-1.172h.001a.907.907 0 011.38 0z'/%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-volume-0 path {
+    display: none;
+}
+
+.jw-svg-icon-volume-0 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12.379 21.017c-.942-.68-4.01-2.993-4.765-3.544-.756-.553-1.539-1.266-3.255-1.279-1.717-.013-2.34-1.043-2.436-1.98a33.707 33.707 0 01-.137-2.325c0-.128-.001-.78.045-1.487.023-.359.45-.548.743-.328l10.585 7.925c.744.556 1.017 1.095.985 1.941-.012 1.367-.823 1.755-1.765 1.077zm-.057-18.008c1.402-1.014 1.805.366 1.887 1.535.127 1.802.162 3.536.2 6.18.013.904-.997.28-1.349 0L8.148 6.82a.467.467 0 01.014-.75c.996-.727 2.568-1.91 4.16-3.06zm4.32 15.308L2.116 7.365c-.464-.35-.443-1.109-.082-1.558.362-.448 1.096-.538 1.562-.189L18.122 16.48c.465.35.48 1.111.117 1.56-.36.448-1.132.626-1.597.277'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-volume:hover .jw-svg-icon-volume-0 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12.379 21.017c-.942-.68-4.01-2.993-4.765-3.544-.756-.553-1.539-1.266-3.255-1.279-1.717-.013-2.34-1.043-2.436-1.98a33.707 33.707 0 01-.137-2.325c0-.128-.001-.78.045-1.487.023-.359.45-.548.743-.328l10.585 7.925c.744.556 1.017 1.095.985 1.941-.012 1.367-.823 1.755-1.765 1.077zm-.057-18.008c1.402-1.014 1.805.366 1.887 1.535.127 1.802.162 3.536.2 6.18.013.904-.997.28-1.349 0L8.148 6.82a.467.467 0 01.014-.75c.996-.727 2.568-1.91 4.16-3.06zm4.32 15.308L2.116 7.365c-.464-.35-.443-1.109-.082-1.558.362-.448 1.096-.538 1.562-.189L18.122 16.48c.465.35.48 1.111.117 1.56-.36.448-1.132.626-1.597.277'/%3E%3C/svg%3E");
+}
+.jw-svg-icon-fullscreen-on path {
+    display: none;
+}
+
+.jw-svg-icon-fullscreen-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%23ff8000' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-on {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-on'%3E%3Cpath fill='%23ff8000' d='M4,6 L4,10 L2,10 L2,4 L8,4 L8,6 L4,6 Z M4,18 L8,18 L8,20 L2,20 L2,14 L4,14 L4,18 Z M6,8 L18,8 L18,16 L6,16 L6,8 Z M20,6 L16,6 L16,4 L22,4 L22,10 L20,10 L20,6 Z M20,18 L20,14 L22,14 L22,20 L16,20 L16,18 L20,18 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-svg-icon-fullscreen-off path {
+    display: none;
+}
+
+.jw-svg-icon-fullscreen-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%23ff8000' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-fullscreen:hover .jw-svg-icon-fullscreen-off {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg id='fullscreen-off'%3E%3Cpath fill='%23ff8000' d='M2,4 L22,4 L22,20 L2,20 L2,4 Z M6,8 L10,8 L10,6 L4,6 L4,10 L6,10 L6,8 Z M6,16 L6,14 L4,14 L4,18 L10,18 L10,16 L6,16 Z M18,8 L18,10 L20,10 L20,6 L14,6 L14,8 L18,8 Z M18,16 L14,16 L14,18 L20,18 L20,14 L18,14 L18,16 Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.jw-state-idle .jw-display-controls .jw-display-icon-container {
+    background: 0 0;
+    margin-bottom: 0;
+    border-radius: 50%;
+    animation-name: scaling;
+    -webkit-animation-name: scaling;
+    animation-duration: 0.6s;
+    -webkit-animation-duration: 0.6s;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: solid 0.125rem #f7f7f7;
+    height: 75px;
+    width: 75px;
+}
+.jw-svg-icon-settings path {
+    display: none;
+}
+
+.jw-svg-icon-settings {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12 16.68a4.68 4.68 0 110-9.36 4.68 4.68 0 110 9.36m10.158-6.588l-.001-.001a1.461 1.461 0 01-1.248-1 9.208 9.208 0 00-.552-1.327 1.466 1.466 0 01.173-1.594c.459-.559.455-1.378-.03-1.913a11.354 11.354 0 00-.758-.758c-.534-.486-1.353-.488-1.91-.03h-.002a1.466 1.466 0 01-1.594.174 9.293 9.293 0 00-1.327-.553 1.46 1.46 0 01-1-1.246c-.071-.718-.648-1.295-1.369-1.33-.355-.017-.713-.02-1.072-.002-.722.031-1.306.61-1.377 1.33v.002a1.462 1.462 0 01-1 1.246c-.458.15-.902.336-1.327.553a1.465 1.465 0 01-1.594-.174c-.56-.458-1.377-.455-1.913.031-.265.242-.518.495-.758.758-.486.534-.488 1.352-.03 1.911v.001c.37.45.438 1.074.173 1.594a9.205 9.205 0 00-.551 1.328c-.18.55-.67.942-1.248.999-.717.07-1.294.65-1.33 1.369-.017.356-.017.713-.002 1.072.033.723.61 1.306 1.33 1.377h.002a1.463 1.463 0 011.248 1c.15.459.335.902.551 1.327a1.463 1.463 0 01-.172 1.594v.001a1.468 1.468 0 00.03 1.912c.242.265.495.519.758.758.534.487 1.352.488 1.911.03a1.464 1.464 0 011.595-.173c.425.217.868.401 1.327.552.552.18.943.67 1 1.247.07.718.649 1.294 1.368 1.33.357.017.714.018 1.073.002.723-.033 1.306-.61 1.377-1.33v-.002a1.46 1.46 0 011-1.247c.458-.15.903-.335 1.327-.552a1.464 1.464 0 011.594.172v.001c.558.458 1.378.455 1.912-.032.265-.24.519-.493.76-.757.485-.534.487-1.353.028-1.911a1.466 1.466 0 01-.173-1.595c.217-.425.403-.868.552-1.328a1.46 1.46 0 011.248-1c.717-.069 1.294-.648 1.33-1.368.017-.356.018-.713.001-1.071a1.466 1.466 0 00-1.33-1.377'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.jw-icon-settings:hover .jw-svg-icon-settings,
+.jw-settings-open .jw-svg-icon-settings {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23ff8000' fill-rule='evenodd' d='M12 16.68a4.68 4.68 0 110-9.36 4.68 4.68 0 110 9.36m10.158-6.588l-.001-.001a1.461 1.461 0 01-1.248-1 9.208 9.208 0 00-.552-1.327 1.466 1.466 0 01.173-1.594c.459-.559.455-1.378-.03-1.913a11.354 11.354 0 00-.758-.758c-.534-.486-1.353-.488-1.91-.03h-.002a1.466 1.466 0 01-1.594.174 9.293 9.293 0 00-1.327-.553 1.46 1.46 0 01-1-1.246c-.071-.718-.648-1.295-1.369-1.33-.355-.017-.713-.02-1.072-.002-.722.031-1.306.61-1.377 1.33v.002a1.462 1.462 0 01-1 1.246c-.458.15-.902.336-1.327.553a1.465 1.465 0 01-1.594-.174c-.56-.458-1.377-.455-1.913.031-.265.242-.518.495-.758.758-.486.534-.488 1.352-.03 1.911v.001c.37.45.438 1.074.173 1.594a9.205 9.205 0 00-.551 1.328c-.18.55-.67.942-1.248.999-.717.07-1.294.65-1.33 1.369-.017.356-.017.713-.002 1.072.033.723.61 1.306 1.33 1.377h.002a1.463 1.463 0 011.248 1c.15.459.335.902.551 1.327a1.463 1.463 0 01-.172 1.594v.001a1.468 1.468 0 00.03 1.912c.242.265.495.519.758.758.534.487 1.352.488 1.911.03a1.464 1.464 0 011.595-.173c.425.217.868.401 1.327.552.552.18.943.67 1 1.247.07.718.649 1.294 1.368 1.33.357.017.714.018 1.073.002.723-.033 1.306-.61 1.377-1.33v-.002a1.46 1.46 0 011-1.247c.458-.15.903-.335 1.327-.552a1.464 1.464 0 011.594.172v.001c.558.458 1.378.455 1.912-.032.265-.24.519-.493.76-.757.485-.534.487-1.353.028-1.911a1.466 1.466 0 01-.173-1.595c.217-.425.403-.868.552-1.328a1.46 1.46 0 011.248-1c.717-.069 1.294-.648 1.33-1.368.017-.356.018-.713.001-1.071a1.466 1.466 0 00-1.33-1.377'/%3E%3C/svg%3E");
+}
+
+.jw-state-idle .jw-display-controls .jw-display-icon-container .jw-icon {
+    color: #ff8000 !important;
+    height: 50px;
+    width: 50px;
+    padding: 12px;
+}
+
+.jw-progress,
+.lds-ellipsis div {
+    background: #ff8000 !important;
+}
+
+.jw-settings-menu {
+    border-radius: 0.3em;
+}
+
+.jw-sharing-link:active,
+.jw-sharing-copy:active.jw-sharing-link:hover,
+.jw-button-color.jw-toggle.jw-off:active:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:focus:not(.jw-icon-cast),
+.jw-button-color.jw-toggle.jw-off:hover:not(.jw-icon-cast),
+.jw-button-color.jw-toggle:not(.jw-icon-cast),
+.jw-button-color:active:not(.jw-icon-cast),
+.jw-button-color:focus:not(.jw-icon-cast),
+.jw-button-color:hover:not(.jw-icon-cast),
+.jw-button-color[aria-expanded=true]:not(.jw-icon-cast),
+.jw-settings-content-item.jw-settings-item-active,
+.jw-settings-menu .jw-icon.jw-button-color[aria-checked="true"] .jw-svg-icon {
+    fill: #ff8000 !important;
+    color: #ff8000!important;
+    background-color: transparent !important;
+}
+
+.jw-button-color {
+    -webkit-transition: opacity 0.25s,
+        -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    -o-transition: opacity 0.25s,
+        -o-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    -moz-transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
+        -moz-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    transition: transform 0.25s cubic-bezier(0.5, 0, 0.1, 1), opacity 0.25s,
+        -webkit-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
+        -moz-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1),
+        -o-transform 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+    -webkit-transform: translateZ(0) scale(1);
+    -moz-transform: translateZ(0) scale(1);
+    transform: translateZ(0) scale(1);
+}
+
+.jw-button-color:hover {
+    -webkit-transform: translateZ(0) scale(1.2);
+    -moz-transform: translateZ(0) scale(1.2);
+    transform: translateZ(0) scale(1.2);
+}
+
+.jw-buffer {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.jw-slider-horizontal .jw-slider-container {
+    height: 0.5em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.jw-slider-vertical .jw-slider-container {
+    width: 0.4em !important;
+}
+
+.jw-volume-tip {
+    padding: 1em 0 !important;
+    background: #262626 !important;
+    border-radius: 0.3em;
+    max-width: 2.2em;
+    margin: 0 auto !important;
+}
+
+.jw-text-elapsed {
+    margin-right: 12px !important;
+}
+
+.jw-text-duration {
+    margin-left: 12px !important;
+}
+
+:not(.jw-breakpoint--1) .jw-text-duration:before,
+:not(.jw-breakpoint-0) .jw-text-duration:before {
+    display: none !important;
+}
+
+.jw-breakpoint-7 .jw-text-duration,
+.jw-breakpoint-7 .jw-text-elapsed {
+    font-size: 0.95em !important;
+}
+
+.jw-breakpoint-7 .jw-slider-time {
+    padding: 0 66px !important;
+}
+
+.jw-icon-volume .jw-svg-icon-volume-0,
+.jw-icon-volume .jw-svg-icon-volume-50,
+.jw-icon-volume .jw-svg-icon-volume-100 {
+    height: 28px;
+    width: 28px;
+}
+
+.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-0,
+.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-50,
+.jw-breakpoint-7 .jw-icon-volume .jw-svg-icon-volume-100 {
+    height: 32px !important;
+    width: 32px !important;
+}
+
+.jw-breakpoint-1:not(.jw-flag-audio-player) .jw-slider-time {
+    padding: 0 12px !important;
+}
+
+.jw-breakpoint--1:not(.jw-flag-audio-player) .jw-slider-time {
+    height: auto !important;
+    padding: 0 !important;
+}
+
+.jw-breakpoint--1:not(.jw-flag-audio-player) .jw-slider-time .jw-slider-container {
+    margin: 0 !important;
+}
+
+.jwplayer.jw-breakpoint-1:not(.jw-flag-ads):not(.jw-flag-audio-player) .jw-button-container,
+.jwplayer.jw-breakpoint--1:not(.jw-flag-ads):not(.jw-flag-audio-player) .jw-button-container {
+    padding: 0 !important;
+}
+
+.jw-flag-small-player:not(.jw-flag-audio-player):not(.jw-flag-ads) .jw-controlbar .jw-button-container>.jw-icon-playback {
+    display: flex !important;
+}
+
+.jwplayer.jw-breakpoint--1:not(.jw-flag-audio-player):not(.jw-flag-ads) .jw-controlbar .jw-button-container>.jw-icon-playback {
+    bottom: 6px !important;
+}
+
+.jw-breakpoint-1 .jw-icon[button="rewind"],
+.jw-breakpoint-1 .jw-icon[button="forward"],
+.jw-breakpoint--1 .jw-icon[button="rewind"],
+.jw-breakpoint--1 .jw-icon[button="forward"] {
+    display: none !important;
+}
+
+.jw-button-color {
+    color:  #ff8000!important;
+}
+.jw-knob {
+    background-color: #ff8000 !important;
+    }
+.jw-progress {
+    background-color: #ff8000!important;
+}
+.jw-text-live::before {
+    background-color: red!important;
+    }
+.jw-reset-text{
+    color: white !important;
+}
+</style>
+    <!-- JW Player -->
+    <script src="//ssl.p.jwpcdn.com/player/v/8.21.1/jwplayer.js"></script>
+    <script>jwplayer.key = "XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo";</script>
+</head>
+
+<body>
+    <div id="player" class="ViostreamIframe"></div>
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Funciones de Desencriptación / Decodificación
+        function base64UrlToUint8Array(base64Url) {
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            while (base64.length % 4 !== 0) base64 += '=';
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) outputArray[i] = rawData.charCodeAt(i);
+            return outputArray;
+        }
+
+        function base64ToUtf8(str) {
+            try {
+                let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+                while (base64.length % 4 !== 0) base64 += '=';
+                return decodeURIComponent(escape(atob(base64)));
+            } catch (e) { return null; }
+        }
+
+        async function tryDecryptAES(htmlText) {
+            let ivB64 = null, ctB64 = null;
+            const ivMatch = htmlText.match(/data-iv=["']([^"']+)["']/i);
+            const ctMatch = htmlText.match(/data-ct=["']([^"']+)["']/i);
+
+            if (ivMatch && ctMatch) {
+                ivB64 = ivMatch[1];
+                ctB64 = ctMatch[1];
+            }
+
+            if (!ivB64 || !ctB64) return { success: false };
+
+            try {
+                const mask = [0x5A, 0xA5, 0x3F, 0xC1, 0x7E, 0x91];
+                const rawKeyBytes = new Uint8Array([
+                    24, 33, 134, 133, 37, 158, 136, 198, 87, 142, 170, 166, 175, 55, 251, 120,
+                    14, 228, 86, 114, 9, 203, 20, 90, 223, 160, 143, 110, 195, 215, 118, 191
+                ].map((b, i) => b ^ mask[i % mask.length]));
+
+                const cryptoKey = await crypto.subtle.importKey(
+                    'raw', rawKeyBytes, 'AES-GCM', false, ['decrypt']
+                );
+
+                const decryptedBuffer = await crypto.subtle.decrypt(
+                    { name: 'AES-GCM', iv: base64UrlToUint8Array(ivB64) },
+                    cryptoKey,
+                    base64UrlToUint8Array(ctB64)
+                );
+
+                return { success: true, data: new TextDecoder().decode(decryptedBuffer) };
+            } catch (e) {
+                return { success: false };
+            }
+        }
+
+        function extractAndDecodeOnce(text) {
+            let current = text;
+            let foundMatch = false;
+
+            const cfgMatch = current.match(/[?&]cfg=([^&"'\s>]+)/);
+            if (cfgMatch) {
+                const decodedCfg = base64ToUtf8(cfgMatch[1]);
+                if (decodedCfg) { current = decodedCfg; foundMatch = true; }
+            } else if (!current.includes('<') && !current.includes('http') && current.length > 20) {
+                const decodedRaw = base64ToUtf8(current);
+                if (decodedRaw) { current = decodedRaw; foundMatch = true; }
+            }
+
+            const unescapeMatch = current.match(/(?:unescape|decodeURIComponent)\(['"](.+)['"]\)/s);
+            if (unescapeMatch) {
+                current = unescapeMatch[1];
+                foundMatch = true;
+            }
+
+            if (current.includes('%')) {
+                try {
+                    const dec = decodeURIComponent(current);
+                    if (dec !== current) { current = dec; foundMatch = true; }
+                } catch (e) {
+                    try {
+                        const unesc = unescape(current);
+                        if (unesc !== current) { current = unesc; foundMatch = true; }
+                    } catch (err) { }
+                }
+            }
+
+            return { result: current, decoded: foundMatch };
+        }
+
+        // Obtener HTML -> Desencriptar -> Extraer Token
+        async function obtenerTokenServidor() {
+            try {
+                const response = await fetch("https://canalesenvivodeargentina.blogspot.com/2024/05/tnt-sports-en-vivo.html");
+                let html = await response.text();
+
+                // Extraer bloque <script> objetivo
+                const scriptMatch = html.match(/<script[^>]*>([\s\S]*?document\.write\(unescape\([\s\S]*?)<\/script>/i) ||
+                    html.match(/<script[^>]*>([\s\S]*?)<\/script>/gi);
+
+                if (scriptMatch) {
+                    if (Array.isArray(scriptMatch) && scriptMatch[1]) {
+                        html = scriptMatch[1];
+                    } else if (Array.isArray(scriptMatch)) {
+                        const targetScript = scriptMatch.find(s => s.includes('unescape') || s.includes('cfg=') || s.includes('data-iv'));
+                        html = targetScript || scriptMatch[0];
+                    }
+                }
+
+                // Bucle desencriptador (hasta 10 capas)
+                for (let step = 0; step < 10; step++) {
+                    let changed = false;
+
+                    const aesResult = await tryDecryptAES(html);
+                    if (aesResult.success) {
+                        html = aesResult.data;
+                        changed = true;
+                        continue;
+                    }
+
+                    const stepDecode = extractAndDecodeOnce(html);
+                    if (stepDecode.decoded && stepDecode.result !== html) {
+                        html = stepDecode.result;
+                        changed = true;
+                        continue;
+                    }
+
+                    if (!changed) break;
+                }
+
+                // Buscar el token dentro del HTML desencriptado
+                const match = html.match(/token=([^&"'\s>]+)/);
+                if (match && match[1]) {
+                    return match[1];
+                }
+
+                console.error("No se encontró 'token=' en el HTML desencriptado.");
+                return null;
+
+            } catch (error) {
+                console.error("Error al obtener o desencriptar el servidor:", error);
+                return null;
+            }
+        }
+
+        var ConfiguracionCanales = {
+            "TELEFE": { k1: "0c659a49c7e74e0ea972f80435ae9954", k2: "178ee00cd1b28e8cd67564fd242a217d" },
+            "AMERICA": { k1: "0dbf670ea1084843ae856f13b1739eca", k2: "76e10b838963427d1b5651b6d6285db7" },
+            "CNN": { k1: "7f4360b847194ee2adb68514ca6a7be8", k2: "e101556e5e9fcd240403e98bd33e0c4a" },
+            "A24": { k1: "b72f8e51e29c4ac18c24101afbcfffc0", k2: "42bada901fda76701b1f7d925bd08856" },
+            "CANAL26": { k1: "65efb1eeac3d42c48b0429e51d1707c7", k2: "287dceaf16ea2f0dcd943e6fefb009e4" },
+            "TVPUBLICA": { k1: "966637bc7b93469dbc11f1e3e47ae1b1", k2: "9f6d7c829f83851ded182f8486a298bd" },
+            "CRONICATV": { k1: "07d860b0d4e94a568671014685f4d7af", k2: "83d180ec315ada84c2f9c9064664374a" },
+            "TN": { k1: "56cdad17841e477a9755db0ac6f51a6b", k2: "994107d6f0afa4dfdd42b805b88a653f" },
+            "C5N": { k1: "ab68c6d7ff314f20bb2c506ded6ec00f", k2: "63879fbfe8ecf80118dae54e51dd970c" },
+            "LANACION": { k1: "03fa99b689194ebd981d8e8c6f3338eb", k2: "9e7a7fd5721c251bfb0a22660c994e4e" },
+            "ELNUEVE": { k1: "1f53ac7f35724e83942bd409ce66be68", k2: "70339faa8062d34b29aafcd534c3c4f8" },
+            "DSPORT": { k1: "e11f9758c5c84595b6b2ca213746045b", k2: "fe15d82164808a601cbc8590fb476133" },
+            "DSPORT2": { k1: "6cefb961e85148a2bb6706d192e69f93", k2: "d2a62a997c0f8c16b87b7f00b80eb0bb" },
+            "TNT_SPORTS": { k1: "302c2d57aa5c444f86d427508c1c6714", k2: "0be2509f8befc2399b9fb7f236b63c7d" },
+            "TYC": { k1: "dbe265d99e9a4445a4a47bcac4ddc3d8", k2: "9cd1be2017b886e452443bec4e37e214" },
+            "ESPNPREMIUM": { k1: "00e08f97d3104d8ba550414f41b48761", k2: "ed9c6e30925d4efe6c7374b764c67ec4" },
+            "MIXTV": { k1: "f55e4a29ca4d4662b89345db027d1779", k2: "51962277171890a9a825f1bc676c6ba6" },
+            "ESPN": { k1: "22f24724b9ba4b35b43e24c51269f8d7", k2: "1b21bee9294b5037a638b7681d57029f" },
+            "ESPN2": { k1: "0e01d045ccbf4e24ab49d294ff45930d", k2: "63558c6bf7670a8d06fd8150d258a6d5" },
+            "ESPN3": { k1: "c4fb8e17ed194b7e816a370d15d65d86", k2: "2c7b7a4f26c8e055cbf1eb9d8b19aa81" },
+            "ESPN4": { k1: "f2de1aa6403c425694b3262434c5fe61", k2: "1c7d6a5cbc59b8216aa8b7d4129861a0" },
+            "FOXSPORTS": { k1: "5017e89955f44ff5b4ddf04e5f5151c6", k2: "55136a837a0c8bbcfc7ce65cbd9a547c" },
+            "FOXSPORTS2": { k1: "e0e38315c40c4176bab472b349c551ae", k2: "d2f1712fc296fee968c7ae0750b2c45b" },
+            "FOXSPORTS3": { k1: "c72cc2fd2ce34ff78b71765fb85f990d", k2: "05fcda26315ffe49f178eca1423831f5" },
+            "STAR": { k1: "09485c3719c64e758f6f73436a53ead3", k2: "b215105cab25e8e3ac401bb9054d6ed4" },
+            "TNTNOVELAS": { k1: "44b69bf2f0d449378c95675bdaf5cad0", k2: "14ac35bdd882785a59603569336317b2" },
+            "TNT": { k1: "8528469a6a4b4838aac56c9b47a625e5", k2: "e13e6f0a958f8701cff04ed644d1f301" },
+            "TNTSERIES": { k1: "23d16f5cb38b407493aa7d35a36920bc", k2: "4f1e2d6bddeaf0d082b846f04c41cbc5" },
+            "HBO": { k1: "8692bcde0cb747468ee0c0a6dab4bcbd", k2: "9dae2ad5ff1d28e0430a2bbeaf1ab1fc" },
+            "HBO2": { k1: "a319626ac2054f07990f43ba35535c47", k2: "7cd36113800fcbfab64bff7a38144c70" },
+            "HBOPOP": { k1: "5825a480fdfb40eca9a67cf9b5d08fb1", k2: "eb8588c70b41c5b977958ef65e077316" },
+            "HBOSIGNATURE": { k1: "a17d1059f3dc4b41ac3111bbea263a38", k2: "c8870eb00fb7701e58cf8cfe7d18c264" },
+            "HBOPLUS": { k1: "a9ca01feef7e4de4addb3fe8177fd445", k2: "90c0a6dc04a0cba7af26af378ce27645" },
+            "HBOMUNDI": { k1: "44ed6bd74d6942b6aa4d5d662b4f3f07", k2: "44e6a5e0e79dda2e39587c4b9564fc95" },
+            "HBOFAMILY": { k1: "5451169dad88420d8a3e37ebe97a73ba", k2: "4b81bd4713443691443f52ba421c2e8d" },
+            "HBOXTREME": { k1: "dcc1e51d18514e87af7af19ace3f0065", k2: "3eed3745b4fa192fb4ccf9087449ba23" },
+            "HGTV": { k1: "0f15ff062bea4800bade9d71d95b397d", k2: "babcaa0df085d0d41ece94d3b6187ef3" },
+            "SPACE": { k1: "4f9aa91599cb4361a1681f51fd18a937", k2: "04ac5c76edd6720a867586c76de082bd" },
+            "AYE": { k1: "f083b0803a484b35acf00f856b4eee3a", k2: "2384cace8ebaf9a065a12c6a18225591" },
+            "CINECANAL": { k1: "5390dac1a9174761bb3b2fa47157c0e1", k2: "f246dca86604616d4d1d58baace7f74e" },
+            "CINEMAX": { k1: "46c80ad426ab4277b70c4b9fe89a4bca", k2: "0b58be9851536a753d6163f0bb82caa7" },
+            "CINEAR": { k1: "88f4370861244f8ebc08cc7a85fc37eb", k2: "fbb51aaa0cebf0562c1b3820e3a743fd" },
+            "AMC": { k1: "4e32e375ca4d4c2384c1948869419fc9", k2: "e98d3138dc0395a4d9f38f1d914b9324" },
+            "AXN": { k1: "d0eb282ee04544128d6735fe8add8a6c", k2: "db14571fc69a640de42765856ef3edfa" },
+            "STUDIO_UNIVERSAL": { k1: "35e1d45ae2b64ef49d04e51fd97069ac", k2: "7e027973a26744692ce12959d53dac50" },
+            "UNIVERSAL_CHANNEL": { k1: "eca8c2ed68e1448d9539fff4c9a7e5d0", k2: "46db77ef04ad5c45f1f83b733d43a9bc" },
+            "FX": { k1: "83a282495da34057b08715986cd4d3f7", k2: "cc11198fee91df1a72e3d1bcde242ea4" },
+            "FILMSANDARTS": { k1: "a209cc35a0d74c52aad7a6f127dc9dc9", k2: "a209cc35a0d74c52aad7a6f127dc9dc9" },
+            "WARNER": { k1: "a319626ac2054f07990f43ba35535c47", k2: "7cd36113800fcbfab64bff7a38144c70" },
+            "SONY_MOVIE": { k1: "53aac4c5873644c4b247672667baf3f7", k2: "d0e2ac611a251b9088ca9a874b0e1126" },
+            "SONY": { k1: "d5df427e119a4617aa92201e0d11b1fb", k2: "a4b2819a622fac780ae244c50e2e047c" },
+            "GOLDEN": { k1: "4ba84bd60c09439cba78389947db4852", k2: "76205b601638ea2d1c6f5602678f93d9" },
+            "COMEDIACENTRAL": { k1: "a2e493ff23fd424c88b1e0851020f3d7", k2: "5bc794392d56bb811819dc70d5265582" },
+            "MAGAZINE": { k1: "fae81fc93e8d4f098cfce1135cb8a872", k2: "1857408fb167846cb696d3c94eed8e54" },
+            "TELENOVELAS": { k1: "4ed4174bf05b4e648dc580879ebc5258", k2: "c5826cdffb1d963b2f8f226ec0b61614" },
+            "CANALDELASESTRELLAS": { k1: "810d5922270340d8ae5e5605af57ef47", k2: "6c4840a055d4a14b96f1c0eb12c0e9ba" },
+            "VOLVER": { k1: "a9aee7ce088a4dee9a58febab2173f42", k2: "9652ee7aa3c9286880e2cd3963aaf2dd" },
+            "CTN": { k1: "da2dde59cf754e6a8858cd46519e2edd", k2: "6240ac042f2e28fcf153ad2f6479c5ca" },
+            "DISNEYCH": { k1: "3efc6a1d8be643b181a4faddecdaaa4a", k2: "c1073ade101454cb36535f7cf037ca4c" },
+            "DISNEYJR": { k1: "3afaf0d996714b68a8cc256a2f064666", k2: "27500166177ae95cc56adcc537817439" },
+            "DISCOVERY_TURBO": { k1: "eaf9e7af57b347409f7a604a65e6d464", k2: "f5cf5801960647013073f9b6b5922037" },
+            "THEATER": { k1: "a94f1fb7e09c4b86ad6aac21833ecb20", k2: "1f1030b0ee6bd8ea4f17eaa641ab1c0c" },
+            "SCIENCE": { k1: "2766f77a728b4fa69958f911d5cc9399", k2: "f49ef1157ca0d68a1e1686ff87936c96" },
+            "WORLD": { k1: "866cfe94fb4b4603a31c627876c883a8", k2: "6ff5da10562857d5dd89983568542687" },
+            "HYH": { k1: "d79def81522f4bd6949b245a19c331f2", k2: "7a2b8ea6fe9c0c3b8f0d2a94ba4fd1c4" },
+            "DISCOVERY_KIDS": { k1: "57ff1c0a7c0c41239892a702611a269f", k2: "ec5a63e3ce01666c0e35ac74fc585af6" },
+            "DISCOVERY_CHANNEL": { k1: "31e6ec1b810043c9a2acd689db6171b5", k2: "562939d0e29d372c150449ca903b0bdc" },
+            "ANIMAL_PLANET": { k1: "08b8427f9cbc4583bf68f87bc1dc3023", k2: "e738fadbe6dccd4cd0e85acb54b9fc70" },
+            "HISTORY": { k1: "ebc341cde9634bfca678c193fb59de6a", k2: "c96e79c1dca91b5a562316cbd78a1444" },
+            "HISTORY2": { k1: "7a31259de9c441268c17050af69f83ee", k2: "963b563347143f52ce26c9cbaf632918" },
+            "ENTRETEINEME": { k1: "ba1d6d67d34844a4adb457ccb66bd641", k2: "d4740f95189dc19a6d7185821c5392ee" },
+            "RURAL": { k1: "857fd4fcd73747859ba618290bbd7aaf", k2: "4c8fcef1ec461b3393edf7a95e822af1" },
+            "ELGOURMET": { k1: "da5c0e67b6004518a0dc2e5059e5f30c", k2: "12331e514c8d333ba6c960b9a156b63c" },
+            "TLC": { k1: "828c5dd2bf4142d18975a7d677392328", k2: "011fafa6e4879c08a6fb526d585e7ae1" },
+            "NATGEO": { k1: "9cea695fed3749bbafdc1a0d1892e416", k2: "b021a7db7de9a164d33c1a53ff6503ed" },
+            "ADULTSWIM": { k1: "66be7b8929ae4532b63d9777691a9cce", k2: "2bc3c4eaef568c1dea44dc1cdceadf89" },
+            "CARTOONITO": { k1: "8b2c521e9ba94467bc408ee5c0c8ffb4", k2: "e5123b38f420ac82e12f10dda7724c59" },
+
+            "13CCC": { k1: "aea8b6bf175248b489bc51187f9541f9", k2: "dfcbcb8aa256dfa1d391ebeeeeb896df" },
+            "14CCC": { k1: "57680e7ec2984a9e82d2d70f945ec0a1", k2: "507b0eda3f13c403fef40636e25e370d" },
+            "12CCC": { k1: "bae832124c3444e98b2d2e664ccf4852", k2: "ea7c87123f99ae0b7e246ba70c88cf13" },
+            "11CCC": { k1: "db2dda3141174ffdac1c04dffa11df18", k2: "d619bc3cdaa4e89dcc644b46e350ca91" },
+            "DREAMWORKS": { k1: "2efef3f382a84f1189d800924e4f8d86", k2: "85016efd8145f3a3b0226dc5fd3c8827" },
+            "CHACRATV": { k1: "bfce9e66f3ba4fe6a7d3f333c464439a", k2: "8c979d89598eb97c1d74a823be21d529" },
+            "DW": { k1: "8bdb36bf0f124480b6d10575d24c13d7", k2: "9c12d4358a261bc1c47025dfac1aedc8" },
+            "TVE": { k1: "f47ec1e002204ef9abc2300f0a461d76", k2: "43a285e1015372965c6fd7ba5cb69afe" },
+            "MIXTV": { k1: "f55e4a29ca4d4662b89345db027d1779", k2: "51962277171890a9a825f1bc676c6ba6" },
+            "KZO": { k1: "3beeaacf006544e7aa6cec8512536409", k2: "3feca33d1cef5c3da18963209767d218" },
+            "HTV": { k1: "2ea6b39dd260456bbb8d21dbb611ac4c", k2: "0fe5b9eaf03ee747a7955b4665c449c1" },
+            "MTV": { k1: "58ea93444ef24446ad9e39fd095b9842", k2: "4542c900c0cfd05088f537e1ff8567c3" },
+            "QUIEROMUSICA": { k1: "b32b120a21904cee810784cd6096893f", k2: "dd834fe8fa55b9a54756243874bcdff1" },
+            "NICKJUNIOR": { k1: "2297fab372504925b6f7586dd5246d8e", k2: "e0a82d546d9627a4d454fb6ca216972e" },
+            "NICK": { k1: "5c3d07bd9fec47c482d27885496b6291", k2: "4fe1aa25fa0211a1d9828f95e40cf66e" },
+            "EUROPA": { k1: "6c71df621c724c929506f0ab9f252e5f", k2: "c5d6819ec247b81dbd004d4b372466af" },
+            "TCM": { k1: "a839f805dd394ee99df39e8167c69408", k2: "3fbf03f7dbcd835a3c3127386664ca5c" },
+            "CANAL10": { k1: "ff34e24864524e8db088985e15726677", k2: "d562709f174f2d8205bfb40c507b450f" },
+            "ELOCHO": { k1: "0bd9dedeae69448d8a0ffee4546d571e", k2: "6b3cd3acdcb0b0464224402bdad74aa9" },
+            "FRANCE24": { k1: "78459c1c5d614fbea90bbc22256ee559", k2: "54ce51a82cd3f6db3e88133827e6a189" },
+            "TVPUBLICA": { k1: "966637bc7b93469dbc11f1e3e47ae1b1", k2: "9f6d7c829f83851ded182f8486a298bd" },
+        };
+
+        async function initPlayer() {
+            var id = getParameterByName('id');
+            var config = ConfiguracionCanales[id];
+
+            if (!config) {
+                console.error("Canal no encontrado en la configuración.");
+                return;
+            }
+
+            const token = await obtenerTokenServidor();
+            if (!token) {
+                console.error("No se pudo obtener/desencriptar el token.");
+                return;
+            }
+
+            var sources = [];
+            if (config.k1 && config.k2) {
+                sources.push({
+                    file: "https://ciades.providers.com.ar/" + id + "/index.mpd?token=" + token + "&dvr_window_length=30",
+                    drm: { "clearkey": { "keyId": config.k1, "key": config.k2 } }
+                });
+            }
+
+            const player = jwplayer("player");
+            player.setup({
+                playlist: [{
+                    title: "REPRODUCTOR",
+                    description: "EN VIVO",
+                    sources: sources
+                }],
+                   width: "100%",
+                    height: "100%",
+                    aspectratio: "16:9",
+                    volume:100,
+                    mute: "false",
+                    stretching: "exactfit",
+                    autostart: false,
+                    preload: "auto",
+                    liveSyncDuration: 3,
+            });
+
+            function seleccionarEspañol() {
+                const tracks = player.getAudioTracks();
+                if (!tracks.length) return;
+
+                const index = tracks.findIndex(track =>
+                    /^(es|spa)$|español|castellano|spanish/i.test(
+                        track.language || track.name || track.label || ""
+                    )
+                );
+
+                if (index >= 0 && player.getCurrentAudioTrack() !== index) {
+                    player.off("audioTracks", seleccionarEspañol);
+                    player.setCurrentAudioTrack(index);
+                }
+            }
+
+            player.on("audioTracks", seleccionarEspañol);
+
+            // -------------------------------------------------------------
+            // Detección exclusiva para móviles y tablets (iPad / Android)
+            // Excluye computadoras de escritorio, notebooks, Smart TVs y TV Box
+            // -------------------------------------------------------------
+            function esDispositivoMovilOTablet() {
+                var ua = navigator.userAgent || navigator.vendor || window.opera;
+
+                // 1. Descartar Smart TV, TV Box y Consolas
+                var esTV = /TV|SmartTV|AppleTV|GoogleTV|HbbTV|NetCast|WebOS|InettvBrowser|Roku|Vizio|AFTT|AFTM|MIBOX|Chromecast|Android TV|PlayStation|Xbox/i.test(ua);
+                if (esTV) return false;
+
+                // 2. Detectar smartphones y tablets por User Agent
+                var esMovilTabletUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+
+                // 3. Detectar iPads con iPadOS moderno (que se identifican como MacIntel con pantalla táctil multitáctil)
+                var esIPadOS = (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+                return esMovilTabletUA || esIPadOS;
+            }
+
+            // Giro automático a orientación horizontal solo al activar Fullscreen
+            player.on("fullscreen", function(e) {
+                if (esDispositivoMovilOTablet()) {
+                    if (e.fullscreen) {
+                        if (screen.orientation && typeof screen.orientation.lock === "function") {
+                            screen.orientation.lock("landscape").catch(function(err) {
+                                console.log("Giro horizontal no soportado o bloqueado por el navegador:", err);
+                            });
+                        }
+                    } else {
+                        if (screen.orientation && typeof screen.orientation.unlock === "function") {
+                            screen.orientation.unlock();
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", initPlayer);
+    </script>
+</body>
+</html>
